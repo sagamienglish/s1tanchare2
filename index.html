@@ -7,7 +7,6 @@
     
     <!-- Tailwind CSS本体を先に読み込む -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- その後に設定を適用する（正しい読み込み順序） -->
     <script>
         tailwind.config = {
             theme: {
@@ -25,7 +24,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     
-    <!-- 100%確実に反映されるHEX（16進数）コードによるテーマ管理 -->
     <style>
         :root {
             --color-primary: #3B5EE8;
@@ -39,74 +37,12 @@
             --color-slate-50: #f8fafc;
             --color-slate-100: #f1f5f9;
         }
-
-        [data-theme="pistachio"] {
-            --color-primary: #38A169;
-            --color-primaryHover: #2F855A;
-            --color-primaryLight: #C6F6D5;
-            --color-background: #E8F5E9;
-            --color-surface: #F2FBF3;
-            --color-border: #C6F6D5;
-            --color-slate-50: #F0FFF4;
-            --color-slate-100: #E6FFFA;
-        }
-        
-        [data-theme="lavender"] {
-            --color-primary: #805AD5;
-            --color-primaryHover: #6B46C1;
-            --color-primaryLight: #E9D8FD;
-            --color-background: #F3E8FF;
-            --color-surface: #FAF5FF;
-            --color-border: #E9D8FD;
-            --color-slate-50: #FAF5FF;
-            --color-slate-100: #E9D8FD;
-        }
-
-        [data-theme="sky"] {
-            --color-primary: #0284C7;
-            --color-primaryHover: #0369A1;
-            --color-primaryLight: #BAE6FD;
-            --color-background: #E0F2FE;
-            --color-surface: #F0F9FF;
-            --color-border: #BAE6FD;
-            --color-slate-50: #F0F9FF;
-            --color-slate-100: #E0F2FE;
-        }
-
-        [data-theme="apricot"] {
-            --color-primary: #EA580C;
-            --color-primaryHover: #C2410C;
-            --color-primaryLight: #FED7AA;
-            --color-background: #FFEDD5;
-            --color-surface: #FFF7ED;
-            --color-border: #FED7AA;
-            --color-slate-50: #FFF7ED;
-            --color-slate-100: #FFEDD5;
-        }
-
-        [data-theme="cyan"] {
-            --color-primary: #0D9488;
-            --color-primaryHover: #0F766E;
-            --color-primaryLight: #99F6E4;
-            --color-background: #CCFBF1;
-            --color-surface: #F0FDFA;
-            --color-border: #99F6E4;
-            --color-slate-50: #F0FDFA;
-            --color-slate-100: #CCFBF1;
-        }
-
-        [data-theme="cyber"] {
-            --color-primary: #6366F1;
-            --color-primaryHover: #4F46E5;
-            --color-primaryLight: #312E81;
-            --color-background: #0E1525;
-            --color-surface: #1E293B;
-            --color-text-main: #F8FAFC;
-            --color-text-muted: #94A3B8;
-            --color-border: #334155;
-            --color-slate-50: #0f172a;
-            --color-slate-100: #1e293b;
-        }
+        [data-theme="pistachio"] { --color-primary: #38A169; --color-primaryHover: #2F855A; --color-primaryLight: #C6F6D5; --color-background: #E8F5E9; --color-surface: #F2FBF3; --color-border: #C6F6D5; --color-slate-50: #F0FFF4; --color-slate-100: #E6FFFA; }
+        [data-theme="lavender"] { --color-primary: #805AD5; --color-primaryHover: #6B46C1; --color-primaryLight: #E9D8FD; --color-background: #F3E8FF; --color-surface: #FAF5FF; --color-border: #E9D8FD; --color-slate-50: #FAF5FF; --color-slate-100: #E9D8FD; }
+        [data-theme="sky"] { --color-primary: #0284C7; --color-primaryHover: #0369A1; --color-primaryLight: #BAE6FD; --color-background: #E0F2FE; --color-surface: #F0F9FF; --color-border: #BAE6FD; --color-slate-50: #F0F9FF; --color-slate-100: #E0F2FE; }
+        [data-theme="apricot"] { --color-primary: #EA580C; --color-primaryHover: #C2410C; --color-primaryLight: #FED7AA; --color-background: #FFEDD5; --color-surface: #FFF7ED; --color-border: #FED7AA; --color-slate-50: #FFF7ED; --color-slate-100: #FFEDD5; }
+        [data-theme="cyan"] { --color-primary: #0D9488; --color-primaryHover: #0F766E; --color-primaryLight: #99F6E4; --color-background: #CCFBF1; --color-surface: #F0FDFA; --color-border: #99F6E4; --color-slate-50: #F0FDFA; --color-slate-100: #CCFBF1; }
+        [data-theme="cyber"] { --color-primary: #6366F1; --color-primaryHover: #4F46E5; --color-primaryLight: #312E81; --color-background: #0E1525; --color-surface: #1E293B; --color-text-main: #F8FAFC; --color-text-muted: #94A3B8; --color-border: #334155; --color-slate-50: #0f172a; --color-slate-100: #1e293b; }
 
         /* 強制適用クラス */
         .text-primary { color: var(--color-primary) !important; }
@@ -120,44 +56,25 @@
         .hover\:border-primary:hover { border-color: var(--color-primary) !important; }
         .hover\:text-primary:hover { color: var(--color-primary) !important; }
 
-        body { 
-            touch-action: manipulation; 
-            user-select: none; 
-            -webkit-user-select: none; 
-            background-color: var(--color-background); 
-            color: var(--color-text-main); 
-            height: 100dvh; 
-            width: 100vw; 
-            overflow: hidden; 
-        }
-        
+        body { touch-action: manipulation; user-select: none; -webkit-user-select: none; background-color: var(--color-background); color: var(--color-text-main); height: 100dvh; width: 100vw; overflow: hidden; }
         .text-slate-800, .text-slate-700 { color: var(--color-text-main) !important; }
         .text-slate-600, .text-slate-500, .text-slate-400 { color: var(--color-text-muted) !important; }
         .bg-white, .bg-surface { background-color: var(--color-surface) !important; }
         .bg-slate-50 { background-color: var(--color-slate-50) !important; }
         .bg-slate-100 { background-color: var(--color-slate-100) !important; }
         .border-slate-100, .border-slate-200 { border-color: var(--color-border) !important; }
-        
         input[type="text"] { background-color: var(--color-surface) !important; color: var(--color-text-main) !important; border-color: var(--color-border) !important; }
-
         .btn-elegant { transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; border: 2px solid var(--color-border); }
         .btn-elegant:hover { border-color: var(--color-primary) !important; }
 
-        /* Matching Card */
         .card-inner { position: relative; width: 100%; height: 100%; }
-        .card-front, .card-back { 
-            position: absolute; inset: 0; 
-            display: flex; align-items: center; justify-content: center; 
-            border-radius: 0.75rem; padding: 0.5rem; text-align: center; word-break: break-word; 
-            transition: all 0.25s ease-out;
-        }
+        .card-front, .card-back { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; border-radius: 0.75rem; padding: 0.5rem; text-align: center; word-break: break-word; transition: all 0.25s ease-out; }
         .card-front { background-color: var(--color-primary) !important; color: #ffffff !important; font-size: 1.5rem; z-index: 2; transform: scale(1); opacity: 1; }
         .card-back { background-color: var(--color-surface) !important; color: var(--color-text-main) !important; border: 2px solid var(--color-primary) !important; font-weight: bold; z-index: 1; transform: scale(0.9); opacity: 0; }
         .card.flipped .card-front { transform: scale(1.1); opacity: 0; z-index: 1; pointer-events: none; }
         .card.flipped .card-back { transform: scale(1); opacity: 1; z-index: 2; }
         .card.matched { opacity: 0; pointer-events: none; transition: opacity 0.3s 0.5s; }
 
-        /* VS Screens */
         #screen-vs, #screen-listening-vs { position: fixed; inset: 0; z-index: 100; background-color: var(--color-surface); flex-direction: column; overflow: hidden; }
         .vs-half { flex: 1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; }
         .vs-top { transform: rotate(180deg); background-color: #FEE2E2; }
@@ -165,14 +82,10 @@
         .vs-divider { height: 8px; background-color: var(--color-text-main); width: 100%; z-index: 40; position: relative; pointer-events: none; }
         .vs-close-btn, #lvs-audio-btn { pointer-events: auto; }
         
-        /* Sortable */
         .sortable-ghost { opacity: 0.4; }
         .sortable-drag { cursor: grabbing !important; }
-
-        /* Animations */
         @keyframes pop { 0% { transform: scale(0.95); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
         .animate-pop { animation: pop 0.3s ease-out; }
-
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 10px; }
@@ -241,7 +154,6 @@
                     </div>
                     <div class="text-xl md:text-2xl font-extrabold text-slate-700"><span id="time-count">0分</span></div>
                 </div>
-                <!-- Stamina -->
                 <div class="bg-surface rounded-xl p-4 shadow-sm border border-slate-100 flex flex-col justify-center relative overflow-hidden">
                     <div class="flex items-center gap-2 mb-1 text-yellow-500">
                         <i data-lucide="zap" class="w-4 h-4"></i><span class="text-xs font-bold">スタミナ</span>
@@ -251,7 +163,6 @@
                     </div>
                     <div id="stamina-timer" class="absolute top-3 right-3 text-[10px] text-slate-400 font-bold bg-slate-50 px-1.5 py-0.5 rounded">MAX</div>
                 </div>
-                <!-- EXP -->
                 <div class="bg-surface rounded-xl p-4 shadow-sm border border-slate-100 flex flex-col justify-center">
                     <div class="flex items-center gap-2 mb-1 text-primary">
                         <i data-lucide="star" class="w-4 h-4"></i><span class="text-xs font-bold">経験値 (EXP)</span>
@@ -262,31 +173,23 @@
             
             <h2 class="text-lg font-bold text-slate-800 mb-3 pl-1 border-l-4 border-primary leading-none">モード選択</h2>
             
-            <!-- Mode Cards Grid -->
             <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
-                
                 <div onclick="initAudio(); openSetupModal('4choice')" class="bg-surface rounded-xl p-4 md:p-5 shadow-sm border border-slate-200 hover:border-primary transition-colors cursor-pointer flex flex-col relative group">
-                    <div class="absolute top-2 right-2 text-primary text-[10px] font-bold px-2 py-1 flex items-center gap-1">
-                        <i data-lucide="check" class="w-3 h-3"></i> <span id="dash-score-4choice">0</span>
-                    </div>
+                    <div class="absolute top-2 right-2 text-primary text-[10px] font-bold px-2 py-1 flex items-center gap-1"><i data-lucide="check" class="w-3 h-3"></i> <span id="dash-score-4choice">0</span></div>
                     <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i data-lucide="mouse-pointer-click" class="w-5 h-5"></i></div>
                     <h3 class="text-sm md:text-base font-bold text-slate-800 mb-1">４択クイズ</h3>
                     <p class="text-slate-500 text-[10px] md:text-xs">意味を選ぶクイズ</p>
                 </div>
                 
                 <div onclick="initAudio(); openSetupModal('typing')" class="bg-surface rounded-xl p-4 md:p-5 shadow-sm border border-slate-200 hover:border-primary transition-colors cursor-pointer flex flex-col relative group">
-                    <div class="absolute top-2 right-2 text-primary text-[10px] font-bold px-2 py-1 flex items-center gap-1">
-                        <i data-lucide="check" class="w-3 h-3"></i> <span id="dash-score-typing">0</span>
-                    </div>
+                    <div class="absolute top-2 right-2 text-primary text-[10px] font-bold px-2 py-1 flex items-center gap-1"><i data-lucide="check" class="w-3 h-3"></i> <span id="dash-score-typing">0</span></div>
                     <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i data-lucide="keyboard" class="w-5 h-5"></i></div>
                     <h3 class="text-sm md:text-base font-bold text-slate-800 mb-1">タイピング</h3>
                     <p class="text-slate-500 text-[10px] md:text-xs">スペルを入力</p>
                 </div>
 
                 <div onclick="initAudio(); openSetupModal('listening')" class="bg-surface rounded-xl p-4 md:p-5 shadow-sm border border-slate-200 hover:border-primary transition-colors cursor-pointer flex flex-col relative group">
-                    <div class="absolute top-2 right-2 text-primary text-[10px] font-bold px-2 py-1 flex items-center gap-1">
-                        <i data-lucide="check" class="w-3 h-3"></i> <span id="dash-score-listening">0</span>
-                    </div>
+                    <div class="absolute top-2 right-2 text-primary text-[10px] font-bold px-2 py-1 flex items-center gap-1"><i data-lucide="check" class="w-3 h-3"></i> <span id="dash-score-listening">0</span></div>
                     <div class="w-10 h-10 bg-cyan-50 text-cyan-600 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i data-lucide="headphones" class="w-5 h-5"></i></div>
                     <h3 class="text-sm md:text-base font-bold text-slate-800 mb-1">リスニング</h3>
                     <p class="text-slate-500 text-[10px] md:text-xs">音声を聞き取って選ぶ</p>
@@ -328,19 +231,16 @@
         <div id="screen-vocabulary" class="screen hidden flex-col p-4 md:p-8 max-w-6xl mx-auto min-h-full">
             <h2 class="text-2xl font-extrabold text-slate-800 mb-4">語彙リスト</h2>
             
-            <!-- 進捗パネル -->
             <div class="mb-6 bg-surface p-4 md:p-5 rounded-2xl border border-slate-200 shadow-sm">
                 <div class="flex justify-between items-end mb-3">
                     <h3 class="text-sm font-bold text-slate-500">学習進捗</h3>
                     <div class="text-2xl md:text-3xl font-extrabold text-primary"><span id="vocab-progress-percent">0</span><span class="text-sm md:text-base font-bold">% 達成</span></div>
                 </div>
-                <!-- プログレスバー -->
                 <div class="w-full h-3 md:h-4 bg-slate-100 rounded-full overflow-hidden flex mb-5 border border-slate-200 shadow-inner">
                     <div id="pb-o" class="h-full bg-green-500 transition-all duration-500" style="width: 0%"></div>
                     <div id="pb-t" class="h-full bg-yellow-400 transition-all duration-500" style="width: 0%"></div>
                     <div id="pb-x" class="h-full bg-red-500 transition-all duration-500" style="width: 0%"></div>
                 </div>
-                <!-- ステータスカード -->
                 <div class="grid grid-cols-4 gap-2 md:gap-4">
                     <div class="bg-green-50 border border-green-200 rounded-xl p-2 md:p-3 text-center shadow-sm">
                         <div class="text-[10px] md:text-xs font-bold text-green-600 mb-0.5 md:mb-1">覚えた</div>
@@ -578,7 +478,7 @@
                 <button onclick="closeModal('modal-setup')" class="text-slate-400 hover:text-slate-600 p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             
-            <div class="mb-5">
+            <div class="mb-5 hidden">
                 <label class="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">出題範囲</label>
                 <div id="setup-category-buttons" class="flex flex-wrap gap-1.5"></div>
             </div>
@@ -647,112 +547,11 @@
         }
 
         // --- Data ---
-        const rawWords = [
-            {en: "disease", jp: "病気", cat: "高1第2回"},
-            {en: "experiment", jp: "実験", cat: "高1第2回"},
-            {en: "benefit", jp: "利益,恩恵", cat: "高1第2回"},
-            {en: "record", jp: "記録,経歴", cat: "高1第2回"},
-            {en: "role", jp: "役割,役目", cat: "高1第2回"},
-            {en: "object", jp: "物体,目的,反対する", cat: "高1第2回"},
-            {en: "growth", jp: "増加,増大,発展,成長", cat: "高1第2回"},
-            {en: "event", jp: "出来事,事件,行事", cat: "高1第2回"},
-            {en: "memory", jp: "記憶力,思い出", cat: "高1第2回"},
-            {en: "effort", jp: "努力", cat: "高1第2回"},
-            {en: "skill", jp: "技能,技術,能力", cat: "高1第2回"},
-            {en: "survey", jp: "調査,概観,~を調査する", cat: "高1第2回"},
-            {en: "choice", jp: "選択,選択権", cat: "高1第2回"},
-            {en: "economy", jp: "経済,節約", cat: "高1第2回"},
-            {en: "relationship", jp: "関係", cat: "高1第2回"},
-            {en: "sentence", jp: "文,判決,刑,~に判決を下す", cat: "高1第2回"},
-            {en: "opportunity", jp: "機会,チャンス", cat: "高1第2回"},
-            {en: "model", jp: "手本,模型,モデル", cat: "高1第2回"},
-            {en: "fear", jp: "恐れ,不安,~を恐れる", cat: "高1第2回"},
-            {en: "death", jp: "死,死亡", cat: "高1第2回"},
-            {en: "guess", jp: "~を推測する,~を言い当てる,推測", cat: "高1第2回"},
-            {en: "prepare", jp: "~を準備する,用意する", cat: "高1第2回"},
-            {en: "develop", jp: "~を発展させる,発展する", cat: "高1第2回"},
-            {en: "solve", jp: "~を解決する,解く", cat: "高1第2回"},
-            {en: "encourage", jp: "~を励ます,勇気づける", cat: "高1第2回"},
-            {en: "expect", jp: "~を予想する,~を期待する", cat: "高1第2回"},
-            {en: "deal", jp: "処理する,扱う", cat: "高1第2回"},
-            {en: "measure", jp: "測る,測定する,対策,手段", cat: "高1第2回"},
-            {en: "demand", jp: "~を要求する,要求,需要", cat: "高1第2回"},
-            {en: "contain", jp: "~を含む,~を収容する", cat: "高1第2回"},
-            {en: "various", jp: "さまざまな,いろいろな", cat: "高1第2回"},
-            {en: "political", jp: "政治上の", cat: "高1第2回"},
-            {en: "scientific", jp: "科学の,科学的な", cat: "高1第2回"},
-            {en: "medical", jp: "医学の,医療の", cat: "高1第2回"},
-            {en: "whole", jp: "全体の,全部の,まったく", cat: "高1第2回"},
-            {en: "serious", jp: "深刻な,重大な,本気の", cat: "高1第2回"},
-            {en: "single", jp: "たった1つの,1つ1つの,独身の", cat: "高1第2回"},
-            {en: "general", jp: "一般的な,全体的な,大まかな", cat: "高1第2回"},
-            {en: "total", jp: "総計の,全部の,まったくの,合計", cat: "高1第2回"},
-            {en: "necessary", jp: "必要な,不可欠な", cat: "高1第2回"},
-            {en: "material", jp: "材料,素材,生地,題材", cat: "高1第2回"},
-            {en: "lack", jp: "不足,欠乏,~を欠いている", cat: "高1第2回"},
-            {en: "decision", jp: "決定,決意", cat: "高1第2回"},
-            {en: "source", jp: "源,もと,原因,情報源", cat: "高1第2回"},
-            {en: "risk", jp: "危険性,恐れ", cat: "高1第2回"},
-            {en: "bill", jp: "請求書,勘定,紙幣,法案", cat: "高1第2回"},
-            {en: "professor", jp: "教授", cat: "高1第2回"},
-            {en: "diet", jp: "食事,ダイエット,食事療法,国会", cat: "高1第2回"},
-            {en: "quality", jp: "質,品質,特質", cat: "高1第2回"},
-            {en: "data", jp: "データ,資料", cat: "高1第2回"},
-            {en: "note", jp: "メモ,記録,紙幣,~に言及する,~に気づく", cat: "高1第2回"},
-            {en: "challenge", jp: "難題,課題,挑戦,~に異議を唱える,~に挑戦する", cat: "高1第2回"},
-            {en: "function", jp: "機能,働き,機能する", cat: "高1第2回"},
-            {en: "article", jp: "記事,品物", cat: "高1第2回"},
-            {en: "shape", jp: "形,体形,状態,調子,~を形作る", cat: "高1第2回"},
-            {en: "middle", jp: "中央,真ん中,中央の,真ん中の", cat: "高1第2回"},
-            {en: "goal", jp: "目標,ゴール,得点", cat: "高1第2回"},
-            {en: "image", jp: "イメージ,印象,映像,像", cat: "高1第2回"},
-            {en: "figure", jp: "数値,数字,姿,~と思う", cat: "高1第2回"},
-            {en: "decade", jp: "10年間", cat: "高1第2回"},
-            {en: "exist", jp: "存在する,ある", cat: "高1第2回"},
-            {en: "reduce", jp: "~を減らす,縮小する", cat: "高1第2回"},
-            {en: "gain", jp: "~を得る,獲得する,増加,利益", cat: "高1第2回"},
-            {en: "require", jp: "~を必要とする", cat: "高1第2回"},
-            {en: "prove", jp: "~を証明する,~だとわかる", cat: "高1第2回"},
-            {en: "prevent", jp: "~がするのを妨げる", cat: "高1第2回"},
-            {en: "compare", jp: "~を比較する,~をたとえる", cat: "高1第2回"},
-            {en: "adapt", jp: "~を適合させる,適用する", cat: "高1第2回"},
-            {en: "conduct", jp: "~を行う,実施する,指揮する,行い,管理", cat: "高1第2回"},
-            {en: "prefer", jp: "~より好きである", cat: "高1第2回"},
-            {en: "successful", jp: "成功した", cat: "高1第2回"},
-            {en: "due", jp: "~が原因で,到着予定で,支払われるべき", cat: "高1第2回"},
-            {en: "available", jp: "利用できる,入手できる", cat: "高1第2回"},
-            {en: "western", jp: "西洋の,西の", cat: "高1第2回"},
-            {en: "personal", jp: "個人の,個人的な", cat: "高1第2回"},
-            {en: "ancient", jp: "古代の", cat: "高1第2回"},
-            {en: "used", jp: "~に慣れている,中古の", cat: "高1第2回"},
-            {en: "native", jp: "出生地の,故郷の,その土地生まれの,生まれの人", cat: "高1第2回"},
-            {en: "daily", jp: "毎日の,日々の", cat: "高1第2回"},
-            {en: "correct", jp: "正しい,正確な,~を訂正する", cat: "高1第2回"},
-            {en: "generation", jp: "世代,一世代", cat: "高1第2回"},
-            {en: "movement", jp: "運動,動き", cat: "高1第2回"},
-            {en: "statement", jp: "声明,陳述", cat: "高1第2回"},
-            {en: "means", jp: "手段,財力", cat: "高1第2回"},
-            {en: "expert", jp: "専門家,熟練した", cat: "高1第2回"},
-            {en: "intelligence", jp: "知能,知性", cat: "高1第2回"},
-            {en: "stage", jp: "段階,時期,舞台", cat: "高1第2回"},
-            {en: "variety", jp: "いろいろな,多様性", cat: "高1第2回"},
-            {en: "industry", jp: "産業,工業", cat: "高1第2回"},
-            {en: "patient", jp: "患者,忍耐強い", cat: "高1第2回"},
-            {en: "conversation", jp: "会話", cat: "高1第2回"},
-            {en: "clothes", jp: "服,衣服", cat: "高1第2回"},
-            {en: "pressure", jp: "圧力,重圧,気圧", cat: "高1第2回"},
-            {en: "position", jp: "位置,姿勢,立場,状況", cat: "高1第2回"},
-            {en: "degree", jp: "度,程度,学位", cat: "高1第2回"},
-            {en: "range", jp: "範囲,~に及ぶ", cat: "高1第2回"},
-            {en: "access", jp: "接近方法,利用権", cat: "高1第2回"},
-            {en: "importance", jp: "重要性", cat: "高1第2回"},
-            {en: "neighbor", jp: "隣人,近所の人", cat: "高1第2回"},
-            {en: "policy", jp: "政策,方針", cat: "高1第2回"}
+        const words = [
+            ["disease","病気"],["experiment","実験"],["benefit","利益,恩恵"],["record","記録,経歴"],["role","役割,役目"],["object","物体,目的,反対する"],["growth","増加,増大,発展,成長"],["event","出来事,事件,行事"],["memory","記憶力,思い出"],["effort","努力"],["skill","技能,技術,能力"],["survey","調査,概観,~を調査する"],["choice","選択,選択権"],["economy","経済,節約"],["relationship","関係"],["sentence","文,判決,刑,~に判決を下す"],["opportunity","機会,チャンス"],["model","手本,模型,モデル"],["fear","恐れ,不安,~を恐れる"],["death","死,死亡"],["guess","~を推測する,~を言い当てる,推測"],["prepare","~を準備する,用意する"],["develop","~を発展させる,発展する"],["solve","~を解決する,解く"],["encourage","~を励ます,勇気づける"],["expect","~を予想する,~を期待する"],["deal","処理する,扱う"],["measure","測る,測定する,対策,手段"],["demand","~を要求する,要求,需要"],["contain","~を含む,~を収容する"],["various","さまざまな,いろいろな"],["political","政治上の"],["scientific","科学の,科学的な"],["medical","医学の,医療の"],["whole","全体の,全部の,まったく"],["serious","深刻な,重大な,本気の"],["single","たった1つの,1つ1つの,独身の"],["general","一般的な,全体的な,大まかな"],["total","総計の,全部の,まったくの,合計"],["necessary","必要な,不可欠な"],["material","材料,素材,生地,題材"],["lack","不足,欠乏,~を欠いている"],["decision","決定,決意"],["source","源,もと,原因,情報源"],["risk","危険性,恐れ"],["bill","請求書,勘定,紙幣,法案"],["professor","教授"],["diet","食事,ダイエット,食事療法,国会"],["quality","質,品質,特質"],["data","データ,資料"],["note","メモ,記録,紙幣,~に言及する,~に気づく"],["challenge","難題,課題,挑戦,~に異議を唱える,~に挑戦する"],["function","機能,働き,機能する"],["article","記事,品物"],["shape","形,体形,状態,調子,~を形作る"],["middle","中央,真ん中,中央の,真ん中の"],["goal","目標,ゴール,得点"],["image","イメージ,印象,映像,像"],["figure","数値,数字,姿,~と思う"],["decade","10年間"],["exist","存在する,ある"],["reduce","~を減らす,縮小する"],["gain","~を得る,獲得する,増加,利益"],["require","~を必要とする"],["prove","~を証明する,~だとわかる"],["prevent","~がするのを妨げる"],["compare","~を比較する,~をたとえる"],["adapt","~を適合させる,適用する"],["conduct","~を行う,実施する,指揮する,行い,管理"],["prefer","~より好きである"],["successful","成功した"],["due","~が原因で,到着予定で,支払われるべき"],["available","利用できる,入手できる"],["western","西洋の,西の"],["personal","個人の,個人的な"],["ancient","古代の"],["used","~に慣れている,中古の"],["native","出生地の,故郷の,その土地生まれの,生まれの人"],["daily","毎日の,日々の"],["correct","正しい,正確な,~を訂正する"],["generation","世代,一世代"],["movement","運動,動き"],["statement","声明,陳述"],["means","手段,財力"],["expert","専門家,熟練した"],["intelligence","知能,知性"],["stage","段階,時期,舞台"],["variety","いろいろな,多様性"],["industry","産業,工業"],["patient","患者,忍耐強い"],["conversation","会話"],["clothes","服,衣服"],["pressure","圧力,重圧,気圧"],["position","位置,姿勢,立場,状況"],["degree","度,程度,学位"],["range","範囲,~に及ぶ"],["access","接近方法,利用権"],["importance","重要性"],["neighbor","隣人,近所の人"],["policy","政策,方針"]
         ];
 
-        const wordData = rawWords.map(w => {
-            return { en: w.en, jp: w.jp.trim(), cat: w.cat };
-        });
+        const wordData = words.map(w => ({ en: w[0], jp: w[1].trim(), cat: "高1第2回" }));
         const categories = ["全て", ...new Set(wordData.map(w => w.cat))];
 
         // --- State & Storage ---
@@ -760,7 +559,8 @@
         let lastLogin = storage.getItem('wm_pro_date');
         let streak = parseInt(storage.getItem('wm_pro_streak')) || 1;
         let errors = JSON.parse(storage.getItem('wm_pro_errors')) || {};
-        let wordStatus = JSON.parse(storage.getItem('wm_pro_word_status')) || {}; // o, t, x
+        let wordStatus = JSON.parse(storage.getItem('wm_pro_word_status')) || {}; 
+        let wordStreak = JSON.parse(storage.getItem('wm_pro_word_streak')) || {}; 
         let matchingRanks = JSON.parse(storage.getItem('wm_pro_ranks')) || [];
         let ttRanks = JSON.parse(storage.getItem('wm_pro_tt_ranks')) || [];
         let cpuLevel = parseInt(storage.getItem('wm_pro_cpu')) || 1;
@@ -772,9 +572,10 @@
         let totalExp = parseInt(storage.getItem('wm_pro_exp')) || 0;
         let activeScreen = 'dashboard';
 
-        // --- クイズ設定用グローバル変数 ---
         let currentQuizData = [];
         let currentOptions = {};
+
+        const el = (id) => document.getElementById(id);
 
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
@@ -791,7 +592,7 @@
                 updateStaminaLogic();
             }, 1000);
             
-            if (document.getElementById('display-cpu-level')) document.getElementById('display-cpu-level').innerText = cpuLevel;
+            if (el('display-cpu-level')) el('display-cpu-level').innerText = cpuLevel;
             renderVocabulary();
             renderKeyboard();
             initTypingListener();
@@ -800,20 +601,11 @@
             applyTheme(savedTheme);
         });
 
-        // --- Utils ---
-        function showModal(id) { 
-            const el = document.getElementById(id);
-            if(el) el.classList.remove('hidden'); 
-        }
-        function closeModal(id) { 
-            const el = document.getElementById(id);
-            if(el) el.classList.add('hidden'); 
-        }
+        function showModal(id) { if(el(id)) el(id).classList.remove('hidden'); }
+        function closeModal(id) { if(el(id)) el(id).classList.add('hidden'); }
 
-        // --- Theme System ---
         function openThemeModal() {
-            const list = document.getElementById('theme-list');
-            list.innerHTML = '';
+            const list = el('theme-list'); list.innerHTML = '';
             const themes = [
                 { id: 'default', name: 'デフォルト', req: 0, bg: '#F4F7F9', border: '#3B5EE8' },
                 { id: 'pistachio', name: 'クラッシュ・ピスタチオ', req: 0, bg: '#E8F5E9', border: '#38A169' },
@@ -824,9 +616,8 @@
                 { id: 'cyber', name: 'ディープ・サイバー・ナイト', req: 1000, bg: '#0E1525', border: '#6366F1' }
             ];
             themes.forEach(t => {
-                let isUnlocked = totalExp >= t.req;
                 let btn = document.createElement('button');
-                if(isUnlocked) {
+                if(totalExp >= t.req) {
                     btn.className = "flex justify-between items-center w-full p-3 rounded-xl border border-slate-200 hover:border-primary transition-colors bg-surface group shadow-sm";
                     btn.innerHTML = `<div class="flex items-center gap-3"><div class="w-5 h-5 rounded-full border-2" style="background:${t.bg}; border-color:${t.border}"></div> <span class="text-sm font-bold text-slate-700">${t.name}</span></div> <i data-lucide="check" class="w-4 h-4 text-slate-300"></i>`;
                     btn.onclick = () => applyTheme(t.id);
@@ -836,8 +627,7 @@
                 }
                 list.appendChild(btn);
             });
-            lucide.createIcons();
-            showModal('modal-theme');
+            lucide.createIcons(); showModal('modal-theme');
         }
 
         function applyTheme(theme) {
@@ -846,139 +636,110 @@
             closeModal('modal-theme');
         }
 
-        // --- Logic ---
         function checkLogin() {
             const today = new Date().toDateString();
             if (lastLogin !== today) {
-                const yesterday = new Date(Date.now() - 86400000).toDateString();
-                if (lastLogin === yesterday) streak++; else if (lastLogin) streak = 1;
-                storage.setItem('wm_pro_date', today);
-                storage.setItem('wm_pro_streak', streak.toString());
+                if (lastLogin === new Date(Date.now() - 86400000).toDateString()) streak++; else if (lastLogin) streak = 1;
+                storage.setItem('wm_pro_date', today); storage.setItem('wm_pro_streak', streak.toString());
             }
-            if(document.getElementById('days-count')) document.getElementById('days-count').innerText = streak;
+            if(el('days-count')) el('days-count').innerText = streak;
         }
 
         function updateTimeUI() {
-            let m = Math.floor(totalSeconds / 60);
-            let h = Math.floor(m / 60);
-            m = m % 60;
-            let str = h > 0 ? `${h}時間 ${m}分` : `${m}分`;
-            if (totalSeconds < 60) str = "0分";
-            if(document.getElementById('time-count')) document.getElementById('time-count').innerText = str;
+            let m = Math.floor(totalSeconds / 60), h = Math.floor(m / 60); m = m % 60;
+            if(el('time-count')) el('time-count').innerText = (h > 0 ? `${h}時間 ${m}分` : `${m}分`) || "0分";
         }
 
         function updateStaminaLogic() {
             let now = Date.now();
             if(stamina < 10) {
-                let elapsed = now - staminaTime;
-                let recoveryInterval = 10 * 60 * 1000;
-                let recovered = Math.floor(elapsed / recoveryInterval);
-                if(recovered > 0) {
-                    stamina = Math.min(10, stamina + recovered);
-                    staminaTime += recovered * recoveryInterval;
-                    storage.setItem('wm_pro_stamina', stamina);
-                    storage.setItem('wm_pro_stamina_time', staminaTime);
-                }
+                let rec = Math.floor((now - staminaTime) / 600000);
+                if(rec > 0) { stamina = Math.min(10, stamina + rec); staminaTime += rec * 600000; storage.setItem('wm_pro_stamina', stamina); storage.setItem('wm_pro_stamina_time', staminaTime); }
             }
-            document.querySelectorAll('.stamina-display').forEach(el => el.innerText = stamina);
+            document.querySelectorAll('.stamina-display').forEach(e => e.innerText = stamina);
             
             if (stamina < 10) {
-                let remaining = (10 * 60 * 1000) - ((now - staminaTime) % (10 * 60 * 1000));
-                let m = Math.floor(remaining / 60000);
-                let s = Math.floor((remaining % 60000) / 1000).toString().padStart(2, '0');
-                if(document.getElementById('stamina-timer')) {
-                    document.getElementById('stamina-timer').innerText = `${m}:${s}`;
-                    document.getElementById('stamina-timer').className = "absolute top-3 right-3 text-[10px] font-bold px-1.5 py-0.5 rounded bg-yellow-50 text-yellow-600 border border-yellow-200";
+                let rem = 600000 - ((now - staminaTime) % 600000);
+                if(el('stamina-timer')) {
+                    el('stamina-timer').innerText = `${Math.floor(rem / 60000)}:${Math.floor((rem % 60000) / 1000).toString().padStart(2, '0')}`;
+                    el('stamina-timer').className = "absolute top-3 right-3 text-[10px] font-bold px-1.5 py-0.5 rounded bg-yellow-50 text-yellow-600 border border-yellow-200";
                 }
-            } else {
-                if(document.getElementById('stamina-timer')) {
-                    document.getElementById('stamina-timer').innerText = `MAX`;
-                    document.getElementById('stamina-timer').className = "absolute top-3 right-3 text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-50 text-slate-400 border border-slate-200";
-                }
+            } else if(el('stamina-timer')) {
+                el('stamina-timer').innerText = `MAX`;
+                el('stamina-timer').className = "absolute top-3 right-3 text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-50 text-slate-400 border border-slate-200";
             }
         }
 
         function useStamina() {
             if(stamina > 0) {
                 if(stamina === 10) staminaTime = Date.now();
-                stamina--;
-                storage.setItem('wm_pro_stamina', stamina);
-                storage.setItem('wm_pro_stamina_time', staminaTime);
-                updateStaminaLogic();
-                return true;
-            } else {
-                showResult("スタミナ不足", "回復するまでお待ちください。", "", "info");
-                return false;
+                stamina--; storage.setItem('wm_pro_stamina', stamina); storage.setItem('wm_pro_stamina_time', staminaTime);
+                updateStaminaLogic(); return true;
             }
+            showResult("スタミナ不足", "回復するまでお待ちください。", "", "info"); return false;
         }
 
         function addExp(amount) {
-            totalExp += amount;
-            storage.setItem('wm_pro_exp', totalExp);
-            if(document.getElementById('exp-count')) document.getElementById('exp-count').innerText = totalExp;
+            totalExp += amount; storage.setItem('wm_pro_exp', totalExp);
+            if(el('exp-count')) el('exp-count').innerText = totalExp;
         }
 
         function updateDashboardScores() {
-            if(document.getElementById('exp-count')) document.getElementById('exp-count').innerText = totalExp;
-            if(document.getElementById('dash-score-4choice')) document.getElementById('dash-score-4choice').innerText = storage.getItem('wm_pro_stats_4choice') || 0;
-            if(document.getElementById('dash-score-typing')) document.getElementById('dash-score-typing').innerText = storage.getItem('wm_pro_stats_typing') || 0;
-            if(document.getElementById('dash-score-listening')) document.getElementById('dash-score-listening').innerText = storage.getItem('wm_pro_stats_listening') || 0;
-            if(document.getElementById('dash-score-matching')) document.getElementById('dash-score-matching').innerText = matchingRanks.length > 0 ? matchingRanks[0].time.toFixed(1) + 's' : '--';
-            if(document.getElementById('dash-count-matching')) document.getElementById('dash-count-matching').innerText = storage.getItem('wm_pro_stats_matching_count') || 0;
-            if(document.getElementById('dash-score-timetrial')) {
-                let tb = storage.getItem('wm_pro_tt_best');
-                document.getElementById('dash-score-timetrial').innerText = tb ? parseFloat(tb).toFixed(1) + 's' : '--';
-            }
-            if(document.getElementById('dash-count-timetrial')) document.getElementById('dash-count-timetrial').innerText = storage.getItem('wm_pro_stats_tt_count') || 0;
-            if(document.getElementById('dash-count-vs')) document.getElementById('dash-count-vs').innerText = storage.getItem('wm_pro_stats_vs_count') || 0;
+            if(!el('dash-score-4choice')) return;
+            el('exp-count').innerText = totalExp;
+            el('dash-score-4choice').innerText = storage.getItem('wm_pro_stats_4choice') || 0;
+            el('dash-score-typing').innerText = storage.getItem('wm_pro_stats_typing') || 0;
+            el('dash-score-listening').innerText = storage.getItem('wm_pro_stats_listening') || 0;
+            el('dash-score-matching').innerText = matchingRanks.length > 0 ? matchingRanks[0].time.toFixed(1) + 's' : '--';
+            el('dash-count-matching').innerText = storage.getItem('wm_pro_stats_matching_count') || 0;
+            let tb = storage.getItem('wm_pro_tt_best');
+            el('dash-score-timetrial').innerText = tb ? parseFloat(tb).toFixed(1) + 's' : '--';
+            el('dash-count-timetrial').innerText = storage.getItem('wm_pro_stats_tt_count') || 0;
+            el('dash-count-vs').innerText = storage.getItem('wm_pro_stats_vs_count') || 0;
+        }
+
+        function recordSuccess(enWord) {
+            let streak = (wordStreak[enWord] || 0) + 1;
+            wordStreak[enWord] = streak;
+            storage.setItem('wm_pro_word_streak', JSON.stringify(wordStreak));
+            if (streak >= 3) wordStatus[enWord] = 'o';
+            else if (!wordStatus[enWord] || wordStatus[enWord] === 'none' || wordStatus[enWord] === 'x') wordStatus[enWord] = 't';
+            storage.setItem('wm_pro_word_status', JSON.stringify(wordStatus));
+            renderVocabulary();
         }
 
         function recordError(enWord) {
             errors[enWord] = (errors[enWord] || 0) + 1;
             storage.setItem('wm_pro_errors', JSON.stringify(errors));
+            wordStreak[enWord] = 0;
+            storage.setItem('wm_pro_word_streak', JSON.stringify(wordStreak));
 
-            let currentStatus = wordStatus[enWord];
-            if (!currentStatus || currentStatus === 'none') {
-                wordStatus[enWord] = 'x';
-            } else if (currentStatus === 'o') {
-                wordStatus[enWord] = 't';
-            } else if (currentStatus === 't') {
-                wordStatus[enWord] = 'x';
-            }
+            let st = wordStatus[enWord];
+            if (!st || st === 'none') wordStatus[enWord] = 'x';
+            else if (st === 'o') wordStatus[enWord] = 't';
+            else if (st === 't') wordStatus[enWord] = 'x';
             storage.setItem('wm_pro_word_status', JSON.stringify(wordStatus));
             renderVocabulary();
         }
 
-        // --- Navigation ---
         function shuffle(array) { return array.slice().sort(() => Math.random() - 0.5); }
         function clearAllTimers() {
-            clearInterval(mTimerInterval);
-            clearInterval(ttTimerInterval);
-            clearTimeout(vsCpuTimer);
+            clearInterval(mTimerInterval); clearInterval(ttTimerInterval); clearTimeout(vsCpuTimer);
             vsLockAll = false; p1Locked = false; p2Locked = false;
             if(window.speechSynthesis) window.speechSynthesis.cancel();
         }
 
         function navTo(tab) {
-            activeScreen = tab;
-            clearAllTimers();
+            activeScreen = tab; clearAllTimers();
             document.querySelectorAll('.screen').forEach(s => { s.classList.add('hidden'); s.classList.remove('flex'); });
-            const targetScreen = document.getElementById('screen-' + tab);
-            if (targetScreen) {
-                targetScreen.classList.remove('hidden'); targetScreen.classList.add('flex');
-            }
+            if (el('screen-' + tab)) { el('screen-' + tab).classList.remove('hidden'); el('screen-' + tab).classList.add('flex'); }
             ['dashboard', 'vocabulary'].forEach(t => {
-                const el = document.getElementById('nav-' + t);
-                if(el) el.className = (t === tab) ? "w-full flex items-center gap-4 p-4 rounded-xl bg-primary text-white font-bold transition-colors shadow-sm" : "w-full flex items-center gap-4 p-4 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 font-bold transition-colors";
-                const mel = document.getElementById('mob-' + t);
-                if(mel) mel.className = (t === tab) ? "flex flex-col items-center p-2 text-primary" : "flex flex-col items-center p-2 text-slate-400";
-                
-                if (el) {
-                    const icon = el.querySelector('i');
-                    if(icon) icon.className = (t === tab) ? "w-5 h-5 text-white" : "w-5 h-5";
-                }
+                const navEl = el('nav-' + t), mobEl = el('mob-' + t);
+                if(navEl) navEl.className = (t === tab) ? "w-full flex items-center gap-4 p-4 rounded-xl bg-primary text-white font-bold transition-colors shadow-sm" : "w-full flex items-center gap-4 p-4 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 font-bold transition-colors";
+                if(mobEl) mobEl.className = (t === tab) ? "flex flex-col items-center p-2 text-primary" : "flex flex-col items-center p-2 text-slate-400";
+                if (navEl && navEl.querySelector('i')) navEl.querySelector('i').className = (t === tab) ? "w-5 h-5 text-white" : "w-5 h-5";
             });
-            if(tab === 'dashboard') { try{updateDashboardScores();}catch(e){} }
+            if(tab === 'dashboard') try{updateDashboardScores();}catch(e){}
             window.scrollTo(0,0);
         }
 
@@ -987,121 +748,69 @@
             if(!window.speechSynthesis) { if(onEndCallback) onEndCallback(); return; }
             window.speechSynthesis.cancel();
             let cleanText = text.replace(/\[.*?\]/g, '').replace(/［.*?］/g, '').trim();
-            const utterance = new SpeechSynthesisUtterance(cleanText);
-            utterance.lang = 'en-US'; utterance.rate = 0.9;
+            const utterance = new SpeechSynthesisUtterance(cleanText); utterance.lang = 'en-US'; utterance.rate = 0.9;
             if(onEndCallback) utterance.onend = onEndCallback;
-            window.speechSynthesis.speak(utterance);
-            lastUtterance = cleanText;
+            window.speechSynthesis.speak(utterance); lastUtterance = cleanText;
         }
         function replayAudio() { if(lastUtterance) playAudio(lastUtterance); }
 
-        // --- Vocabulary List ---
         function renderVocabulary() {
-            const container = document.getElementById('vocab-container');
+            const container = el('vocab-container');
             if(!container) return;
-
-            // --- 進捗の計算とUI更新 ---
             let oCount = 0, tCount = 0, xCount = 0;
-            const totalWords = wordData.length;
-            wordData.forEach(w => {
-                const stat = wordStatus[w.en];
-                if (stat === 'o') oCount++;
-                else if (stat === 't') tCount++;
-                else if (stat === 'x') xCount++;
-            });
-            const noneCount = totalWords - (oCount + tCount + xCount);
+            wordData.forEach(w => { let st = wordStatus[w.en]; if (st === 'o') oCount++; else if (st === 't') tCount++; else if (st === 'x') xCount++; });
+            const noneCount = wordData.length - (oCount + tCount + xCount);
             
-            const oEl = document.getElementById('count-o');
-            if (oEl) {
-                oEl.innerText = oCount;
-                document.getElementById('count-t').innerText = tCount;
-                document.getElementById('count-x').innerText = xCount;
-                document.getElementById('count-none').innerText = noneCount;
-                
-                let pct = Math.floor((oCount / totalWords) * 100) || 0;
-                document.getElementById('vocab-progress-percent').innerText = pct;
-                
-                document.getElementById('pb-o').style.width = `${(oCount / totalWords) * 100}%`;
-                document.getElementById('pb-t').style.width = `${(tCount / totalWords) * 100}%`;
-                document.getElementById('pb-x').style.width = `${(xCount / totalWords) * 100}%`;
+            if (el('count-o')) {
+                el('count-o').innerText = oCount; el('count-t').innerText = tCount; el('count-x').innerText = xCount; el('count-none').innerText = noneCount;
+                let pct = Math.floor((oCount / wordData.length) * 100) || 0;
+                el('vocab-progress-percent').innerText = pct;
+                el('pb-o').style.width = `${(oCount / wordData.length) * 100}%`; el('pb-t').style.width = `${(tCount / wordData.length) * 100}%`; el('pb-x').style.width = `${(xCount / wordData.length) * 100}%`;
             }
-            // --------------------------
 
             container.innerHTML = '';
-            categories.filter(c => c !== "全て").forEach(cat => {
-                const catWords = wordData.filter(w => w.cat === cat);
-                if(catWords.length === 0) return;
+            const grid = document.createElement('div');
+            grid.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2";
+            
+            wordData.forEach(w => {
+                const st = wordStatus[w.en] || 'none';
+                const oCl = st === 'o' ? 'bg-green-100 border-green-500 text-green-700' : 'bg-surface border-slate-200 text-slate-400 hover:bg-slate-50';
+                const tCl = st === 't' ? 'bg-yellow-100 border-yellow-500 text-yellow-700' : 'bg-surface border-slate-200 text-slate-400 hover:bg-slate-50';
+                const xCl = st === 'x' ? 'bg-red-100 border-red-500 text-red-700' : 'bg-surface border-slate-200 text-slate-400 hover:bg-slate-50';
                 
-                const section = document.createElement('div');
-                section.className = "mb-8";
-                section.innerHTML = `<h3 class="text-sm font-bold text-slate-400 border-b border-slate-100 pb-2 mb-3 uppercase tracking-wider">${cat}</h3>`;
-                
-                const grid = document.createElement('div');
-                grid.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2";
-                
-                catWords.forEach(w => {
-                    const status = wordStatus[w.en] || 'none';
-                    const oClass = status === 'o' ? 'bg-green-100 border-green-500 text-green-700' : 'bg-surface border-slate-200 text-slate-400 hover:bg-slate-50';
-                    const tClass = status === 't' ? 'bg-yellow-100 border-yellow-500 text-yellow-700' : 'bg-surface border-slate-200 text-slate-400 hover:bg-slate-50';
-                    const xClass = status === 'x' ? 'bg-red-100 border-red-500 text-red-700' : 'bg-surface border-slate-200 text-slate-400 hover:bg-slate-50';
-                    
-                    const btnClass = "w-6 h-6 rounded-full flex items-center justify-center font-bold text-[10px] transition-colors border";
-
-                    const card = document.createElement('div');
-                    card.className = "bg-surface rounded-xl p-3 border border-slate-200 hover:border-primary transition-colors flex justify-between items-center group shadow-sm";
-                    card.innerHTML = `
-                        <div class="flex flex-col truncate pr-2 flex-1">
-                            <span class="text-sm font-bold text-slate-800 truncate">${w.en}</span>
-                            <span class="text-xs text-slate-500 truncate">${w.jp}</span>
+                const bCl = "w-6 h-6 rounded-full flex items-center justify-center font-bold text-[10px] transition-colors border";
+                const card = document.createElement('div');
+                card.className = "bg-surface rounded-xl p-3 border border-slate-200 hover:border-primary transition-colors flex justify-between items-center group shadow-sm";
+                card.innerHTML = `
+                    <div class="flex flex-col truncate pr-2 flex-1">
+                        <span class="text-sm font-bold text-slate-800 truncate">${w.en}</span><span class="text-xs text-slate-500 truncate">${w.jp}</span>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                        <div class="flex items-center gap-1 mr-1">
+                            <button onclick="setWordStatus('${w.en}', 'o')" class="${bCl} ${oCl}">◯</button>
+                            <button onclick="setWordStatus('${w.en}', 't')" class="${bCl} ${tCl}">△</button>
+                            <button onclick="setWordStatus('${w.en}', 'x')" class="${bCl} ${xCl}">×</button>
                         </div>
-                        <div class="flex items-center gap-2 shrink-0">
-                            <div class="flex items-center gap-1 mr-1">
-                                <button onclick="setWordStatus('${w.en}', 'o')" class="${btnClass} ${oClass}">◯</button>
-                                <button onclick="setWordStatus('${w.en}', 't')" class="${btnClass} ${tClass}">△</button>
-                                <button onclick="setWordStatus('${w.en}', 'x')" class="${btnClass} ${xClass}">×</button>
-                            </div>
-                            <button onclick="initAudio(); playAudio('${w.en}')" class="p-1.5 text-slate-300 hover:text-primary rounded-full hover:bg-slate-50 transition-colors bg-slate-50 border border-slate-200"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-                section.appendChild(grid);
-                container.appendChild(section);
+                        <button onclick="initAudio(); playAudio('${w.en}')" class="p-1.5 text-slate-300 hover:text-primary rounded-full hover:bg-slate-50 transition-colors bg-slate-50 border border-slate-200"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+                    </div>`;
+                grid.appendChild(card);
             });
+            container.appendChild(grid);
             lucide.createIcons();
         }
 
         function setWordStatus(word, stat) {
-            if(wordStatus[word] === stat) delete wordStatus[word]; 
-            else wordStatus[word] = stat;
-            storage.setItem('wm_pro_word_status', JSON.stringify(wordStatus));
+            if(wordStatus[word] === stat) { delete wordStatus[word]; wordStreak[word] = 0; } 
+            else { wordStatus[word] = stat; wordStreak[word] = (stat === 'o') ? 3 : (stat === 't' ? 1 : 0); }
+            storage.setItem('wm_pro_word_status', JSON.stringify(wordStatus)); storage.setItem('wm_pro_word_streak', JSON.stringify(wordStreak));
             renderVocabulary();
         }
 
-        // --- Setup Modal ---
         let pendingMode = '';
-        let selectedSetupCategory = "全て";
-
-        function renderCategoryButtons() {
-            const list = document.getElementById('setup-category-buttons');
-            list.innerHTML = '';
-            categories.forEach(cat => {
-                const btn = document.createElement('button');
-                const isSelected = cat === selectedSetupCategory;
-                btn.className = isSelected ? "px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg transition-colors border border-primary shadow-sm" : "px-3 py-1.5 bg-surface text-slate-600 text-xs font-bold rounded-lg hover:bg-slate-50 transition-colors border border-slate-200 shadow-sm";
-                btn.innerText = cat;
-                btn.onclick = () => { selectedSetupCategory = cat; renderCategoryButtons(); };
-                list.appendChild(btn);
-            });
-        }
 
         function openSetupModal(mode) {
             pendingMode = mode;
-            selectedSetupCategory = "全て";
-            renderCategoryButtons();
-            
-            const container = document.getElementById('setup-options-container');
-            container.innerHTML = '';
+            const container = el('setup-options-container'); container.innerHTML = '';
             
             if (mode !== 'vs') {
                 container.innerHTML += `
@@ -1116,166 +825,104 @@
                         <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-1 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm">
                             <input type="radio" name="opt_filter" value="x" class="accent-primary"> ×のみ
                         </label>
-                    </div>
-                `;
+                    </div>`;
             }
 
             if (mode === '4choice') {
                 container.innerHTML += `
                     <label class="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider mt-4">出題形式</label>
                     <div class="flex gap-2">
-                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm">
-                            <input type="radio" name="opt_direction" value="jp-en" class="accent-primary" checked> 日 → 英
-                        </label>
-                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm">
-                            <input type="radio" name="opt_direction" value="en-jp" class="accent-primary"> 英 → 日
-                        </label>
-                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm">
-                            <input type="radio" name="opt_direction" value="random" class="accent-primary"> ランダム
-                        </label>
-                    </div>
-                `;
+                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm"><input type="radio" name="opt_direction" value="jp-en" class="accent-primary" checked> 日 → 英</label>
+                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm"><input type="radio" name="opt_direction" value="en-jp" class="accent-primary"> 英 → 日</label>
+                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm"><input type="radio" name="opt_direction" value="random" class="accent-primary"> ランダム</label>
+                    </div>`;
             } else if (mode === 'matching' || mode === 'vs' || mode === 'listening') {
                 let label1 = mode === 'vs' ? '1人で (vs CPU)' : '1人でプレイ';
                 container.innerHTML += `
                     <label class="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider mt-4">プレイ人数</label>
                     <div class="flex gap-2">
-                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-sm text-slate-700 shadow-sm">
-                            <i data-lucide="${mode === 'vs' ? 'bot' : 'user'}" class="w-5 h-5 text-slate-500"></i>
-                            <div><input type="radio" name="opt_player" value="1" class="accent-primary" checked> ${label1}</div>
-                        </label>
-                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-sm text-slate-700 shadow-sm">
-                            <i data-lucide="users" class="w-5 h-5 text-red-500"></i>
-                            <div><input type="radio" name="opt_player" value="2" class="accent-primary"> 2人で (対人戦)</div>
-                        </label>
-                    </div>
-                `;
+                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-sm text-slate-700 shadow-sm"><i data-lucide="${mode === 'vs' ? 'bot' : 'user'}" class="w-5 h-5 text-slate-500"></i><div><input type="radio" name="opt_player" value="1" class="accent-primary" checked> ${label1}</div></label>
+                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-sm text-slate-700 shadow-sm"><i data-lucide="users" class="w-5 h-5 text-red-500"></i><div><input type="radio" name="opt_player" value="2" class="accent-primary"> 2人で (対人戦)</div></label>
+                    </div>`;
             } else if (mode === 'typing') {
                 container.innerHTML += `
                     <label class="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider mt-4">難易度</label>
                     <div class="flex gap-2">
-                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm">
-                            <input type="radio" name="opt_typing_diff" value="easy" class="accent-primary" checked> Easy (穴埋め)
-                        </label>
-                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm">
-                            <input type="radio" name="opt_typing_diff" value="hard" class="accent-primary"> Hard (通常)
-                        </label>
-                    </div>
-                `;
+                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm"><input type="radio" name="opt_typing_diff" value="easy" class="accent-primary" checked> Easy (穴埋め)</label>
+                        <label class="flex-1 bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm"><input type="radio" name="opt_typing_diff" value="hard" class="accent-primary"> Hard (通常)</label>
+                    </div>`;
             }
-
-            lucide.createIcons();
-            showModal('modal-setup');
+            lucide.createIcons(); showModal('modal-setup');
         }
 
         function confirmSetup() {
-            let source = selectedSetupCategory === "全て" ? wordData : wordData.filter(w => w.cat === selectedSetupCategory);
-            
+            let source = wordData;
             if(pendingMode !== 'vs') {
                 const filter = document.querySelector('input[name="opt_filter"]:checked').value;
-                if(filter === 'tx') {
-                    source = source.filter(w => wordStatus[w.en] === 't' || wordStatus[w.en] === 'x');
-                } else if(filter === 'x') {
-                    source = source.filter(w => wordStatus[w.en] === 'x');
-                }
-                let req = 5;
-                if(pendingMode === 'matching') req = 6;
-                if(pendingMode === 'timetrial') req = 10;
-                if(pendingMode === 'listening') req = 6;
+                if(filter === 'tx') source = source.filter(w => wordStatus[w.en] === 't' || wordStatus[w.en] === 'x');
+                else if(filter === 'x') source = source.filter(w => wordStatus[w.en] === 'x');
                 
+                let req = (pendingMode === 'timetrial') ? 10 : (pendingMode === 'matching' ? 6 : 5);
                 if(source.length < req) {
-                    closeModal('modal-setup');
-                    showResult("単語が足りません", `条件に合う単語が ${req} 個以上必要です。（現在: ${source.length}個）<br>別の条件を選択してください。`, "", "info");
-                    return;
+                    closeModal('modal-setup'); showResult("単語が足りません", `条件に合う単語が ${req} 個以上必要です。（現在: ${source.length}個）<br>別の条件を選択してください。`, "", "info"); return;
                 }
             }
-
             if(!useStamina()) { closeModal('modal-setup'); return; }
             closeModal('modal-setup');
             currentQuizData = shuffle(source);
             
             if (pendingMode === '4choice') {
                 currentOptions.direction = document.querySelector('input[name="opt_direction"]:checked').value;
-                currentQuizData = currentQuizData.slice(0, 5);
-                navTo('4choice'); init4Choice();
+                currentQuizData = currentQuizData.slice(0, 5); navTo('4choice'); init4Choice();
             } else if (pendingMode === 'typing') {
                 currentOptions.typingDifficulty = document.querySelector('input[name="opt_typing_diff"]:checked').value;
-                currentQuizData = currentQuizData.slice(0, 5);
-                navTo('typing'); initTyping();
+                currentQuizData = currentQuizData.slice(0, 5); navTo('typing'); initTyping();
             } else if (pendingMode === 'matching') {
-                let count = parseInt(storage.getItem('wm_pro_stats_matching_count')||0) + 1;
-                storage.setItem('wm_pro_stats_matching_count', count);
-                const players = document.querySelector('input[name="opt_player"]:checked').value;
-                navTo('matching');
-                if(players === '1') { initMatching(source); } else { initMatchingVs(source); }
+                storage.setItem('wm_pro_stats_matching_count', (parseInt(storage.getItem('wm_pro_stats_matching_count')||0)+1));
+                const pl = document.querySelector('input[name="opt_player"]:checked').value;
+                if(pl === '1') { navTo('matching'); initMatching(source); } else { navTo('matching-vs'); initMatchingVs(source); }
             } else if (pendingMode === 'vs') {
-                let count = parseInt(storage.getItem('wm_pro_stats_vs_count')||0) + 1;
-                storage.setItem('wm_pro_stats_vs_count', count);
+                storage.setItem('wm_pro_stats_vs_count', (parseInt(storage.getItem('wm_pro_stats_vs_count')||0)+1));
                 const isCpu = document.querySelector('input[name="opt_player"]:checked').value === '1';
                 navTo('vs'); startVsKaruta(isCpu, source);
             } else if (pendingMode === 'timetrial') {
-                let count = parseInt(storage.getItem('wm_pro_stats_tt_count')||0) + 1;
-                storage.setItem('wm_pro_stats_tt_count', count);
+                storage.setItem('wm_pro_stats_tt_count', (parseInt(storage.getItem('wm_pro_stats_tt_count')||0)+1));
                 navTo('timetrial'); initTimeTrial(source);
             } else if (pendingMode === 'listening') {
-                let count = parseInt(storage.getItem('wm_pro_stats_listening_count')||0) + 1;
-                storage.setItem('wm_pro_stats_listening_count', count);
-                const players = document.querySelector('input[name="opt_player"]:checked').value;
-                if(players === '1') { navTo('listening'); initListening(source); }
-                else { navTo('listening-vs'); initListeningVs(source); }
+                storage.setItem('wm_pro_stats_listening_count', (parseInt(storage.getItem('wm_pro_stats_listening_count')||0)+1));
+                const pl = document.querySelector('input[name="opt_player"]:checked').value;
+                if(pl === '1') { navTo('listening'); initListening(source); } else { navTo('listening-vs'); initListeningVs(source); }
             }
         }
 
         function showResult(title, desc, extraHtml = '', type = 'win') {
-            document.getElementById('res-title').innerText = title;
-            document.getElementById('res-desc').innerHTML = desc;
-            document.getElementById('res-extra').innerHTML = extraHtml;
-            
-            const iconBox = document.getElementById('res-icon');
-            if(type === 'win') {
-                iconBox.className = "mx-auto w-16 h-16 bg-blue-50 text-primary rounded-full flex items-center justify-center mb-4 border border-blue-100";
-                iconBox.innerHTML = '<i data-lucide="check-circle" class="w-8 h-8"></i>';
-            } else if (type === 'vs') {
-                iconBox.className = "mx-auto w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mb-4 border border-red-100";
-                iconBox.innerHTML = '<i data-lucide="award" class="w-8 h-8"></i>';
-            } else {
-                iconBox.className = "mx-auto w-16 h-16 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center mb-4 border border-slate-200";
-                iconBox.innerHTML = '<i data-lucide="info" class="w-8 h-8"></i>';
-            }
-            showModal('modal-result');
-            lucide.createIcons();
-            try { updateDashboardScores(); } catch(e){}
+            el('res-title').innerText = title; el('res-desc').innerHTML = desc; el('res-extra').innerHTML = extraHtml;
+            const iconBox = el('res-icon');
+            if(type === 'win') { iconBox.className = "mx-auto w-16 h-16 bg-blue-50 text-primary rounded-full flex items-center justify-center mb-4 border border-blue-100"; iconBox.innerHTML = '<i data-lucide="check-circle" class="w-8 h-8"></i>'; }
+            else if (type === 'vs') { iconBox.className = "mx-auto w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mb-4 border border-red-100"; iconBox.innerHTML = '<i data-lucide="award" class="w-8 h-8"></i>'; }
+            else { iconBox.className = "mx-auto w-16 h-16 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center mb-4 border border-slate-200"; iconBox.innerHTML = '<i data-lucide="info" class="w-8 h-8"></i>'; }
+            showModal('modal-result'); lucide.createIcons(); try { updateDashboardScores(); } catch(e){}
         }
 
         // --- 6. 4-Choice ---
         let qcIndex = 0;
+        let qcHasMistake = false;
         function init4Choice() { qcIndex = 0; render4Choice(); }
 
         function render4Choice() {
             if(qcIndex >= 5) { playSound('match'); showResult("Completed", "5問やり遂げました！", "", "win"); return; }
-            document.getElementById('qc-current').innerText = qcIndex + 1;
+            el('qc-current').innerText = qcIndex + 1;
+            qcHasMistake = false;
             const target = currentQuizData[qcIndex];
             
-            let isEnToJp = false;
-            if (currentOptions.direction === 'en-jp') isEnToJp = true;
-            else if (currentOptions.direction === 'jp-en') isEnToJp = false;
-            else isEnToJp = Math.random() > 0.5;
+            let isEnToJp = currentOptions.direction === 'en-jp' ? true : (currentOptions.direction === 'jp-en' ? false : Math.random() > 0.5);
+            const audioBtn = el('qc-audio-btn');
+            if (isEnToJp) { el('qc-text').innerText = target.en; audioBtn.classList.remove('hidden'); playAudio(target.en); }
+            else { el('qc-text').innerText = target.jp; audioBtn.classList.add('hidden'); }
             
-            const audioBtn = document.getElementById('qc-audio-btn');
-            if (isEnToJp) {
-                document.getElementById('qc-text').innerText = target.en;
-                audioBtn.classList.remove('hidden'); playAudio(target.en);
-            } else {
-                document.getElementById('qc-text').innerText = target.jp;
-                audioBtn.classList.add('hidden');
-            }
+            let choices = [target].concat(shuffle(wordData.filter(w => w.en !== target.en)).slice(0, 3)); choices = shuffle(choices);
+            const container = el('qc-choices'); container.innerHTML = '';
             
-            let choices = [target];
-            let pool = shuffle(wordData).filter(w => w.en !== target.en);
-            choices = choices.concat(pool.slice(0, 3)); choices = shuffle(choices);
-            
-            const container = document.getElementById('qc-choices');
-            container.innerHTML = '';
             choices.forEach(c => {
                 let btn = document.createElement('button');
                 btn.className = 'w-full bg-surface border-2 border-slate-200 text-slate-700 font-bold py-5 rounded-xl text-lg btn-elegant shadow-sm';
@@ -1283,24 +930,16 @@
                 btn.onclick = function() {
                     initAudio();
                     if(c === target) {
-                        playSound('correct');
-                        let score = parseInt(storage.getItem('wm_pro_stats_4choice')||0) + 1;
-                        storage.setItem('wm_pro_stats_4choice', score);
-                        addExp(1);
+                        playSound('correct'); storage.setItem('wm_pro_stats_4choice', parseInt(storage.getItem('wm_pro_stats_4choice')||0) + 1); addExp(1); 
+                        if (!qcHasMistake) recordSuccess(target.en);
                         btn.className = 'w-full bg-primary border-primary text-white font-bold py-5 rounded-xl text-lg shadow-md animate-pop';
                         Array.from(container.children).forEach(b => b.onclick = null);
-                        if (!isEnToJp) {
-                            setTimeout(() => playAudio(target.en), 300);
-                            setTimeout(() => { qcIndex++; render4Choice(); }, 1500);
-                        } else {
-                            setTimeout(() => { qcIndex++; render4Choice(); }, 800);
-                        }
+                        if (!isEnToJp) { setTimeout(() => playAudio(target.en), 300); setTimeout(() => { qcIndex++; render4Choice(); }, 1500); }
+                        else setTimeout(() => { qcIndex++; render4Choice(); }, 800);
                     } else {
-                        playSound('wrong');
-                        btn.className = 'w-full bg-slate-50 border-slate-100 text-slate-400 font-bold py-5 rounded-xl text-lg pointer-events-none';
-                        recordError(target.en);
-                        document.getElementById('qc-text').classList.add('animate-pulse');
-                        setTimeout(()=> document.getElementById('qc-text').classList.remove('animate-pulse'), 300);
+                        playSound('wrong'); btn.className = 'w-full bg-slate-50 border-slate-100 text-slate-400 font-bold py-5 rounded-xl text-lg pointer-events-none';
+                        if (!qcHasMistake) { recordError(target.en); qcHasMistake = true; }
+                        el('qc-text').classList.add('animate-pulse'); setTimeout(()=> el('qc-text').classList.remove('animate-pulse'), 300);
                     }
                 };
                 container.appendChild(btn);
@@ -1308,32 +947,27 @@
         }
 
         // --- 7. Typing ---
-        let typIndex = 0, currentTypTarget = null, typHintCount = 0;
+        let typIndex = 0, currentTypTarget = null, typHintCount = 0, typHasMistake = false;
 
         function renderKeyboard() {
-            const kb = document.getElementById('software-keyboard'); kb.innerHTML = '';
-            const rows = [['q','w','e','r','t','y','u','i','o','p'],['a','s','d','f','g','h','j','k','l'],['z','x','c','v','b','n','m',' ','-']];
-            rows.forEach((row, rIndex) => {
+            const kb = el('software-keyboard'); kb.innerHTML = '';
+            [['q','w','e','r','t','y','u','i','o','p'],['a','s','d','f','g','h','j','k','l'],['z','x','c','v','b','n','m',' ','-']].forEach((row, rIndex) => {
                 const rowDiv = document.createElement('div'); rowDiv.className = 'flex justify-center gap-1.5 mb-1.5 w-full';
                 if (rIndex === 2) {
-                    const bsBtn = document.createElement('button');
-                    bsBtn.className = 'bg-surface border border-slate-200 text-slate-600 rounded-lg font-bold px-3 py-3 active:bg-slate-50 transition-colors text-sm shadow-sm';
+                    const bsBtn = document.createElement('button'); bsBtn.className = 'bg-surface border border-slate-200 text-slate-600 rounded-lg font-bold px-3 py-3 active:bg-slate-50 transition-colors text-sm shadow-sm';
                     bsBtn.innerHTML = '<i data-lucide="delete" class="w-5 h-5"></i>';
-                    bsBtn.onclick = () => { initAudio(); const input = document.getElementById('typ-input'); input.value = input.value.slice(0, -1); if (currentOptions.typingDifficulty === 'easy') updateEasyDisplay(); };
+                    bsBtn.onclick = () => { initAudio(); const input = el('typ-input'); input.value = input.value.slice(0, -1); if (currentOptions.typingDifficulty === 'easy') updateEasyDisplay(); };
                     rowDiv.appendChild(bsBtn);
                 }
                 row.forEach(char => {
-                    const btn = document.createElement('button');
-                    btn.className = 'bg-surface border border-slate-200 text-slate-700 rounded-lg font-bold flex-1 py-3 active:bg-slate-50 transition-colors max-w-[45px] text-lg shadow-sm';
+                    const btn = document.createElement('button'); btn.className = 'bg-surface border border-slate-200 text-slate-700 rounded-lg font-bold flex-1 py-3 active:bg-slate-50 transition-colors max-w-[45px] text-lg shadow-sm';
                     btn.innerText = char === ' ' ? '␣' : char;
-                    btn.onclick = () => { initAudio(); const input = document.getElementById('typ-input'); input.value += char; if (currentOptions.typingDifficulty === 'easy') updateEasyDisplay(); };
+                    btn.onclick = () => { initAudio(); el('typ-input').value += char; if (currentOptions.typingDifficulty === 'easy') updateEasyDisplay(); };
                     rowDiv.appendChild(btn);
                 });
                 if (rIndex === 2) {
-                    const entBtn = document.createElement('button');
-                    entBtn.className = 'bg-primary border-primary text-white rounded-lg font-bold px-4 py-3 active:bg-primaryHover transition-colors text-sm shadow-sm border border-primary';
-                    entBtn.innerText = 'ENTER';
-                    entBtn.onclick = () => { initAudio(); handleTypingEnter(); };
+                    const entBtn = document.createElement('button'); entBtn.className = 'bg-primary border-primary text-white rounded-lg font-bold px-4 py-3 active:bg-primaryHover transition-colors text-sm shadow-sm border border-primary';
+                    entBtn.innerText = 'ENTER'; entBtn.onclick = () => { initAudio(); handleTypingEnter(); };
                     rowDiv.appendChild(entBtn);
                 }
                 kb.appendChild(rowDiv);
@@ -1342,138 +976,118 @@
         }
 
         function generateEasyTyping(word) {
-            let cleanWord = word.replace(/\[.*?\]/g, '').trim();
-            let len = cleanWord.length;
-            let hideCount = len <= 3 ? 1 : 2;
-            let validIndices = [];
-            for(let i=0; i<len; i++) { if(cleanWord[i] !== ' ' && cleanWord[i] !== '-') validIndices.push(i); }
-            hideCount = Math.min(hideCount, validIndices.length);
-            let indices = shuffle(validIndices).slice(0, hideCount).sort((a,b) => a-b);
+            let cleanWord = word.replace(/\[.*?\]/g, '').trim(), len = cleanWord.length, hideCount = len <= 3 ? 1 : 2, validIndices = [];
+            for(let i=0; i<len; i++) if(cleanWord[i] !== ' ' && cleanWord[i] !== '-') validIndices.push(i);
+            let indices = shuffle(validIndices).slice(0, Math.min(hideCount, validIndices.length)).sort((a,b) => a-b);
             let displayArr = cleanWord.split(''); let ans = '';
             for(let i of indices) { ans += displayArr[i]; displayArr[i] = '_'; }
-            
-            for(let i=0; i<displayArr.length; i++) {
-                if (displayArr[i] === ' ') displayArr[i] = '&nbsp;&nbsp;'; 
-            }
-            
+            for(let i=0; i<displayArr.length; i++) if (displayArr[i] === ' ') displayArr[i] = '&nbsp;&nbsp;'; 
             return { display: displayArr.join(''), ans: ans.toLowerCase(), fullWord: cleanWord, displayArr: displayArr, indices: indices };
         }
 
         function updateEasyDisplay() {
             if (currentOptions.typingDifficulty !== 'easy' || !currentTypTarget) return;
-            const inputVal = document.getElementById('typ-input').value;
-            let displayArr = [...currentTypTarget.displayArr];
-            let valIdx = 0;
+            const inputVal = el('typ-input').value; let displayArr = [...currentTypTarget.displayArr], valIdx = 0;
             for (let i = 0; i < displayArr.length; i++) {
                 if (displayArr[i] === '_') {
-                    if (valIdx < inputVal.length) {
-                        displayArr[i] = `<span class="text-secondary border-b-[3px] border-secondary">${inputVal[valIdx]}</span>`;
-                        valIdx++;
-                    } else { displayArr[i] = '_'; }
+                    if (valIdx < inputVal.length) { displayArr[i] = `<span class="text-secondary border-b-[3px] border-secondary">${inputVal[valIdx]}</span>`; valIdx++; } 
+                    else displayArr[i] = '_';
                 }
             }
-            document.getElementById('typ-easy-hint-container').innerHTML = `<div class="text-3xl font-mono font-bold tracking-widest text-primary mb-4 bg-primaryLight py-3 px-6 rounded-xl inline-block border border-primaryLight shadow-sm">${displayArr.join('')}</div>`;
+            el('typ-easy-hint-container').innerHTML = `<div class="text-3xl font-mono font-bold tracking-widest text-primary mb-4 bg-primaryLight py-3 px-6 rounded-xl inline-block border border-primaryLight shadow-sm">${displayArr.join('')}</div>`;
         }
 
         function initTyping() { typIndex = 0; renderTyping(); }
 
         function renderTyping() {
             if(typIndex >= 5) { playSound('match'); showResult("Typing Completed", "5問クリアしました。", "", "win"); return; }
-            typHintCount = 0;
-            document.getElementById('typ-current').innerText = typIndex + 1;
-            const target = currentQuizData[typIndex];
-            document.getElementById('typ-q').innerText = target.jp;
+            typHintCount = 0; typHasMistake = false; el('typ-current').innerText = typIndex + 1;
+            const target = currentQuizData[typIndex]; el('typ-q').innerText = target.jp;
             
-            const input = document.getElementById('typ-input');
+            const input = el('typ-input');
             input.value = ''; input.disabled = false;
             
             if(currentOptions.typingDifficulty === 'easy') {
                 let easyData = generateEasyTyping(target.en);
                 currentTypTarget = { ...target, ans: easyData.ans, fullWord: easyData.fullWord, displayArr: easyData.displayArr };
-                document.getElementById('typ-easy-hint-container').innerHTML = `<div class="text-3xl font-mono font-bold tracking-widest text-primary mb-4 bg-primaryLight py-3 px-6 rounded-xl inline-block border border-primaryLight shadow-sm">${easyData.display}</div>`;
+                el('typ-easy-hint-container').innerHTML = `<div class="text-3xl font-mono font-bold tracking-widest text-primary mb-4 bg-primaryLight py-3 px-6 rounded-xl inline-block border border-primaryLight shadow-sm">${easyData.display}</div>`;
                 input.className = "w-0 h-0 opacity-0 absolute -z-10";
             } else {
                 currentTypTarget = { ...target, ans: target.en.replace(/\[.*?\]/g, '').trim().toLowerCase(), fullWord: target.en.replace(/\[.*?\]/g, '').trim() };
-                document.getElementById('typ-easy-hint-container').innerHTML = "";
+                el('typ-easy-hint-container').innerHTML = "";
                 input.className = "w-full max-w-md text-center text-2xl font-bold p-4 border border-slate-200 rounded-xl mb-3 focus:border-primary outline-none transition-colors bg-surface text-slate-800 shadow-sm";
             }
             
-            document.getElementById('typ-feedback').innerHTML = '';
-            document.getElementById('typ-hint-btn').innerHTML = '<i data-lucide="lightbulb" class="w-4 h-4 text-slate-400"></i> ヒント';
-            document.getElementById('typ-hint-btn').classList.remove('hidden');
+            el('typ-feedback').innerHTML = ''; el('typ-hint-btn').innerHTML = '<i data-lucide="lightbulb" class="w-4 h-4 text-slate-400"></i> ヒント'; el('typ-hint-btn').classList.remove('hidden');
             lucide.createIcons();
         }
 
         function initTypingListener() {
-            document.getElementById('typ-input').addEventListener('input', function(e) { if(currentOptions.typingDifficulty === 'easy') updateEasyDisplay(); });
-            document.getElementById('typ-input').addEventListener('keypress', function(e) { if(e.key === 'Enter') { initAudio(); handleTypingEnter(); } });
+            el('typ-input').addEventListener('input', function(e) { if(currentOptions.typingDifficulty === 'easy') updateEasyDisplay(); });
+            el('typ-input').addEventListener('keypress', function(e) { if(e.key === 'Enter') { initAudio(); handleTypingEnter(); } });
         }
 
         function handleTypingEnter() {
-            const input = document.getElementById('typ-input');
+            const input = el('typ-input');
             if(input.disabled || !currentTypTarget) return;
-            const ans = input.value.replace(/\s+/g, ' ').trim().toLowerCase();
-            const correctAns = currentTypTarget.ans.replace(/\s+/g, '').trim(); 
-            const feedback = document.getElementById('typ-feedback');
+            const ans = input.value.replace(/\s+/g, ' ').trim().toLowerCase(), correctAns = currentTypTarget.ans.replace(/\s+/g, '').trim(); 
+            const feedback = el('typ-feedback');
             
             if(ans.replace(/\s+/g, '') === correctAns) {
-                playSound('correct');
-                let score = parseInt(storage.getItem('wm_pro_stats_typing')||0) + 1;
-                storage.setItem('wm_pro_stats_typing', score); addExp(2);
+                playSound('correct'); storage.setItem('wm_pro_stats_typing', parseInt(storage.getItem('wm_pro_stats_typing')||0) + 1); addExp(2); 
+                if (!typHasMistake) recordSuccess(currentTypTarget.en);
                 
                 if (currentOptions.typingDifficulty === 'easy') {
-                    const easyContainer = document.getElementById('typ-easy-hint-container').children[0];
-                    easyContainer.classList.replace('border-primaryLight', 'border-secondary'); easyContainer.classList.replace('bg-primaryLight', 'bg-emerald-50'); easyContainer.classList.replace('text-primary', 'text-secondary');
+                    const ec = el('typ-easy-hint-container').children[0];
+                    ec.classList.replace('border-primaryLight', 'border-secondary'); ec.classList.replace('bg-primaryLight', 'bg-emerald-50'); ec.classList.replace('text-primary', 'text-secondary');
                 } else {
                     input.className = "w-full max-w-md text-center text-2xl font-bold p-4 border border-secondary bg-emerald-50 text-secondary rounded-xl mb-3 outline-none shadow-sm";
                 }
                 feedback.innerHTML = '<span class="text-secondary animate-pop flex items-center gap-1"><i data-lucide="check-circle" class="w-5 h-5"></i> Excellent</span>';
-                document.getElementById('typ-hint-btn').classList.add('hidden');
-                lucide.createIcons(); input.disabled = true; playAudio(currentTypTarget.en); setTimeout(() => { typIndex++; renderTyping(); }, 1200);
+                el('typ-hint-btn').classList.add('hidden'); lucide.createIcons(); input.disabled = true; playAudio(currentTypTarget.en); setTimeout(() => { typIndex++; renderTyping(); }, 1200);
             } else {
-                playSound('wrong'); recordError(currentTypTarget.en);
+                playSound('wrong'); 
+                if (!typHasMistake) { recordError(currentTypTarget.en); typHasMistake = true; }
                 if (currentOptions.typingDifficulty === 'easy') {
-                    let container = document.getElementById('typ-easy-hint-container').children[0];
-                    container.classList.add('animate-pulse', 'bg-red-50', 'border-red-400');
-                    setTimeout(() => container.classList.remove('animate-pulse', 'bg-red-50', 'border-red-400'), 300);
+                    let ec = el('typ-easy-hint-container').children[0]; ec.classList.add('animate-pulse', 'bg-red-50', 'border-red-400');
+                    setTimeout(() => ec.classList.remove('animate-pulse', 'bg-red-50', 'border-red-400'), 300);
                 } else {
                     input.className = "w-full max-w-md text-center text-2xl font-bold p-4 border border-red-400 bg-red-50 text-red-600 rounded-xl mb-3 outline-none shadow-sm";
                     input.classList.add('animate-pulse'); setTimeout(()=> input.classList.remove('animate-pulse'), 300);
                 }
-                feedback.innerHTML = '<span class="text-red-500 flex items-center gap-1"><i data-lucide="alert-circle" class="w-5 h-5"></i> Miss</span>';
+                el('typ-feedback').innerHTML = '<span class="text-red-500 flex items-center gap-1"><i data-lucide="alert-circle" class="w-5 h-5"></i> Miss</span>';
                 lucide.createIcons(); input.value = ''; if (currentOptions.typingDifficulty === 'easy') updateEasyDisplay();
             }
         }
 
         function handleTypingGiveUp() {
-            initAudio(); const input = document.getElementById('typ-input');
+            initAudio(); const input = el('typ-input');
             if (input.disabled || !currentTypTarget) return;
-            playSound('wrong'); recordError(currentTypTarget.en);
+            playSound('wrong'); 
+            if (!typHasMistake) { recordError(currentTypTarget.en); typHasMistake = true; }
             
             const correctAns = currentTypTarget.en.replace(/\[.*?\]/g, '').trim();
             if(currentOptions.typingDifficulty === 'easy') {
                 input.value = currentTypTarget.ans; updateEasyDisplay();
-                let easyContainer = document.getElementById('typ-easy-hint-container').children[0];
-                easyContainer.classList.replace('text-primary', 'text-red-500'); easyContainer.classList.replace('border-primaryLight', 'border-red-200'); easyContainer.classList.replace('bg-primaryLight', 'bg-red-50');
+                let ec = el('typ-easy-hint-container').children[0];
+                ec.classList.replace('text-primary', 'text-red-500'); ec.classList.replace('border-primaryLight', 'border-red-200'); ec.classList.replace('bg-primaryLight', 'bg-red-50');
             } else {
-                input.value = correctAns; 
-                input.className = "w-full max-w-md text-center text-2xl font-bold p-4 border border-red-400 bg-red-50 text-red-600 rounded-xl mb-3 outline-none shadow-sm";
+                input.value = correctAns; input.className = "w-full max-w-md text-center text-2xl font-bold p-4 border border-red-400 bg-red-50 text-red-600 rounded-xl mb-3 outline-none shadow-sm";
             }
-            document.getElementById('typ-feedback').innerHTML = '<span class="text-red-600 flex items-center justify-start gap-1 text-sm"><i data-lucide="info" class="w-4 h-4"></i> 正解はコチラ</span>';
-            document.getElementById('typ-hint-btn').classList.add('hidden');
-            lucide.createIcons(); input.disabled = true; playAudio(currentTypTarget.en); setTimeout(() => { typIndex++; renderTyping(); }, 2000); 
+            el('typ-feedback').innerHTML = '<span class="text-red-600 flex items-center justify-start gap-1 text-sm"><i data-lucide="info" class="w-4 h-4"></i> 正解はコチラ</span>';
+            el('typ-hint-btn').classList.add('hidden'); lucide.createIcons(); input.disabled = true; playAudio(currentTypTarget.en); setTimeout(() => { typIndex++; renderTyping(); }, 2000); 
         }
 
         function handleTypingHint() {
-            initAudio(); const input = document.getElementById('typ-input');
+            initAudio(); const input = el('typ-input');
             if (input.disabled || !currentTypTarget) return;
-            typHintCount++; const ansTarget = currentTypTarget.ans; const btn = document.getElementById('typ-hint-btn');
+            typHintCount++; const ansTarget = currentTypTarget.ans; 
             
-            if (typHintCount >= 4 || typHintCount >= ansTarget.length) { handleTypingGiveUp(); } 
+            if (typHintCount >= 4 || typHintCount >= ansTarget.length) handleTypingGiveUp();
             else {
                 input.value = ansTarget.substring(0, typHintCount);
                 if (currentOptions.typingDifficulty === 'easy') updateEasyDisplay();
-                if(typHintCount === 3 || typHintCount === ansTarget.length -1) { btn.innerHTML = '<i data-lucide="flag" class="w-4 h-4 text-slate-400"></i> ギブアップ'; lucide.createIcons(); }
+                if(typHintCount === 3 || typHintCount === ansTarget.length -1) { el('typ-hint-btn').innerHTML = '<i data-lucide="flag" class="w-4 h-4 text-slate-400"></i> ギブアップ'; lucide.createIcons(); }
             }
         }
 
@@ -1481,41 +1095,39 @@
         let mFirstCard = null, mLock = false, mPairs = 0, mStartTime = 0, mTimerInterval;
         
         function initMatching(sourceData) {
-            document.getElementById('matching-grid').classList.remove('hidden');
-            document.getElementById('matching-vs-container').classList.add('hidden');
-            clearInterval(mTimerInterval); document.getElementById('match-timer').innerText = "0.0";
-            const grid = document.getElementById('matching-grid'); grid.innerHTML = '';
+            el('matching-grid').classList.remove('hidden'); el('matching-vs-container').classList.add('hidden');
+            clearInterval(mTimerInterval); el('match-timer').innerText = "0.0";
+            const grid = el('matching-grid'); grid.innerHTML = '';
             
             let selected = shuffle(sourceData).slice(0, 6);
             if (selected.length < 6) selected = selected.concat(shuffle(wordData.filter(w => !selected.includes(w))).slice(0, 6 - selected.length));
             let cards = [];
-            selected.forEach(v => { cards.push({ text: v.en, pair: v.jp }); cards.push({ text: v.jp, pair: v.en }); });
+            selected.forEach(v => { cards.push({ text: v.en, pair: v.jp, en: v.en }); cards.push({ text: v.jp, pair: v.en, en: v.en }); });
             cards = shuffle(cards); mPairs = 0;
             
             cards.forEach(c => {
-                let div = document.createElement('div'); div.className = 'card w-full aspect-[4/3] cursor-pointer shadow-sm'; div.dataset.pair = c.pair; div.dataset.text = c.text;
+                let div = document.createElement('div'); div.className = 'card w-full aspect-[4/3] cursor-pointer shadow-sm'; div.dataset.pair = c.pair; div.dataset.text = c.text; div.dataset.en = c.en;
                 let fs = c.text.length > 10 ? 'text-xs md:text-sm' : 'text-sm md:text-base';
                 div.innerHTML = `<div class="card-inner"><div class="card-front"><i data-lucide="help-circle" class="w-6 h-6 opacity-30 text-white"></i></div><div class="card-back ${fs}">${c.text}</div></div>`;
-                div.onclick = () => { initAudio(); flipMCard(div); };
-                grid.appendChild(div);
+                div.onclick = () => { initAudio(); flipMCard(div); }; grid.appendChild(div);
             });
-            lucide.createIcons();
-            mStartTime = Date.now(); mTimerInterval = setInterval(() => { document.getElementById('match-timer').innerText = ((Date.now() - mStartTime) / 1000).toFixed(1); }, 100);
+            lucide.createIcons(); mStartTime = Date.now(); mTimerInterval = setInterval(() => { el('match-timer').innerText = ((Date.now() - mStartTime) / 1000).toFixed(1); }, 100);
         }
 
-        function flipMCard(el) {
-            if(mLock || el === mFirstCard || el.classList.contains('matched') || el.classList.contains('flipped')) return;
-            el.classList.add('flipped');
-            if(!mFirstCard) { mFirstCard = el; return; }
-            if(mFirstCard.dataset.pair === el.dataset.text) {
+        function flipMCard(elCard) {
+            if(mLock || elCard === mFirstCard || elCard.classList.contains('matched') || elCard.classList.contains('flipped')) return;
+            elCard.classList.add('flipped');
+            if(!mFirstCard) { mFirstCard = elCard; return; }
+            if(mFirstCard.dataset.pair === elCard.dataset.text) {
                 mLock = true;
                 setTimeout(() => {
-                    playSound('match'); mFirstCard.classList.add('matched'); el.classList.add('matched');
+                    playSound('match'); mFirstCard.classList.add('matched'); elCard.classList.add('matched'); recordSuccess(elCard.dataset.en);
                     mFirstCard = null; mLock = false; mPairs++; addExp(1);
                     if(mPairs === 6) clearMatching();
                 }, 300); 
             } else {
-                mLock = true; setTimeout(() => { mFirstCard.classList.remove('flipped'); el.classList.remove('flipped'); mFirstCard = null; mLock = false; }, 800);
+                mLock = true; 
+                setTimeout(() => { mFirstCard.classList.remove('flipped'); elCard.classList.remove('flipped'); mFirstCard = null; mLock = false; }, 800); 
             }
         }
 
@@ -1531,63 +1143,57 @@
                 let isMe = r.time === parseFloat(timeStr) ? 'bg-yellow-50 border-yellow-200' : 'bg-surface border-slate-200';
                 rankHtml += `<div class="flex justify-between items-center px-3 py-2 border rounded-lg ${isMe} shadow-sm"><span class="font-bold text-slate-500 w-6 flex justify-center">${badge}</span><span class="font-bold text-slate-800 text-sm">${r.time.toFixed(1)}s</span></div>`;
             });
-            rankHtml += `</div>`;
-            showResult("Clear!", "素早いマッチングでした", rankHtml, "win");
+            rankHtml += `</div>`; showResult("Clear!", "素早いマッチングでした", rankHtml, "win");
         }
 
         // --- 8-2. Matching VS (2 Players) ---
         let mvsFirstCard = {1: null, 2: null}, mvsLock = {1: false, 2: false}, mvsPairs = {1: 0, 2: 0};
         function initMatchingVs(sourceData) {
-            document.getElementById('matching-grid').classList.add('hidden');
-            document.getElementById('matching-vs-container').classList.remove('hidden'); document.getElementById('matching-vs-container').classList.add('flex');
-            clearInterval(mTimerInterval); document.getElementById('match-timer').innerText = "VS";
-            document.getElementById('mvs-win-p1').classList.add('hidden'); document.getElementById('mvs-win-p2').classList.add('hidden');
+            el('matching-grid').classList.add('hidden'); el('matching-vs-container').classList.remove('hidden'); el('matching-vs-container').classList.add('flex');
+            clearInterval(mTimerInterval); el('match-timer').innerText = "VS"; el('mvs-win-p1').classList.add('hidden'); el('mvs-win-p2').classList.add('hidden');
             
             let selected = shuffle(sourceData).slice(0, 4);
             if (selected.length < 4) selected = selected.concat(shuffle(wordData.filter(w => !selected.includes(w))).slice(0, 4 - selected.length));
             let cardsP1 = [], cardsP2 = [];
             selected.forEach(v => {
-                cardsP1.push({ text: v.en, pair: v.jp }); cardsP1.push({ text: v.jp, pair: v.en });
-                cardsP2.push({ text: v.en, pair: v.jp }); cardsP2.push({ text: v.jp, pair: v.en });
+                cardsP1.push({ text: v.en, pair: v.jp, en: v.en }); cardsP1.push({ text: v.jp, pair: v.en, en: v.en });
+                cardsP2.push({ text: v.en, pair: v.jp, en: v.en }); cardsP2.push({ text: v.jp, pair: v.en, en: v.en });
             });
             cardsP1 = shuffle(cardsP1); cardsP2 = shuffle(cardsP2);
             mvsPairs = {1: 0, 2: 0}; mvsFirstCard = {1: null, 2: null}; mvsLock = {1: false, 2: false};
-            renderMvsGrid('mvs-grid-p1', cardsP1, 1); renderMvsGrid('mvs-grid-p2', cardsP2, 2);
-            lucide.createIcons();
+            renderMvsGrid('mvs-grid-p1', cardsP1, 1); renderMvsGrid('mvs-grid-p2', cardsP2, 2); lucide.createIcons();
         }
 
         function renderMvsGrid(id, cards, player) {
-            const grid = document.getElementById(id); grid.innerHTML = '';
-            grid.className = 'grid grid-cols-2 gap-2 w-full max-w-[200px] md:max-w-xs mx-auto flex-grow content-center';
+            const grid = el(id); grid.innerHTML = ''; grid.className = 'grid grid-cols-2 gap-2 w-full max-w-[200px] md:max-w-xs mx-auto flex-grow content-center';
             cards.forEach(c => {
-                let div = document.createElement('div'); div.className = 'card w-full h-14 md:h-20 cursor-pointer relative shadow-sm'; div.dataset.pair = c.pair; div.dataset.text = c.text;
+                let div = document.createElement('div'); div.className = 'card w-full h-14 md:h-20 cursor-pointer relative shadow-sm'; div.dataset.pair = c.pair; div.dataset.text = c.text; div.dataset.en = c.en;
                 let fs = c.text.length > 10 ? 'text-[10px]' : 'text-xs md:text-sm';
                 div.innerHTML = `<div class="card-inner"><div class="card-front"><i data-lucide="help-circle" class="w-4 h-4 opacity-30 text-white"></i></div><div class="card-back ${fs}">${c.text}</div></div>`;
-                div.onclick = () => { initAudio(); flipMvsCard(div, player); };
-                grid.appendChild(div);
+                div.onclick = () => { initAudio(); flipMvsCard(div, player); }; grid.appendChild(div);
             });
         }
 
-        function flipMvsCard(el, player) {
-            if(mvsLock[player] || el === mvsFirstCard[player] || el.classList.contains('matched') || el.classList.contains('flipped')) return;
-            el.classList.add('flipped');
-            if(!mvsFirstCard[player]) { mvsFirstCard[player] = el; return; }
-            if(mvsFirstCard[player].dataset.pair === el.dataset.text) {
+        function flipMvsCard(elCard, player) {
+            if(mvsLock[player] || elCard === mvsFirstCard[player] || elCard.classList.contains('matched') || elCard.classList.contains('flipped')) return;
+            elCard.classList.add('flipped');
+            if(!mvsFirstCard[player]) { mvsFirstCard[player] = elCard; return; }
+            if(mvsFirstCard[player].dataset.pair === elCard.dataset.text) {
                 mvsLock[player] = true;
                 setTimeout(() => {
                     playSound('match'); mFirstCard = mvsFirstCard[player]; 
-                    mvsFirstCard[player].classList.add('matched'); el.classList.add('matched');
+                    if(player === 1) recordSuccess(elCard.dataset.en);
+                    mvsFirstCard[player].classList.add('matched'); elCard.classList.add('matched');
                     mvsFirstCard[player] = null; mvsLock[player] = false; mvsPairs[player]++;
                     if(mvsPairs[player] === 4) {
                         playSound('correct'); addExp(5);
-                        document.getElementById(`mvs-win-p${player}`).classList.remove('hidden');
-                        document.getElementById(`mvs-win-p${player === 1 ? 2 : 1}`).innerHTML = '<div class="text-slate-500 font-bold text-xl mt-4">LOSE</div>';
-                        document.getElementById(`mvs-win-p${player === 1 ? 2 : 1}`).classList.remove('hidden');
+                        el(`mvs-win-p${player}`).classList.remove('hidden'); el(`mvs-win-p${player === 1 ? 2 : 1}`).innerHTML = '<div class="text-slate-500 font-bold text-xl mt-4">LOSE</div>'; el(`mvs-win-p${player === 1 ? 2 : 1}`).classList.remove('hidden');
                         setTimeout(() => { navTo('dashboard'); }, 3000);
                     }
                 }, 300); 
             } else {
-                mvsLock[player] = true; setTimeout(() => { mvsFirstCard[player].classList.remove('flipped'); el.classList.remove('flipped'); mvsFirstCard[player] = null; mvsLock[player] = false; }, 800);
+                mvsLock[player] = true; 
+                setTimeout(() => { mvsFirstCard[player].classList.remove('flipped'); elCard.classList.remove('flipped'); mvsFirstCard[player] = null; mvsLock[player] = false; }, 800); 
             }
         }
 
@@ -1595,8 +1201,8 @@
         let ttStartTime = 0, ttTimerInterval, ttSortables = [];
         
         function initTimeTrial(sourceData) {
-            clearInterval(ttTimerInterval); document.getElementById('tt-timer').innerText = "0.0";
-            const jpList = document.getElementById('tt-jp-list'); const dropZone = document.getElementById('tt-drop-zone'); const enList = document.getElementById('tt-en-list');
+            clearInterval(ttTimerInterval); el('tt-timer').innerText = "0.0";
+            const jpList = el('tt-jp-list'), dropZone = el('tt-drop-zone'), enList = el('tt-en-list');
             jpList.innerHTML = ''; dropZone.innerHTML = ''; enList.innerHTML = '';
             ttSortables.forEach(s => s.destroy()); ttSortables = [];
             
@@ -1605,57 +1211,37 @@
             let enCards = shuffle([...selected]);
             
             selected.forEach((item, idx) => {
-                let jpEl = document.createElement('div');
-                jpEl.className = 'h-10 bg-surface border border-slate-200 rounded-lg flex items-center justify-center px-2 font-bold text-slate-700 text-[10px] md:text-sm overflow-hidden whitespace-nowrap shadow-sm';
-                jpEl.innerText = item.jp; jpList.appendChild(jpEl);
-                
-                let slot = document.createElement('div');
-                slot.className = 'tt-slot h-10 border-2 border-dashed border-slate-300 rounded-lg flex items-center justify-center transition-colors bg-surface opacity-50';
-                slot.dataset.index = idx; dropZone.appendChild(slot);
-                ttSortables.push(new Sortable(slot, { group: { name: 'shared', put: function(to) { return to.el.children.length < 1; } }, animation: 150, ghostClass: 'sortable-ghost', dragClass: 'sortable-drag' }));
+                let jpEl = document.createElement('div'); jpEl.className = 'h-10 bg-surface border border-slate-200 rounded-lg flex items-center justify-center px-2 font-bold text-slate-700 text-[10px] md:text-sm overflow-hidden whitespace-nowrap shadow-sm'; jpEl.innerText = item.jp; jpList.appendChild(jpEl);
+                let slot = document.createElement('div'); slot.className = 'tt-slot h-10 border-2 border-dashed border-slate-300 rounded-lg flex items-center justify-center transition-colors bg-surface opacity-50'; slot.dataset.index = idx; dropZone.appendChild(slot);
+                ttSortables.push(new Sortable(slot, { group: { name: 'shared', put: (to) => to.el.children.length < 1 }, animation: 150, ghostClass: 'sortable-ghost', dragClass: 'sortable-drag' }));
             });
 
             enCards.forEach(item => {
-                let enEl = document.createElement('div');
-                enEl.className = 'h-10 bg-surface border border-slate-200 rounded-lg flex items-center justify-between px-3 font-bold text-primary text-xs md:text-sm shadow-sm cursor-grab active:cursor-grabbing btn-elegant';
-                enEl.dataset.en = item.en; enEl.dataset.jp = item.jp;
-                enEl.innerHTML = `<span>${item.en}</span> <i data-lucide="grip-vertical" class="w-4 h-4 text-slate-300 pointer-events-none"></i>`;
-                enList.appendChild(enEl);
+                let enEl = document.createElement('div'); enEl.className = 'h-10 bg-surface border border-slate-200 rounded-lg flex items-center justify-between px-3 font-bold text-primary text-xs md:text-sm shadow-sm cursor-grab active:cursor-grabbing btn-elegant'; enEl.dataset.en = item.en; enEl.dataset.jp = item.jp;
+                enEl.innerHTML = `<span>${item.en}</span> <i data-lucide="grip-vertical" class="w-4 h-4 text-slate-300 pointer-events-none"></i>`; enList.appendChild(enEl);
             });
-            lucide.createIcons();
-            ttSortables.push(new Sortable(enList, { group: 'shared', animation: 150, ghostClass: 'sortable-ghost', dragClass: 'sortable-drag' }));
-            
-            ttStartTime = Date.now(); ttTimerInterval = setInterval(() => { document.getElementById('tt-timer').innerText = ((Date.now() - ttStartTime) / 1000).toFixed(1); }, 100);
+            lucide.createIcons(); ttSortables.push(new Sortable(enList, { group: 'shared', animation: 150, ghostClass: 'sortable-ghost', dragClass: 'sortable-drag' }));
+            ttStartTime = Date.now(); ttTimerInterval = setInterval(() => { el('tt-timer').innerText = ((Date.now() - ttStartTime) / 1000).toFixed(1); }, 100);
         }
 
         function checkTimeTrial() {
-            initAudio();
-            const jpNodes = document.getElementById('tt-jp-list').children;
-            const slots = document.getElementById('tt-drop-zone').children;
-            const enList = document.getElementById('tt-en-list');
-            
+            initAudio(); const jpNodes = el('tt-jp-list').children, slots = el('tt-drop-zone').children, enList = el('tt-en-list');
             let correctCount = 0; let toMoveBack = [];
-            
             for(let i=0; i<10; i++) {
                 if(slots[i].children.length > 0) {
                     let card = slots[i].children[0];
                     if(jpNodes[i].innerText === card.dataset.jp) {
                         correctCount++;
-                        card.classList.replace('border-slate-200', 'border-secondary'); card.classList.replace('text-primary', 'text-secondary'); card.classList.add('bg-emerald-50');
-                        card.classList.remove('cursor-grab', 'active:cursor-grabbing', 'btn-elegant', 'bg-surface'); card.style.pointerEvents = 'none';
+                        if(!card.dataset.recorded) { recordSuccess(card.dataset.en); card.dataset.recorded = "true"; }
+                        card.classList.replace('border-slate-200', 'border-secondary'); card.classList.replace('text-primary', 'text-secondary'); card.classList.add('bg-emerald-50'); card.classList.remove('cursor-grab', 'active:cursor-grabbing', 'btn-elegant', 'bg-surface'); card.style.pointerEvents = 'none';
                     } else { toMoveBack.push(card); }
                 }
             }
-            
             if(correctCount === 10) {
                 clearInterval(ttTimerInterval); playSound('match');
-                const timeStr = ((Date.now() - ttStartTime) / 1000).toFixed(1);
-                let timeNum = parseFloat(timeStr);
+                const timeStr = ((Date.now() - ttStartTime) / 1000).toFixed(1); let timeNum = parseFloat(timeStr);
                 ttRanks.push({ time: timeNum, date: new Date().toLocaleDateString() }); ttRanks.sort((a,b) => a.time - b.time); ttRanks = ttRanks.slice(0, 10);
-                storage.setItem('wm_pro_tt_ranks', JSON.stringify(ttRanks));
-                
-                let best = ttRanks[0].time; storage.setItem('wm_pro_tt_best', best);
-                let expBonus = Math.max(10, 100 - Math.floor(timeNum)); addExp(10 + expBonus);
+                storage.setItem('wm_pro_tt_ranks', JSON.stringify(ttRanks)); storage.setItem('wm_pro_tt_best', ttRanks[0].time); addExp(10 + Math.max(10, 100 - Math.floor(timeNum)));
 
                 let rankHtml = `<div class="bg-primaryLight text-primary font-bold py-2 rounded-xl mb-4 text-center text-lg flex justify-center items-center gap-2 border border-primaryLight"><i data-lucide="timer" class="w-5 h-5 text-primary"></i> ${timeStr}s</div><div class="space-y-1.5 w-full max-h-48 overflow-y-auto pr-2">`;
                 ttRanks.forEach((r, i) => {
@@ -1663,15 +1249,12 @@
                     let isMe = r.time === timeNum ? 'bg-yellow-50 border-yellow-200' : 'bg-surface border-slate-200';
                     rankHtml += `<div class="flex justify-between items-center px-3 py-2 border rounded-lg ${isMe} shadow-sm"><span class="font-bold text-slate-500 w-6 flex justify-center">${badge}</span><span class="font-bold text-slate-800 text-sm">${r.time.toFixed(1)}s</span></div>`;
                 });
-                rankHtml += `</div>`;
-                showResult("Perfect Match!", "見事すべての単語を一致させました。", rankHtml, "win");
+                rankHtml += `</div>`; showResult("Perfect Match!", "見事すべての単語を一致させました。", rankHtml, "win");
             } else {
                 playSound('wrong');
                 toMoveBack.forEach(node => {
-                    recordError(node.dataset.en); // --- エラー自動記録（タイムトライアル）---
                     node.classList.add('bg-red-50', 'border-red-400');
-                    setTimeout(() => node.classList.remove('bg-red-50', 'border-red-400'), 500);
-                    enList.appendChild(node);
+                    setTimeout(() => node.classList.remove('bg-red-50', 'border-red-400'), 500); enList.appendChild(node);
                 });
             }
         }
@@ -1682,44 +1265,31 @@
 
         function renderListening() {
             if(listIndex >= 3) { playSound('match'); showResult("Listening Clear", "リスニングテストをクリアしました！", "", "win"); return; }
-            document.getElementById('list-current').innerText = listIndex + 1;
-            listSelected = [null, null, null];
+            el('list-current').innerText = listIndex + 1; listSelected = [null, null, null];
             
-            let source = currentQuizData.length > 0 ? currentQuizData : wordData;
-            let pool = shuffle(source); listTargets = pool.slice(0, 3); let dummies = pool.slice(3, 6);
-            let choices = shuffle([...listTargets, ...dummies]);
+            let pool = shuffle(currentQuizData.length > 0 ? currentQuizData : wordData);
+            listTargets = pool.slice(0, 3); let choices = shuffle([...listTargets, ...pool.slice(3, 6)]);
             
-            updateListSlots();
-            const cContainer = document.getElementById('list-choices'); cContainer.innerHTML = '';
+            updateListSlots(); const cContainer = el('list-choices'); cContainer.innerHTML = '';
             choices.forEach(c => {
-                let btn = document.createElement('button');
-                btn.className = 'bg-surface border border-slate-200 text-slate-700 font-bold py-4 rounded-xl text-sm btn-elegant shadow-sm truncate px-2 w-full';
-                btn.innerText = c.jp; btn.onclick = () => { initAudio(); handleListSelect(c, btn); };
-                cContainer.appendChild(btn);
+                let btn = document.createElement('button'); btn.className = 'bg-surface border border-slate-200 text-slate-700 font-bold py-4 rounded-xl text-sm btn-elegant shadow-sm truncate px-2 w-full';
+                btn.innerText = c.jp; btn.onclick = () => { initAudio(); handleListSelect(c, btn); }; cContainer.appendChild(btn);
             });
             setTimeout(() => playListeningAudio(), 500);
         }
 
         function updateListSlots() {
-            const slots = document.getElementById('list-slots').children;
+            const slots = el('list-slots').children;
             for(let i=0; i<3; i++) {
-                if(listSelected[i]) {
-                    slots[i].innerText = listSelected[i].choice.jp;
-                    slots[i].className = 'w-1/3 max-w-[120px] h-14 border border-primary rounded-xl flex items-center justify-center text-xs font-bold text-white bg-primary shadow-md truncate px-1 transition-all';
-                } else {
-                    slots[i].innerText = '';
-                    slots[i].className = 'w-1/3 max-w-[120px] h-14 border-2 border-dashed border-slate-300 rounded-xl flex items-center justify-center bg-surface transition-all';
-                }
+                if(listSelected[i]) { slots[i].innerText = listSelected[i].choice.jp; slots[i].className = 'w-1/3 max-w-[120px] h-14 border border-primary rounded-xl flex items-center justify-center text-xs font-bold text-white bg-primary shadow-md truncate px-1 transition-all'; } 
+                else { slots[i].innerText = ''; slots[i].className = 'w-1/3 max-w-[120px] h-14 border-2 border-dashed border-slate-300 rounded-xl flex items-center justify-center bg-surface transition-all'; }
             }
         }
 
         function handleListSelect(c, btn) {
-            let emptyIndex = listSelected.indexOf(null);
-            if(emptyIndex === -1) return;
-            btn.classList.add('opacity-0', 'pointer-events-none');
-            listSelected[emptyIndex] = { choice: c, btn: btn };
-            updateListSlots();
-            if(listSelected.indexOf(null) === -1) setTimeout(checkListening, 500);
+            let emptyIndex = listSelected.indexOf(null); if(emptyIndex === -1) return;
+            btn.classList.add('opacity-0', 'pointer-events-none'); listSelected[emptyIndex] = { choice: c, btn: btn };
+            updateListSlots(); if(listSelected.indexOf(null) === -1) setTimeout(checkListening, 500);
         }
 
         function checkListening() {
@@ -1727,74 +1297,59 @@
             for(let i=0; i<3; i++) {
                 if(listSelected[i].choice.en !== listTargets[i].en) {
                     allCorrect = false; 
-                    recordError(listTargets[i].en); // --- エラー自動記録（リスニング）---
-                    listSelected[i].btn.classList.remove('opacity-0', 'pointer-events-none'); 
-                    listSelected[i] = null;
+                    listSelected[i].btn.classList.remove('opacity-0', 'pointer-events-none'); listSelected[i] = null;
                 }
             }
             if(allCorrect) {
-                playSound('correct');
-                let score = parseInt(storage.getItem('wm_pro_stats_listening')||0) + 1; storage.setItem('wm_pro_stats_listening', score); addExp(3);
+                playSound('correct'); 
+                storage.setItem('wm_pro_stats_listening', parseInt(storage.getItem('wm_pro_stats_listening')||0) + 1); addExp(3);
                 setTimeout(() => { listIndex++; renderListening(); }, 1000);
-            } else {
-                playSound('wrong'); updateListSlots();
-            }
+            } else { playSound('wrong'); updateListSlots(); }
         }
 
         function playListeningAudio() {
-            initAudio();
-            const ripple = document.getElementById('list-ripple');
-            ripple.classList.remove('opacity-0', 'scale-50'); ripple.classList.add('opacity-50', 'scale-150');
+            initAudio(); const ripple = el('list-ripple'); ripple.classList.remove('opacity-0', 'scale-50'); ripple.classList.add('opacity-50', 'scale-150');
             function playSeq(idx) {
-                if(idx >= 3) {
-                    setTimeout(() => { ripple.classList.remove('opacity-50', 'scale-150'); ripple.classList.add('opacity-0', 'scale-50'); }, 500);
-                    return;
-                }
+                if(idx >= 3) { setTimeout(() => { ripple.classList.remove('opacity-50', 'scale-150'); ripple.classList.add('opacity-0', 'scale-50'); }, 500); return; }
                 playAudio(listTargets[idx].en, () => { setTimeout(() => playSeq(idx + 1), 600); });
             }
             playSeq(0);
         }
 
         // --- 10-2. Listening VS Screen ---
-        let lvsData = [], lvsTargets = [], lvsP1Score = 0, lvsP2Score = 0;
-        let lvsSelectedP1 = [], lvsSelectedP2 = [];
+        let lvsData = [], lvsTargets = [], lvsP1Score = 0, lvsP2Score = 0, lvsSelectedP1 = [], lvsSelectedP2 = [];
         let lvsLockAll = false, lvsLockP1 = false, lvsLockP2 = false;
 
         function initListeningVs(source) {
             document.querySelectorAll('.screen').forEach(s => { s.classList.add('hidden'); s.classList.remove('flex'); });
-            document.getElementById('screen-listening-vs').classList.remove('hidden'); document.getElementById('screen-listening-vs').classList.add('flex');
-            
-            lvsData = shuffle(source);
-            if (lvsData.length < 6) lvsData = lvsData.concat(shuffle(wordData.filter(w => !lvsData.includes(w))));
+            el('screen-listening-vs').classList.remove('hidden'); el('screen-listening-vs').classList.add('flex');
+            lvsData = shuffle(source); if (lvsData.length < 6) lvsData = lvsData.concat(shuffle(wordData.filter(w => !lvsData.includes(w))));
             lvsP1Score = 0; lvsP2Score = 0; updateLvsUI(); nextLvsRound();
         }
 
         function endLvsEarly() { clearAllTimers(); navTo('dashboard'); }
-        function updateLvsUI() { document.getElementById('lvs-score-p1').innerText = lvsP1Score; document.getElementById('lvs-score-p2').innerText = lvsP2Score; }
+        function updateLvsUI() { el('lvs-score-p1').innerText = lvsP1Score; el('lvs-score-p2').innerText = lvsP2Score; }
 
         function nextLvsRound() {
             lvsLockAll = false; lvsLockP1 = false; lvsLockP2 = false; lvsSelectedP1 = []; lvsSelectedP2 = [];
-            document.getElementById('lvs-lock-p1').classList.add('hidden'); document.getElementById('lvs-lock-p2').classList.add('hidden');
+            el('lvs-lock-p1').classList.add('hidden'); el('lvs-lock-p2').classList.add('hidden');
             updateLvsSlots(1); updateLvsSlots(2);
 
-            let pool = shuffle(lvsData); lvsTargets = pool.slice(0, 3); let dummies = pool.slice(3, 6);
-            let choices = shuffle([...lvsTargets, ...dummies]);
+            let pool = shuffle(lvsData); lvsTargets = pool.slice(0, 3); let choices = shuffle([...lvsTargets, ...pool.slice(3, 6)]);
             renderLvsChoices('lvs-choices-p1', choices, 1); renderLvsChoices('lvs-choices-p2', choices, 2);
             setTimeout(() => playLvsAudio(), 1000);
         }
         
         function renderLvsChoices(cId, choices, player) {
-            const container = document.getElementById(cId); container.innerHTML = '';
+            const container = el(cId); container.innerHTML = '';
             choices.forEach(c => {
-                let btn = document.createElement('button');
-                btn.className = 'bg-surface border-2 border-slate-200 text-slate-800 font-bold py-2 px-1 rounded-xl text-xs md:text-sm shadow-sm active:scale-95 transition-transform overflow-hidden break-words';
-                btn.innerText = c.jp; btn.onclick = () => { initAudio(); handleLvsClick(c, player, btn); };
-                container.appendChild(btn);
+                let btn = document.createElement('button'); btn.className = 'bg-surface border-2 border-slate-200 text-slate-800 font-bold py-2 px-1 rounded-xl text-xs md:text-sm shadow-sm active:scale-95 transition-transform overflow-hidden break-words';
+                btn.innerText = c.jp; btn.onclick = () => { initAudio(); handleLvsClick(c, player, btn); }; container.appendChild(btn);
             });
         }
 
         function playLvsAudio() {
-            initAudio(); const btn = document.getElementById('lvs-audio-btn'); btn.classList.add('animate-pulse', 'bg-primaryHover');
+            initAudio(); const btn = el('lvs-audio-btn'); btn.classList.add('animate-pulse', 'bg-primaryHover');
             function playSeq(idx) {
                 if(idx >= 3) { btn.classList.remove('animate-pulse', 'bg-primaryHover'); return; }
                 playAudio(lvsTargets[idx].en, () => { setTimeout(() => playSeq(idx + 1), 600); });
@@ -1805,67 +1360,42 @@
         function manualPlayLvsAudio() { if(lvsLockAll) return; playLvsAudio(); }
 
         function handleLvsClick(c, player, btn) {
-            if(lvsLockAll) return;
-            if(player === 1 && lvsLockP1) return;
-            if(player === 2 && lvsLockP2) return;
-            
-            let selArray = player === 1 ? lvsSelectedP1 : lvsSelectedP2;
-            if(selArray.length >= 3) return;
-            
-            btn.classList.add('opacity-0', 'pointer-events-none');
-            selArray.push({ choice: c, btn: btn });
-            updateLvsSlots(player);
-            if(selArray.length === 3) checkLvs(player);
+            if(lvsLockAll || (player === 1 && lvsLockP1) || (player === 2 && lvsLockP2)) return;
+            let selArray = player === 1 ? lvsSelectedP1 : lvsSelectedP2; if(selArray.length >= 3) return;
+            btn.classList.add('opacity-0', 'pointer-events-none'); selArray.push({ choice: c, btn: btn });
+            updateLvsSlots(player); if(selArray.length === 3) checkLvs(player);
         }
 
         function updateLvsSlots(player) {
-            const slots = document.getElementById('lvs-slots-p' + player).children;
+            const slots = el('lvs-slots-p' + player).children;
             let selArray = player === 1 ? lvsSelectedP1 : lvsSelectedP2;
-            let borderColor = player === 1 ? 'border-primary' : 'border-red-500';
-            let bgColor = player === 1 ? 'bg-primary' : 'bg-red-500';
-            let dashedBorder = player === 1 ? 'border-primary/50' : 'border-red-300';
-            
+            let borderColor = player === 1 ? 'border-primary' : 'border-red-500', bgColor = player === 1 ? 'bg-primary' : 'bg-red-500', dashedBorder = player === 1 ? 'border-primary/50' : 'border-red-300';
             for(let i=0; i<3; i++) {
-                if(i < selArray.length) {
-                    slots[i].innerText = selArray[i].choice.jp;
-                    slots[i].className = `w-1/3 max-w-[120px] h-10 border ${borderColor} rounded-lg flex items-center justify-center text-[10px] md:text-xs font-bold text-white ${bgColor} shadow-md truncate px-1`;
-                } else {
-                    slots[i].innerText = '';
-                    slots[i].className = `w-1/3 max-w-[120px] h-10 border-2 border-dashed ${dashedBorder} rounded-lg flex items-center justify-center bg-surface`;
-                }
+                if(i < selArray.length) { slots[i].innerText = selArray[i].choice.jp; slots[i].className = `w-1/3 max-w-[120px] h-10 border ${borderColor} rounded-lg flex items-center justify-center text-[10px] md:text-xs font-bold text-white ${bgColor} shadow-md truncate px-1`; } 
+                else { slots[i].innerText = ''; slots[i].className = `w-1/3 max-w-[120px] h-10 border-2 border-dashed ${dashedBorder} opacity-30 rounded-lg flex items-center justify-center bg-surface`; }
             }
         }
 
         function checkLvs(player) {
-            let selArray = player === 1 ? lvsSelectedP1 : lvsSelectedP2;
-            let isCorrect = true;
-            for(let i=0; i<3; i++) {
-                if(selArray[i].choice.en !== lvsTargets[i].en) { isCorrect = false; break; }
-            }
+            let selArray = player === 1 ? lvsSelectedP1 : lvsSelectedP2, isCorrect = true;
+            for(let i=0; i<3; i++) { if(selArray[i].choice.en !== lvsTargets[i].en) { isCorrect = false; break; } }
+            
             if(isCorrect) {
                 playSound('correct'); lvsLockAll = true;
-                if(player === 1) lvsP1Score++; else lvsP2Score++;
+                if(player === 1) { lvsP1Score++; lvsTargets.forEach(t => recordSuccess(t.en)); } else { lvsP2Score++; }
                 updateLvsUI();
                 if (lvsP1Score >= 5 || lvsP2Score >= 5) setTimeout(endLvsMatch, 1000); else setTimeout(nextLvsRound, 1000);
             } else {
                 playSound('wrong');
-                if(player === 1) { lvsLockP1 = true; document.getElementById('lvs-lock-p1').classList.remove('hidden'); }
-                else { lvsLockP2 = true; document.getElementById('lvs-lock-p2').classList.remove('hidden'); }
+                if(player === 1) { lvsLockP1 = true; el('lvs-lock-p1').classList.remove('hidden'); } else { lvsLockP2 = true; el('lvs-lock-p2').classList.remove('hidden'); }
                 if(lvsLockP1 && lvsLockP2) { lvsLockAll = true; setTimeout(nextLvsRound, 1200); }
             }
         }
 
         function endLvsMatch() {
-            playSound('match');
-            document.getElementById('screen-listening-vs').classList.add('hidden'); document.getElementById('screen-listening-vs').classList.remove('flex');
-            let title = lvsP1Score >= 5 ? "Player 1 Wins!" : "Player 2 Wins!";
-            let desc = "白熱のリスニングバトルでした！";
-            let extra = `
-                <div class="flex justify-center gap-6 mt-2 w-full">
-                    <div class="text-center"><div class="text-xs font-bold text-slate-400">P1 SCORE</div><div class="text-3xl font-extrabold text-primary">${lvsP1Score}</div></div>
-                    <div class="text-center"><div class="text-xs font-bold text-slate-400">P2 SCORE</div><div class="text-3xl font-extrabold text-red-500">${lvsP2Score}</div></div>
-                </div>`;
-            showResult(title, desc, extra, "vs");
+            playSound('match'); el('screen-listening-vs').classList.add('hidden'); el('screen-listening-vs').classList.remove('flex');
+            let extra = `<div class="flex justify-center gap-6 mt-2 w-full"><div class="text-center"><div class="text-xs font-bold text-slate-400">P1 SCORE</div><div class="text-3xl font-extrabold text-primary">${lvsP1Score}</div></div><div class="text-center"><div class="text-xs font-bold text-slate-400">P2 SCORE</div><div class="text-3xl font-extrabold text-red-500">${lvsP2Score}</div></div></div>`;
+            showResult(lvsP1Score >= 5 ? "Player 1 Wins!" : "Player 2 Wins!", "白熱のリスニングバトルでした！", extra, "vs");
         }
 
         // --- 11. Versus Screen (Karuta) ---
@@ -1873,23 +1403,18 @@
 
         function startVsKaruta(isCpu, source) {
             isVsCpu = isCpu; p1Score = 0; p2Score = 0; updateVsUI();
-            if(isVsCpu) {
-                document.getElementById('cpu-label').classList.remove('hidden'); document.getElementById('cpu-label').classList.add('flex');
-                if (document.getElementById('vs-cpu-level-display')) document.getElementById('vs-cpu-level-display').innerText = cpuLevel;
-            } else {
-                document.getElementById('cpu-label').classList.add('hidden'); document.getElementById('cpu-label').classList.remove('flex');
-            }
-            vsData = shuffle(source);
-            if (vsData.length < 10) vsData = vsData.concat(shuffle(wordData.filter(w => !vsData.includes(w))));
+            if(isVsCpu) { el('cpu-label').classList.remove('hidden'); el('cpu-label').classList.add('flex'); if (el('vs-cpu-level-display')) el('vs-cpu-level-display').innerText = cpuLevel; } 
+            else { el('cpu-label').classList.add('hidden'); el('cpu-label').classList.remove('flex'); }
+            vsData = shuffle(source); if (vsData.length < 10) vsData = vsData.concat(shuffle(wordData.filter(w => !vsData.includes(w))));
             setTimeout(nextVsRound, 800);
         }
 
         function endVsEarly() { clearAllTimers(); navTo('dashboard'); }
-        function updateVsUI() { document.getElementById('score-p1').innerText = p1Score; document.getElementById('score-p2').innerText = p2Score; }
+        function updateVsUI() { el('score-p1').innerText = p1Score; el('score-p2').innerText = p2Score; }
 
         function nextVsRound() {
             vsLockAll = false; p1Locked = false; p2Locked = false;
-            document.getElementById('lock-p1').classList.add('hidden'); document.getElementById('lock-p2').classList.add('hidden');
+            el('lock-p1').classList.add('hidden'); el('lock-p2').classList.add('hidden');
             updateVsUI();
             
             let numChoices = 6, cpuDelay = 3000, cpuMistakeChance = 0;
@@ -1902,7 +1427,7 @@
             }
             
             vsCurrentTarget = vsData[Math.floor(Math.random() * vsData.length)];
-            document.getElementById('target-p1').innerText = vsCurrentTarget.jp; document.getElementById('target-p2').innerText = vsCurrentTarget.jp;
+            el('target-p1').innerText = vsCurrentTarget.jp; el('target-p2').innerText = vsCurrentTarget.jp;
             
             let choices = [vsCurrentTarget];
             while(choices.length < numChoices) {
@@ -1916,41 +1441,30 @@
             if(isVsCpu) {
                 vsCpuTimer = setTimeout(() => {
                     if(!vsLockAll && !p2Locked) {
-                        const container = document.getElementById('choices-p2');
-                        let targetBtn = null;
+                        const container = el('choices-p2'); let targetBtn = null;
                         if (Math.random() < cpuMistakeChance) {
                             const wrongBtns = Array.from(container.children).filter(b => b.dataset.en !== vsCurrentTarget.en);
                             if (wrongBtns.length > 0) targetBtn = wrongBtns[Math.floor(Math.random() * wrongBtns.length)];
                         }
-                        if (!targetBtn) {
-                            for(let btn of container.children) { if(btn.dataset.en === vsCurrentTarget.en) { targetBtn = btn; break; } }
-                        }
-                        if (targetBtn) {
-                            const selectedChoice = choices.find(c => c.en === targetBtn.dataset.en);
-                            initAudio(); handleVsClick(selectedChoice, 2, targetBtn);
-                        }
+                        if (!targetBtn) { for(let btn of container.children) { if(btn.dataset.en === vsCurrentTarget.en) { targetBtn = btn; break; } } }
+                        if (targetBtn) { const selectedChoice = choices.find(c => c.en === targetBtn.dataset.en); initAudio(); handleVsClick(selectedChoice, 2, targetBtn); }
                     }
                 }, cpuDelay);
             }
         }
 
         function renderVsBtn(cId, choices, player, numChoices) {
-            const container = document.getElementById(cId); container.innerHTML = '';
-            let gridCols = 'grid-cols-3';
-            if (numChoices === 8) gridCols = 'grid-cols-2 md:grid-cols-4';
-            if (numChoices === 10) gridCols = 'grid-cols-2 md:grid-cols-5';
+            const container = el(cId); container.innerHTML = '';
+            let gridCols = (numChoices === 10) ? 'grid-cols-2 md:grid-cols-5' : (numChoices === 8 ? 'grid-cols-2 md:grid-cols-4' : 'grid-cols-3');
             container.className = `grid gap-2 w-full max-w-xl px-2 ${gridCols}`;
 
             choices.forEach(c => {
                 let btn = document.createElement('button'); btn.dataset.en = c.en; 
-                let py = numChoices >= 8 ? 'py-2 md:py-3' : 'py-3'; let txtSize = numChoices >= 8 ? 'text-xs md:text-sm' : 'text-sm md:text-base';
+                let py = numChoices >= 8 ? 'py-2 md:py-3' : 'py-3', txtSize = numChoices >= 8 ? 'text-xs md:text-sm' : 'text-sm md:text-base';
                 
                 btn.className = `bg-surface border-2 border-slate-200 text-slate-800 font-bold ${py} px-1 rounded-xl ${txtSize} shadow-sm active:scale-95 transition-transform overflow-hidden break-words pointer-events-auto`;
                 btn.innerText = c.en;
-                if(player === 2 && isVsCpu) {
-                    btn.disabled = true;
-                    btn.className = `bg-surface border-2 border-slate-200 text-slate-800 font-bold ${py} px-1 rounded-xl ${txtSize} shadow-sm cursor-default overflow-hidden break-words pointer-events-none`;
-                }
+                if(player === 2 && isVsCpu) { btn.disabled = true; btn.className = `bg-surface border-2 border-slate-200 text-slate-800 font-bold ${py} px-1 rounded-xl ${txtSize} shadow-sm cursor-default overflow-hidden break-words pointer-events-none`; }
                 btn.onclick = () => { initAudio(); handleVsClick(c, player, btn); };
                 container.appendChild(btn);
             });
@@ -1960,45 +1474,28 @@
             if(vsLockAll || (player === 1 && p1Locked) || (player === 2 && p2Locked)) return; 
             if(choice.en === vsCurrentTarget.en) {
                 playSound('correct'); vsLockAll = true; clearTimeout(vsCpuTimer);
+                if(player === 1) { p1Score++; recordSuccess(choice.en); } else p2Score++;
                 btn.classList.replace('bg-surface', 'bg-secondary'); btn.classList.replace('border-slate-200', 'border-secondary'); btn.classList.replace('text-slate-800', 'text-white'); btn.classList.add('animate-pop');
-                if(player === 1) p1Score++; else p2Score++;
                 updateVsUI();
                 if (p1Score >= 5 || p2Score >= 5) setTimeout(endVsMatch, 1000); else setTimeout(nextVsRound, 1000);
             } else {
                 playSound('wrong');
-                if (player === 1 && isVsCpu) {
-                    recordError(vsCurrentTarget.en); // --- エラー自動記録（カルタ対戦 1P）---
-                }
                 btn.classList.replace('bg-surface', 'bg-slate-100'); btn.classList.replace('text-slate-800', 'text-slate-400'); btn.disabled = true;
-                if(player === 1) { p1Locked = true; document.getElementById('lock-p1').classList.remove('hidden'); }
-                else { p2Locked = true; document.getElementById('lock-p2').classList.remove('hidden'); }
+                if(player === 1) { p1Locked = true; el('lock-p1').classList.remove('hidden'); } else { p2Locked = true; el('lock-p2').classList.remove('hidden'); }
                 if(p1Locked && p2Locked) { vsLockAll = true; clearTimeout(vsCpuTimer); setTimeout(nextVsRound, 1200); }
             }
         }
 
         function endVsMatch() {
             playSound('match'); navTo('dashboard'); addExp(5);
-            let title = "", desc = "", extra = `
-                <div class="flex justify-center gap-6 mt-2 w-full">
-                    <div class="text-center"><div class="text-xs font-bold text-slate-400">P1 SCORE</div><div class="text-3xl font-extrabold text-primary">${p1Score}</div></div>
-                    <div class="text-center"><div class="text-xs font-bold text-slate-400">P2 SCORE</div><div class="text-3xl font-extrabold text-red-500">${p2Score}</div></div>
-                </div>`;
+            let title = "", desc = "", extra = `<div class="flex justify-center gap-6 mt-2 w-full"><div class="text-center"><div class="text-xs font-bold text-slate-400">P1 SCORE</div><div class="text-3xl font-extrabold text-primary">${p1Score}</div></div><div class="text-center"><div class="text-xs font-bold text-slate-400">P2 SCORE</div><div class="text-3xl font-extrabold text-red-500">${p2Score}</div></div></div>`;
             if(isVsCpu) {
                 if(p1Score >= 5) {
                     title = "You Win!!";
-                    if(cpuLevel < 5) { 
-                        cpuLevel++; 
-                        storage.setItem('wm_pro_cpu', cpuLevel); 
-                        if(document.getElementById('display-cpu-level')) document.getElementById('display-cpu-level').innerText = cpuLevel; 
-                        if(document.getElementById('dash-score-vs')) document.getElementById('dash-score-vs').innerText = cpuLevel;
-                        desc = `CPUレベルが ${cpuLevel} に上がりました！`; 
-                    }
+                    if(cpuLevel < 5) { cpuLevel++; storage.setItem('wm_pro_cpu', cpuLevel); if(el('display-cpu-level')) el('display-cpu-level').innerText = cpuLevel; if(el('dash-score-vs')) el('dash-score-vs').innerText = cpuLevel; desc = `CPUレベルが ${cpuLevel} に上がりました！`; }
                     else { desc = "最強のCPUに勝利しました！"; }
                 } else { title = "You Lose..."; desc = "CPUの勝利です。次は勝てるはず！"; }
-            } else {
-                if(p1Score >= 5) title = "Player 1 Wins!"; else title = "Player 2 Wins!";
-                desc = "白熱のバトルでした！";
-            }
+            } else { title = p1Score >= 5 ? "Player 1 Wins!" : "Player 2 Wins!"; desc = "白熱のバトルでした！"; }
             showResult(title, desc, extra, "vs");
         }
     </script>
