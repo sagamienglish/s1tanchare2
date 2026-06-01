@@ -108,7 +108,7 @@
             --color-slate-100: #1e293b;
         }
 
-        /* どんな環境でも絶対に色が消えないようにするための強制適用クラス */
+        /* 強制適用クラス */
         .text-primary { color: var(--color-primary) !important; }
         .bg-primary { background-color: var(--color-primary) !important; }
         .border-primary { border-color: var(--color-primary) !important; }
@@ -143,7 +143,7 @@
         .btn-elegant { transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; border: 2px solid var(--color-border); }
         .btn-elegant:hover { border-color: var(--color-primary) !important; }
 
-        /* Matching Card Stable 2D Crossfade Animation */
+        /* Matching Card */
         .card-inner { position: relative; width: 100%; height: 100%; }
         .card-front, .card-back { 
             position: absolute; inset: 0; 
@@ -204,7 +204,7 @@
         </div>
         <nav class="space-y-2 flex-1">
             <button onclick="navTo('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-4 p-4 rounded-xl bg-primary text-white font-bold transition-colors border border-transparent shadow-sm">
-                <i data-lucide="layout-dashboard" class="w-5 h-5 text-white"></i> Dashboard
+                <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Dashboard
             </button>
             <button onclick="navTo('vocabulary')" id="nav-vocabulary" class="w-full flex items-center gap-4 p-4 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 font-bold transition-colors border border-transparent">
                 <i data-lucide="library" class="w-5 h-5"></i> 語彙リスト
@@ -731,7 +731,7 @@
         let lastLogin = storage.getItem('wm_pro_date');
         let streak = parseInt(storage.getItem('wm_pro_streak')) || 1;
         let errors = JSON.parse(storage.getItem('wm_pro_errors')) || {};
-        let wordStatus = JSON.parse(storage.getItem('wm_pro_word_status')) || {}; // o, t, x
+        let wordStatus = JSON.parse(storage.getItem('wm_pro_word_status')) || {}; 
         let matchingRanks = JSON.parse(storage.getItem('wm_pro_ranks')) || [];
         let ttRanks = JSON.parse(storage.getItem('wm_pro_tt_ranks')) || [];
         let cpuLevel = parseInt(storage.getItem('wm_pro_cpu')) || 1;
@@ -743,7 +743,7 @@
         let totalExp = parseInt(storage.getItem('wm_pro_exp')) || 0;
         let activeScreen = 'dashboard';
 
-        // --- クイズ設定用グローバル変数（必須） ---
+        // --- クイズ設定用グローバル変数 ---
         let currentQuizData = [];
         let currentOptions = {};
 
@@ -905,8 +905,22 @@
         }
 
         function recordError(enWord) {
+            // 既存のエラーカウント
             errors[enWord] = (errors[enWord] || 0) + 1;
             storage.setItem('wm_pro_errors', JSON.stringify(errors));
+
+            // 〇△✕のステータス自動変更ロジック
+            let currentStatus = wordStatus[enWord];
+            if (!currentStatus || currentStatus === 'none') {
+                wordStatus[enWord] = 'x';
+            } else if (currentStatus === 'o') {
+                wordStatus[enWord] = 't';
+            } else if (currentStatus === 't') {
+                wordStatus[enWord] = 'x';
+            }
+            // 'x' の場合はそのまま
+            storage.setItem('wm_pro_word_status', JSON.stringify(wordStatus));
+            
             renderVocabulary();
         }
 
@@ -933,11 +947,6 @@
                 if(el) el.className = (t === tab) ? "w-full flex items-center gap-4 p-4 rounded-xl bg-primary text-white font-bold transition-colors shadow-sm" : "w-full flex items-center gap-4 p-4 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 font-bold transition-colors";
                 const mel = document.getElementById('mob-' + t);
                 if(mel) mel.className = (t === tab) ? "flex flex-col items-center p-2 text-primary" : "flex flex-col items-center p-2 text-slate-400";
-                
-                if (el) {
-                    const icon = el.querySelector('i');
-                    if(icon) icon.className = (t === tab) ? "w-5 h-5 text-white" : "w-5 h-5";
-                }
             });
             if(tab === 'dashboard') { try{updateDashboardScores();}catch(e){} }
             window.scrollTo(0,0);
@@ -993,7 +1002,7 @@
                                 <button onclick="setWordStatus('${w.en}', 't')" class="${btnClass} ${tClass}">△</button>
                                 <button onclick="setWordStatus('${w.en}', 'x')" class="${btnClass} ${xClass}">×</button>
                             </div>
-                            <button onclick="initAudio(); playAudio('${w.en}')" class="p-1.5 text-slate-400 hover:text-primary rounded-full hover:bg-slate-50 transition-colors bg-slate-50 border border-slate-200"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+                            <button onclick="initAudio(); playAudio('${w.en}')" class="p-1.5 text-slate-300 hover:text-primary rounded-full hover:bg-slate-50 transition-colors bg-slate-50 border border-slate-200"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
                         </div>
                     `;
                     grid.appendChild(card);
@@ -1139,7 +1148,7 @@
                 let count = parseInt(storage.getItem('wm_pro_stats_matching_count')||0) + 1;
                 storage.setItem('wm_pro_stats_matching_count', count);
                 const players = document.querySelector('input[name="opt_player"]:checked').value;
-                if(players === '1') { navTo('matching'); initMatching(source); } else { navTo('matching-vs'); initMatchingVs(source); }
+                if(players === '1') { navTo('matching'); initMatching(source); } else { navTo('matching'); initMatchingVs(source); }
             } else if (pendingMode === 'vs') {
                 let count = parseInt(storage.getItem('wm_pro_stats_vs_count')||0) + 1;
                 storage.setItem('wm_pro_stats_vs_count', count);
@@ -1542,7 +1551,7 @@
                 jpEl.innerText = item.jp; jpList.appendChild(jpEl);
                 
                 let slot = document.createElement('div');
-                slot.className = 'tt-slot h-10 border-2 border-dashed border-slate-300 rounded-lg flex items-center justify-center transition-colors bg-surface opacity-50';
+                slot.className = 'tt-slot h-10 border-2 border-dashed border-slate-300 rounded-lg flex items-center justify-center transition-colors bg-white/50';
                 slot.dataset.index = idx; dropZone.appendChild(slot);
                 ttSortables.push(new Sortable(slot, { group: { name: 'shared', put: function(to) { return to.el.children.length < 1; } }, animation: 150, ghostClass: 'sortable-ghost', dragClass: 'sortable-drag' }));
             });
@@ -1574,7 +1583,7 @@
                     if(jpNodes[i].innerText === card.dataset.jp) {
                         correctCount++;
                         card.classList.replace('border-slate-200', 'border-secondary'); card.classList.replace('text-primary', 'text-secondary'); card.classList.add('bg-emerald-50');
-                        card.classList.remove('cursor-grab', 'active:cursor-grabbing', 'btn-elegant', 'bg-surface'); card.style.pointerEvents = 'none';
+                        card.classList.remove('cursor-grab', 'active:cursor-grabbing', 'btn-elegant'); card.style.pointerEvents = 'none';
                     } else { toMoveBack.push(card); }
                 }
             }
@@ -1600,6 +1609,7 @@
             } else {
                 playSound('wrong');
                 toMoveBack.forEach(node => {
+                    recordError(node.dataset.en); // --- エラー自動記録（タイムトライアル）---
                     node.classList.add('bg-red-50', 'border-red-400');
                     setTimeout(() => node.classList.remove('bg-red-50', 'border-red-400'), 500);
                     enList.appendChild(node);
@@ -1657,7 +1667,10 @@
             let allCorrect = true;
             for(let i=0; i<3; i++) {
                 if(listSelected[i].choice.en !== listTargets[i].en) {
-                    allCorrect = false; listSelected[i].btn.classList.remove('opacity-0', 'pointer-events-none'); listSelected[i] = null;
+                    allCorrect = false; 
+                    recordError(listTargets[i].en); // --- エラー自動記録（リスニング）---
+                    listSelected[i].btn.classList.remove('opacity-0', 'pointer-events-none'); 
+                    listSelected[i] = null;
                 }
             }
             if(allCorrect) {
@@ -1894,6 +1907,9 @@
                 if (p1Score >= 5 || p2Score >= 5) setTimeout(endVsMatch, 1000); else setTimeout(nextVsRound, 1000);
             } else {
                 playSound('wrong');
+                if (player === 1 && isVsCpu) {
+                    recordError(vsCurrentTarget.en); // --- エラー自動記録（カルタ対戦 1P）---
+                }
                 btn.classList.replace('bg-surface', 'bg-slate-100'); btn.classList.replace('text-slate-800', 'text-slate-400'); btn.disabled = true;
                 if(player === 1) { p1Locked = true; document.getElementById('lock-p1').classList.remove('hidden'); }
                 else { p2Locked = true; document.getElementById('lock-p2').classList.remove('hidden'); }
