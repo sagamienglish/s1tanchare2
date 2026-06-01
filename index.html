@@ -1206,7 +1206,8 @@
                 let count = parseInt(storage.getItem('wm_pro_stats_matching_count')||0) + 1;
                 storage.setItem('wm_pro_stats_matching_count', count);
                 const players = document.querySelector('input[name="opt_player"]:checked').value;
-                if(players === '1') { navTo('matching'); initMatching(source); } else { navTo('matching-vs'); initMatchingVs(source); }
+                navTo('matching');
+                if(players === '1') { initMatching(source); } else { initMatchingVs(source); }
             } else if (pendingMode === 'vs') {
                 let count = parseInt(storage.getItem('wm_pro_stats_vs_count')||0) + 1;
                 storage.setItem('wm_pro_stats_vs_count', count);
