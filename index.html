@@ -880,7 +880,7 @@
             } else if (pendingMode === 'matching') {
                 storage.setItem('wm_pro_stats_matching_count', (parseInt(storage.getItem('wm_pro_stats_matching_count')||0)+1));
                 const pl = document.querySelector('input[name="opt_player"]:checked').value;
-                if(pl === '1') { navTo('matching'); initMatching(source); } else { navTo('matching-vs'); initMatchingVs(source); }
+                if(pl === '1') { navTo('matching'); initMatching(source); } else { navTo('matching'); initMatchingVs(source); }
             } else if (pendingMode === 'vs') {
                 storage.setItem('wm_pro_stats_vs_count', (parseInt(storage.getItem('wm_pro_stats_vs_count')||0)+1));
                 const isCpu = document.querySelector('input[name="opt_player"]:checked').value === '1';
