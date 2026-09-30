@@ -420,6 +420,50 @@
             100% { opacity: 0; transform: translate(-50%, -110%) scale(0.9); }
         }
 
+        .sentence-batch-row {
+            border-left: 4px solid transparent;
+            transition: background-color 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+        }
+        .sentence-batch-row.batch-correct {
+            border-left-color: #10b981;
+            background: linear-gradient(rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0.12)), var(--color-surface);
+        }
+        .sentence-batch-row.batch-wrong {
+            border-left-color: #ef4444;
+            background: linear-gradient(rgba(239, 68, 68, 0.11), rgba(239, 68, 68, 0.11)), var(--color-surface);
+        }
+        .batch-answer-reveal { animation: batchAnswerReveal 0.42s ease-out both; }
+        @keyframes batchAnswerReveal {
+            0% { opacity: 0.45; transform: translateX(-10px) scale(0.99); }
+            55% { opacity: 1; transform: translateX(3px) scale(1.005); }
+            100% { opacity: 1; transform: translateX(0) scale(1); }
+        }
+        .batch-score-play { animation: batchScoreFade 2.4s ease both; }
+        .batch-score-panel { animation: batchScoreSlam 0.65s cubic-bezier(0.18, 0.9, 0.22, 1.25) both; }
+        .batch-score-confetti-piece {
+            position: absolute;
+            top: -8%;
+            width: 0.55rem;
+            height: 1.1rem;
+            opacity: 0;
+            animation: batchConfettiFall var(--duration) ease-in var(--delay) forwards;
+        }
+        @keyframes batchScoreFade {
+            0% { opacity: 0; background-color: rgba(15, 23, 42, 0); }
+            10%, 82% { opacity: 1; background-color: rgba(15, 23, 42, 0.82); }
+            100% { opacity: 0; background-color: rgba(15, 23, 42, 0); }
+        }
+        @keyframes batchScoreSlam {
+            0% { opacity: 0; transform: scale(0.45) translateY(24px); }
+            55% { opacity: 1; transform: scale(1.1) translateY(-4px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes batchConfettiFall {
+            0% { opacity: 0; transform: translate3d(0, -10vh, 0) rotate(0deg); }
+            12% { opacity: 1; }
+            100% { opacity: 0; transform: translate3d(var(--drift), 108vh, 0) rotate(620deg); }
+        }
+
         .winner-burst { background: rgba(15, 23, 42, 0.82); animation: winnerFade 1.45s ease both; }
         .winner-panel { animation: winnerSlam 0.55s cubic-bezier(0.18, 0.9, 0.22, 1.25) both; }
         .winner-panel.p1 { background: linear-gradient(135deg, var(--color-primary), var(--color-primaryHover)); }
@@ -745,20 +789,27 @@
         </div>
 
         <!-- ================= Drill: Sentence Choice ================= -->
-        <div id="screen-sentence_choice" class="screen hidden flex-col p-4 md:p-8 max-w-4xl mx-auto min-h-full">
+        <div id="screen-sentence_choice" class="screen hidden flex-col p-3 md:p-6 max-w-6xl mx-auto min-h-full">
             <div class="flex justify-between items-center mb-6">
                 <button onclick="navTo('dashboard')" class="text-slate-400 hover:text-slate-600 p-2"><i data-lucide="x" class="w-6 h-6"></i></button>
-                <div class="bg-slate-100 text-slate-600 font-bold px-4 py-1.5 rounded-full text-sm flex items-center gap-2"><i data-lucide="text-cursor-input" class="w-4 h-4"></i> Q <span id="sc-current">1</span> / <span id="sc-total">10</span></div>
+                <div id="sc-progress-label" class="bg-slate-100 text-slate-600 font-bold px-4 py-1.5 rounded-full text-sm flex items-center gap-2"><i data-lucide="text-cursor-input" class="w-4 h-4"></i><span>Q 1 / 10</span></div>
             </div>
-            <div class="flex-grow flex flex-col items-center justify-center w-full pb-8">
+            <div id="sc-single-panel" class="flex-grow flex flex-col items-center justify-center w-full max-w-4xl mx-auto pb-8">
                 <div id="sc-jp" class="text-base md:text-xl font-bold text-slate-600 text-center mb-5 leading-relaxed w-full"></div>
-                <div id="sc-sentence" class="text-2xl md:text-4xl font-extrabold text-slate-800 text-center leading-relaxed mb-8 w-full break-words"></div>
+                <div id="sc-sentence" class="text-2xl md:text-4xl font-extrabold text-slate-800 text-center leading-relaxed mb-8 w-full break-words whitespace-pre-wrap"></div>
                 <div id="sc-choices" class="w-full grid grid-cols-1 md:grid-cols-2 gap-3 px-1"></div>
                 <div id="sc-feedback" class="hidden w-full mt-6 rounded-xl border border-green-200 bg-green-50 p-4 text-center">
                     <div class="text-xs font-black text-green-700 mb-1">正解</div>
                     <div id="sc-full-sentence" class="text-base md:text-lg font-extrabold text-slate-800 leading-relaxed"></div>
                 </div>
                 <button id="sc-next-btn" onclick="nextSentenceChoice()" class="hidden mt-5 bg-primary hover:bg-primaryHover text-white font-bold px-8 py-3 rounded-xl shadow-sm cursor-pointer items-center gap-2">次へ <i data-lucide="arrow-right" class="w-4 h-4 text-white"></i></button>
+            </div>
+            <div id="sc-batch-panel" class="hidden w-full pb-6">
+                <div id="sc-batch-list" class="w-full bg-surface border border-slate-200 rounded-xl overflow-hidden shadow-sm"></div>
+                <div class="sticky bottom-2 z-20 mt-3 bg-surface border border-slate-200 rounded-xl p-2.5 shadow-lg flex items-center gap-3">
+                    <div id="sc-batch-count" class="text-xs font-bold text-slate-500 flex-1 text-center sm:text-left pl-1">0 / 10 回答済み</div>
+                    <button id="sc-batch-check-btn" onclick="checkBatchSentenceChoices()" disabled class="shrink-0 bg-primary text-white font-bold px-5 py-2.5 rounded-lg shadow-sm disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2"><i data-lucide="check-check" class="w-4 h-4 text-white"></i><span>答え合わせ</span></button>
+                </div>
             </div>
         </div>
 
@@ -974,6 +1025,15 @@
             <div id="global-winner-kicker" class="text-xs font-black tracking-[0.22em] opacity-90 mb-1">WINNER</div>
             <div id="global-winner-name" class="text-4xl md:text-6xl font-black leading-none">PLAYER 1</div>
             <div id="global-winner-sub" class="mt-3 text-sm md:text-base font-extrabold bg-white/20 rounded-full px-4 py-1 inline-block">BATTLE CLEAR</div>
+        </div>
+    </div>
+
+    <div id="batch-score-burst" class="hidden fixed inset-0 z-[320] pointer-events-none items-center justify-center overflow-hidden">
+        <div id="batch-score-confetti" class="absolute inset-0 overflow-hidden"></div>
+        <div id="batch-score-panel" class="batch-score-panel relative z-10 rounded-2xl px-9 py-8 md:px-14 md:py-10 text-center text-white shadow-2xl border-4 border-white/90 min-w-[280px]">
+            <div id="batch-score-kicker" class="text-xs md:text-sm font-black tracking-[0.2em] opacity-90 mb-2">10問中</div>
+            <div id="batch-score-value" class="text-5xl md:text-7xl font-black leading-none">10問正解！</div>
+            <div id="batch-score-message" class="mt-4 text-base md:text-xl font-extrabold bg-white/20 rounded-full px-5 py-1.5 inline-block">PERFECT!</div>
         </div>
     </div>
 
@@ -1608,6 +1668,10 @@
         function clearAllTimers() {
             clearTimeout(vsCpuTimer); clearInterval(vsTypeInterval);
             clearInterval(mTimerInterval); clearInterval(ttTimerInterval);
+            scBatchTimers.forEach(timer => clearTimeout(timer)); scBatchTimers = [];
+            clearTimeout(scScoreBurstTimer);
+            const scoreBurst = document.getElementById('batch-score-burst');
+            if(scoreBurst) { scoreBurst.classList.add('hidden'); scoreBurst.classList.remove('flex', 'batch-score-play'); }
             cancelAnimationFrame(invAnimationId);
             invPlaying = false; vsLockAll = false; p1Locked = false; p2Locked = false;
         }
@@ -1733,6 +1797,19 @@
                     </div>`;
             }
 
+            if(mode === 'sentence_choice') {
+                container.innerHTML += `
+                    <label class="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider mt-4">表示方法</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm">
+                            <input type="radio" name="opt_sentence_layout" value="single" class="accent-primary" checked> 1問ずつ
+                        </label>
+                        <label class="bg-surface border border-slate-200 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer hover:border-primary transition-colors font-bold text-xs text-slate-700 shadow-sm">
+                            <input type="radio" name="opt_sentence_layout" value="batch" class="accent-primary"> 10問まとめて
+                        </label>
+                    </div>`;
+            }
+
             if(mode === 'typing_drill') {
                 container.innerHTML += `
                     <label class="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider mt-4">難易度</label>
@@ -1766,7 +1843,7 @@
 
         function confirmSetup() {
             let source = wordData.filter(w => w.cat === currentCategory);
-            const runConfig = { mode: pendingMode, category: currentCategory, filter: 'all', player: '1', typingDifficulty: tdDifficulty, learnType: 'normal' };
+            const runConfig = { mode: pendingMode, category: currentCategory, filter: 'all', player: '1', typingDifficulty: tdDifficulty, learnType: 'normal', sentenceLayout: 'single' };
             if(pendingMode !== 'vs' && pendingMode !== 'invader') {
                 const filter = document.querySelector('input[name="opt_filter"]:checked')?.value || 'all';
                 runConfig.filter = filter;
@@ -1780,6 +1857,18 @@
                     .map(item => wordData.find(w => w.en === item.en && w.cat === item.cat))
                     .filter(Boolean);
                 source = reviewWords;
+            }
+            if(pendingMode === 'sentence_choice') {
+                runConfig.sentenceLayout = document.querySelector('input[name="opt_sentence_layout"]:checked')?.value || 'single';
+                if(runConfig.sentenceLayout === 'batch') {
+                    const allowedWords = new Set(source.map(word => word.en));
+                    const availableExamples = sentenceQuestionData.filter(question => question.cat === currentCategory && allowedWords.has(question.en)).length;
+                    if(availableExamples < 10) {
+                        closeModal('modal-setup');
+                        showResult("例文不足", `10問まとめて出題するには、条件に合う例文が10問必要です。（現在: ${availableExamples}問）`, "", "info");
+                        return;
+                    }
+                }
             }
             const requirements = { learn: 1, '4choice': 4, sentence_choice: 1, typing_drill: 1, listening_drill: 6, matching: 6, timetrial: 10, vs: 10, invader: 10 };
             const req = requirements[pendingMode] || 1;
@@ -1796,7 +1885,7 @@
 
             if(pendingMode === 'learn') { navTo('learn'); startLearnMode(source); }
             else if(pendingMode === '4choice') { navTo('4choice'); init4Choice(source); }
-            else if(pendingMode === 'sentence_choice') { navTo('sentence_choice'); initSentenceChoice(source); }
+            else if(pendingMode === 'sentence_choice') { navTo('sentence_choice'); initSentenceChoice(source, runConfig.sentenceLayout); }
             else if(pendingMode === 'typing_drill') { tdDifficulty = document.querySelector('input[name="opt_typing_diff"]:checked')?.value || 'hard'; lastRunConfig.typingDifficulty = tdDifficulty; window.localStorage.setItem('wm_pro_last_run', JSON.stringify(lastRunConfig)); navTo('typing_drill'); initTypingDrill(source); }
             else if(pendingMode === 'listening_drill') {
                 const players = document.querySelector('input[name="opt_player"]:checked')?.value || '1';
@@ -1854,7 +1943,7 @@
             if(!useStamina()) return;
             if(lastRunConfig.mode === 'learn') { navTo('learn'); startLearnMode(source); }
             else if(lastRunConfig.mode === '4choice') { navTo('4choice'); init4Choice(source); }
-            else if(lastRunConfig.mode === 'sentence_choice') { navTo('sentence_choice'); initSentenceChoice(source); }
+            else if(lastRunConfig.mode === 'sentence_choice') { navTo('sentence_choice'); initSentenceChoice(source, lastRunConfig.sentenceLayout || 'single'); }
             else if(lastRunConfig.mode === 'typing_drill') { tdDifficulty = lastRunConfig.typingDifficulty || 'hard'; navTo('typing_drill'); initTypingDrill(source); }
             else if(lastRunConfig.mode === 'listening_drill') { if(lastRunConfig.player === '2') { navTo('listening-vs'); initListeningVs(source); } else { navTo('listening_drill'); initListeningDrill(source); } }
             else if(lastRunConfig.mode === 'matching') { if(lastRunConfig.player === '2') { navTo('matching-vs'); initMatchingVs(source); } else { navTo('matching'); initMatching(source); } }
@@ -2159,8 +2248,10 @@
 
         // ================== DRILL: SENTENCE CHOICE ==================
         const sentenceQuestionData = window.exampleQuestions || [];
-        let scTargets = [], scIndex = 0, scLocked = false, scWrongThisQuestion = false;
-        function initSentenceChoice(source) {
+        const scBatchRevealInterval = 300;
+        let scTargets = [], scIndex = 0, scLocked = false, scWrongThisQuestion = false, scLayout = 'single';
+        let scBatchSelections = [], scBatchRevealed = false, scBatchScore = 0, scBatchTimers = [], scScoreBurstTimer = null;
+        function initSentenceChoice(source, layout = 'single') {
             const allowedWords = new Set(source.map(word => word.en));
             const pool = sentenceQuestionData.filter(question => question.cat === currentCategory && allowedWords.has(question.en));
             if(pool.length === 0) {
@@ -2170,8 +2261,20 @@
             }
             scTargets = shuffle(pool).slice(0, 10);
             scIndex = 0;
-            document.getElementById('sc-total').innerText = scTargets.length;
-            renderSentenceChoice();
+            scLayout = layout === 'batch' ? 'batch' : 'single';
+            scBatchTimers.forEach(timer => clearTimeout(timer)); scBatchTimers = [];
+            const singlePanel = document.getElementById('sc-single-panel');
+            const batchPanel = document.getElementById('sc-batch-panel');
+            if(scLayout === 'batch') {
+                singlePanel.classList.add('hidden');
+                batchPanel.classList.remove('hidden');
+                document.querySelector('#sc-progress-label span').innerText = `${scTargets.length}問まとめて`;
+                renderBatchSentenceChoices();
+            } else {
+                batchPanel.classList.add('hidden');
+                singlePanel.classList.remove('hidden');
+                renderSentenceChoice();
+            }
         }
         function getSentenceChoices(target) {
             const samePart = sentenceQuestionData.filter(question => question.cat === target.cat && question.part === target.part && question.answer !== target.answer);
@@ -2189,16 +2292,13 @@
         }
         function renderSentenceChoice() {
             if(scIndex >= scTargets.length) {
-                playSound('match');
-                addExp(scTargets.length);
-                const practicedWords = scTargets.map(question => wordData.find(word => word.en === question.en && word.cat === question.cat)).filter(Boolean);
-                showResult("例文クイズ完了！", `${scTargets.length}問の例文に挑戦しました。`, buildPracticedWordsHtml(practicedWords), "win");
+                showSentenceChoiceResult();
                 return;
             }
             scLocked = false;
             scWrongThisQuestion = false;
             const target = scTargets[scIndex];
-            document.getElementById('sc-current').innerText = scIndex + 1;
+            document.querySelector('#sc-progress-label span').innerText = `Q ${scIndex + 1} / ${scTargets.length}`;
             document.getElementById('sc-jp').innerText = target.jp;
             document.getElementById('sc-sentence').innerText = target.sentence;
             document.getElementById('sc-full-sentence').innerText = '';
@@ -2254,6 +2354,158 @@
             if(!scLocked) return;
             scIndex++;
             renderSentenceChoice();
+        }
+        function renderBatchSentenceChoices() {
+            scBatchSelections = Array(scTargets.length).fill(null);
+            scBatchRevealed = false;
+            scBatchScore = 0;
+            const list = document.getElementById('sc-batch-list');
+            list.innerHTML = '';
+            scTargets.forEach((target, index) => {
+                const row = document.createElement('div');
+                row.id = `sc-batch-row-${index}`;
+                row.className = 'sentence-batch-row grid grid-cols-1 md:grid-cols-[minmax(0,1.45fr)_minmax(300px,1fr)] gap-2 md:gap-3 px-2.5 py-2 border-b border-slate-200 last:border-b-0';
+                row.innerHTML = `<div class="min-w-0 flex gap-2">
+                    <div class="shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-black">${index + 1}</div>
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-start gap-1.5"><div data-batch-mark class="hidden shrink-0 text-sm font-black"></div><div class="text-[10px] md:text-[11px] font-bold text-slate-500 leading-snug">${escapeHtml(target.jp)}</div></div>
+                        <div data-batch-sentence class="mt-0.5 text-xs md:text-sm font-extrabold text-slate-800 leading-snug break-words whitespace-pre-wrap">${escapeHtml(target.sentence)}</div>
+                    </div>
+                </div>
+                <div class="sc-batch-options grid grid-cols-2 sm:grid-cols-4 gap-1.5 self-center"></div>`;
+                const options = row.querySelector('.sc-batch-options');
+                getSentenceChoices(target).forEach(answer => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.dataset.answer = answer;
+                    btn.className = 'min-w-0 h-8 px-1.5 rounded-lg border border-slate-200 bg-surface text-slate-700 text-[10px] md:text-xs font-bold truncate hover:border-primary cursor-pointer transition-colors';
+                    btn.innerText = answer;
+                    btn.onclick = () => selectBatchSentenceChoice(index, answer, btn);
+                    options.appendChild(btn);
+                });
+                list.appendChild(row);
+            });
+            updateBatchSentenceControls();
+        }
+        function selectBatchSentenceChoice(index, answer, selectedBtn) {
+            if(scBatchRevealed) return;
+            scBatchSelections[index] = answer;
+            const row = document.getElementById(`sc-batch-row-${index}`);
+            row.querySelectorAll('.sc-batch-options button').forEach(btn => {
+                btn.className = 'min-w-0 h-8 px-1.5 rounded-lg border border-slate-200 bg-surface text-slate-700 text-[10px] md:text-xs font-bold truncate hover:border-primary cursor-pointer transition-colors';
+            });
+            selectedBtn.className = 'min-w-0 h-8 px-1.5 rounded-lg border-2 border-primary bg-primaryLight text-primary text-[10px] md:text-xs font-black truncate cursor-pointer';
+            updateBatchSentenceControls();
+        }
+        function updateBatchSentenceControls() {
+            const answered = scBatchSelections.filter(Boolean).length;
+            document.getElementById('sc-batch-count').innerText = `${answered} / ${scTargets.length} 回答済み`;
+            const btn = document.getElementById('sc-batch-check-btn');
+            btn.disabled = answered !== scTargets.length;
+            btn.innerHTML = '<i data-lucide="check-check" class="w-4 h-4 text-white"></i><span>答え合わせ</span>';
+            lucide.createIcons();
+        }
+        function checkBatchSentenceChoices() {
+            if(scBatchRevealed) {
+                showSentenceChoiceResult(`${scBatchScore} / ${scTargets.length} 正解`);
+                return;
+            }
+            if(scBatchSelections.some(answer => !answer)) return;
+            const checkBtn = document.getElementById('sc-batch-check-btn');
+            checkBtn.disabled = true;
+            const finalStatus = new Map();
+            scBatchScore = 0;
+            scTargets.forEach((target, index) => {
+                const correct = scBatchSelections[index] === target.answer;
+                if(correct) scBatchScore++;
+                if(!finalStatus.has(target.en) || !correct) finalStatus.set(target.en, correct ? 'o' : 'x');
+                const timer = setTimeout(() => revealBatchSentenceAnswer(index, correct), index * scBatchRevealInterval);
+                scBatchTimers.push(timer);
+            });
+            const finishTimer = setTimeout(() => {
+                finalStatus.forEach((status, enWord) => { wordStatus[enWord] = status; });
+                window.localStorage.setItem('wm_pro_word_status', JSON.stringify(wordStatus));
+                updateDashboard();
+                scBatchRevealed = true;
+                document.getElementById('sc-batch-count').innerText = `${scBatchScore} / ${scTargets.length} 正解`;
+                checkBtn.innerHTML = '<i data-lucide="list-checks" class="w-4 h-4 text-white"></i><span>結果を見る</span>';
+                lucide.createIcons();
+                showBatchScoreBurst(scBatchScore, scTargets.length, () => { checkBtn.disabled = false; });
+                playSound(scBatchScore === scTargets.length ? 'match' : 'correct');
+            }, scTargets.length * scBatchRevealInterval + 280);
+            scBatchTimers.push(finishTimer);
+        }
+        function revealBatchSentenceAnswer(index, correct) {
+            const target = scTargets[index];
+            const selected = scBatchSelections[index];
+            const row = document.getElementById(`sc-batch-row-${index}`);
+            if(!row) return;
+            row.classList.add(correct ? 'batch-correct' : 'batch-wrong', 'batch-answer-reveal');
+            row.querySelector('[data-batch-sentence]').innerText = target.full;
+            const mark = row.querySelector('[data-batch-mark]');
+            mark.classList.remove('hidden');
+            mark.classList.add(correct ? 'text-green-600' : 'text-red-500');
+            mark.innerText = correct ? '◯' : '×';
+            row.querySelectorAll('.sc-batch-options button').forEach(btn => {
+                btn.disabled = true;
+                btn.onclick = null;
+                if(btn.dataset.answer === target.answer) {
+                    btn.className = 'min-w-0 h-8 px-1.5 rounded-lg border border-green-600 bg-green-500 text-white text-[10px] md:text-xs font-black truncate';
+                } else if(btn.dataset.answer === selected) {
+                    btn.className = 'min-w-0 h-8 px-1.5 rounded-lg border border-red-500 bg-red-500 text-white text-[10px] md:text-xs font-black truncate';
+                } else {
+                    btn.classList.add('opacity-30');
+                }
+            });
+            const timer = setTimeout(() => row.classList.remove('batch-answer-reveal'), 450);
+            scBatchTimers.push(timer);
+        }
+        function showBatchScoreBurst(score, total, onComplete = null) {
+            const burst = document.getElementById('batch-score-burst');
+            const panel = document.getElementById('batch-score-panel');
+            const ratio = total ? score / total : 0;
+            const color = ratio === 1 ? '#059669' : ratio >= 0.8 ? '#10b981' : ratio >= 0.6 ? 'var(--color-primary)' : '#f59e0b';
+            const message = ratio === 1 ? 'PERFECT!' : ratio >= 0.8 ? 'すばらしい！' : ratio >= 0.6 ? 'あと少し！' : '次はもっと伸びる！';
+            document.getElementById('batch-score-kicker').innerText = `${total}問中`;
+            document.getElementById('batch-score-value').innerText = `${score}問正解！`;
+            document.getElementById('batch-score-message').innerText = message;
+            panel.style.background = color;
+
+            const confetti = document.getElementById('batch-score-confetti');
+            confetti.innerHTML = '';
+            const colors = ['#22c55e', '#facc15', '#38bdf8', '#fb7185', '#ffffff'];
+            for(let i = 0; i < 28; i++) {
+                const piece = document.createElement('span');
+                piece.className = 'batch-score-confetti-piece';
+                piece.style.left = `${3 + Math.random() * 94}%`;
+                piece.style.backgroundColor = colors[i % colors.length];
+                piece.style.setProperty('--delay', `${Math.random() * 0.45}s`);
+                piece.style.setProperty('--duration', `${1.45 + Math.random() * 0.65}s`);
+                piece.style.setProperty('--drift', `${-14 + Math.random() * 28}vw`);
+                confetti.appendChild(piece);
+            }
+
+            clearTimeout(scScoreBurstTimer);
+            burst.classList.add('hidden');
+            burst.classList.remove('flex', 'batch-score-play');
+            void burst.offsetWidth;
+            burst.classList.remove('hidden');
+            burst.classList.add('flex', 'batch-score-play');
+            panel.style.animation = 'none';
+            void panel.offsetWidth;
+            panel.style.animation = '';
+            scScoreBurstTimer = setTimeout(() => {
+                burst.classList.add('hidden');
+                burst.classList.remove('flex', 'batch-score-play');
+                if(onComplete) onComplete();
+            }, 2400);
+        }
+        function showSentenceChoiceResult(scoreText = '') {
+            playSound('match');
+            addExp(scTargets.length);
+            const practicedWords = scTargets.map(question => wordData.find(word => word.en === question.en && word.cat === question.cat)).filter(Boolean);
+            const desc = scoreText ? `${scoreText}。${scTargets.length}問の例文に挑戦しました。` : `${scTargets.length}問の例文に挑戦しました。`;
+            showResult("例文クイズ完了！", desc, buildPracticedWordsHtml(practicedWords), "win");
         }
 
         // ================== DRILL: TYPING (Hard) ==================
