@@ -358,7 +358,67 @@
         .card-back { background-color: var(--color-surface) !important; color: var(--color-text-main) !important; border: 2px solid var(--color-primary) !important; font-weight: bold; z-index: 1; transform: scale(0.9); opacity: 0; }
         .card.flipped .card-front { transform: scale(1.1); opacity: 0; z-index: 1; pointer-events: none; }
         .card.flipped .card-back { transform: scale(1); opacity: 1; z-index: 2; }
-        .card.matched { opacity: 0; pointer-events: none; transition: opacity 0.3s 0.5s; }
+        #matching-grid, #mvs-grid-p1, #mvs-grid-p2 { position: relative; }
+        .card.matched {
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            animation: cardMatchPop 0.7s ease-out;
+            transition: opacity 0.25s 0.7s;
+        }
+        .card.matched .card-back {
+            background-color: #10b981 !important;
+            color: #ffffff !important;
+            border-color: #059669 !important;
+            box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.25), 0 0 28px rgba(16, 185, 129, 0.75);
+        }
+        .card.matched .card-back::after {
+            content: "✓";
+            position: absolute;
+            top: 0.3rem;
+            right: 0.4rem;
+            width: 1.35rem;
+            height: 1.35rem;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            color: #059669;
+            font-size: 0.9rem;
+            font-weight: 900;
+            box-shadow: 0 3px 10px rgba(5, 150, 105, 0.35);
+        }
+        .match-callout {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 30;
+            padding: 0.45rem 1rem;
+            border-radius: 999px;
+            background: #059669;
+            color: #ffffff;
+            border: 3px solid #ffffff;
+            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.45);
+            font-size: clamp(0.8rem, 3vw, 1.1rem);
+            font-weight: 900;
+            line-height: 1;
+            pointer-events: none;
+            animation: matchCallout 0.85s ease-out forwards;
+        }
+        @keyframes cardMatchPop {
+            0% { transform: scale(1); filter: brightness(1); }
+            30% { transform: scale(1.14) rotate(-2deg); filter: brightness(1.18); }
+            58% { transform: scale(0.97) rotate(1deg); }
+            80% { transform: scale(1.08); }
+            100% { transform: scale(1); filter: brightness(1); }
+        }
+        @keyframes matchCallout {
+            0% { opacity: 0; transform: translate(-50%, -35%) scale(0.55); }
+            25% { opacity: 1; transform: translate(-50%, -50%) scale(1.16); }
+            65% { opacity: 1; transform: translate(-50%, -65%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -110%) scale(0.9); }
+        }
 
         .winner-burst { background: rgba(15, 23, 42, 0.82); animation: winnerFade 1.45s ease both; }
         .winner-panel { animation: winnerSlam 0.55s cubic-bezier(0.18, 0.9, 0.22, 1.25) both; }
@@ -866,7 +926,7 @@
     </div>
 
     <div id="modal-result" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-surface rounded-2xl p-5 md:p-8 w-full max-w-lg md:max-w-2xl text-center shadow-2xl animate-pop border border-slate-100 relative overflow-hidden">
+        <div class="bg-surface rounded-2xl p-5 md:p-8 w-full max-w-lg md:max-w-2xl max-h-[calc(100vh-2rem)] overflow-y-auto text-center shadow-2xl animate-pop border border-slate-100 relative">
             <div id="res-icon" class="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 relative z-10"></div>
             <h2 id="res-title" class="text-2xl font-extrabold text-slate-800 mb-2 relative z-10"></h2>
             <p id="res-desc" class="text-slate-500 mb-6 text-sm relative z-10 font-bold"></p>
@@ -1388,6 +1448,7 @@
             window.localStorage.setItem('wm_pro_word_status', JSON.stringify(wordStatus));
             updateDashboard();
             if(activeScreen === 'vocabulary') renderVocabulary();
+            refreshResultStatusButtons();
         }
         function recordLearnReviewWord(word) {
             learnReviewLog = [{ en: word.en, cat: word.cat, time: Date.now() }, ...learnReviewLog.filter(item => item.en !== word.en)];
@@ -1805,6 +1866,46 @@
         function escapeHtml(text) {
             return String(text).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
         }
+        function uniqueWords(words) {
+            const seen = new Set();
+            return (words || []).filter(word => {
+                if(!word || seen.has(word.en)) return false;
+                seen.add(word.en);
+                return true;
+            });
+        }
+        function buildResultStatusButtons(enWord) {
+            const status = wordStatus[enWord] || 'none';
+            const safeEn = encodeURIComponent(enWord).replace(/'/g, '%27');
+            const base = 'w-8 h-8 rounded-full flex items-center justify-center font-black text-xs border transition-colors';
+            const off = 'bg-white border-slate-200 text-slate-400 hover:bg-slate-50';
+            const oCl = status === 'o' ? 'bg-green-100 border-green-500 text-green-700' : off;
+            const tCl = status === 't' ? 'bg-yellow-100 border-yellow-500 text-yellow-700' : off;
+            const xCl = status === 'x' ? 'bg-red-100 border-red-500 text-red-700' : off;
+            return `<button type="button" aria-label="${escapeHtml(enWord)}を丸にする" onclick="setWordStatus(decodeURIComponent('${safeEn}'), 'o')" class="${base} ${oCl}">◯</button>
+                <button type="button" aria-label="${escapeHtml(enWord)}を三角にする" onclick="setWordStatus(decodeURIComponent('${safeEn}'), 't')" class="${base} ${tCl}">△</button>
+                <button type="button" aria-label="${escapeHtml(enWord)}をばつにする" onclick="setWordStatus(decodeURIComponent('${safeEn}'), 'x')" class="${base} ${xCl}">×</button>`;
+        }
+        function refreshResultStatusButtons() {
+            document.querySelectorAll('[data-result-status-word]').forEach(container => {
+                container.innerHTML = buildResultStatusButtons(container.dataset.resultStatusWord);
+            });
+        }
+        function buildPracticedWordsHtml(words, title = '今回練習した単語') {
+            const targets = uniqueWords(words);
+            if(targets.length === 0) return '';
+            const rows = targets.map(word => `<div class="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+                <div class="min-w-0 text-left">
+                    <div class="font-black text-slate-800 text-sm truncate">${escapeHtml(word.en)}</div>
+                    <div class="text-xs text-slate-500 leading-snug">${escapeHtml(word.jp)}</div>
+                </div>
+                <div class="shrink-0 flex items-center gap-1" data-result-status-word="${escapeHtml(word.en)}">${buildResultStatusButtons(word.en)}</div>
+            </div>`).join('');
+            return `<div class="w-full mt-4">
+                <div class="text-xs font-black text-slate-400 mb-2 text-center tracking-wider">${escapeHtml(title)}</div>
+                <div class="max-h-72 overflow-y-auto space-y-2 pr-1">${rows}</div>
+            </div>`;
+        }
         function markLearnMistake(word) {
             const key = getWordKey(word);
             learnMistakes.add(key);
@@ -1821,7 +1922,10 @@
                         <div class="font-black text-slate-800 text-sm truncate">${escapeHtml(word.en)}</div>
                         <div class="text-xs text-slate-500 leading-snug">${escapeHtml(word.jp)}</div>
                     </div>
-                    ${badge}
+                    <div class="shrink-0 flex flex-col items-end gap-1.5">
+                        ${badge}
+                        <div class="flex items-center gap-1" data-result-status-word="${escapeHtml(word.en)}">${buildResultStatusButtons(word.en)}</div>
+                    </div>
                 </div>`;
             }).join('');
             return `<div class="w-full">
@@ -1988,7 +2092,7 @@
         let qcIndex = 0, qcTargets = [];
         function init4Choice(source) { qcTargets = shuffle(source).slice(0, 5); qcIndex = 0; render4Choice(); }
         function render4Choice() {
-            if(qcIndex >= 5) { playSound('match'); showResult("Completed", "5問やり遂げました！", "", "win"); addExp(5); return; }
+            if(qcIndex >= 5) { playSound('match'); showResult("Completed", "5問やり遂げました！", buildPracticedWordsHtml(qcTargets), "win"); addExp(5); return; }
             document.getElementById('qc-current').innerText = qcIndex + 1;
             const target = qcTargets[qcIndex];
             
@@ -2049,7 +2153,7 @@
             document.getElementById('td-easy-hint-container').innerHTML = `<div class="text-3xl font-mono font-bold tracking-widest text-primary bg-primaryLight/30 py-3 px-6 rounded-xl inline-block border border-primaryLight shadow-sm">${arr.join('')}</div>`;
         }
         function renderTypingDrill() {
-            if(tdIndex >= 5) { playSound('match'); showResult("Typing Completed", "5問クリアしました。", "", "win"); addExp(10); return; }
+            if(tdIndex >= 5) { playSound('match'); showResult("Typing Completed", "5問クリアしました。", buildPracticedWordsHtml(tdTargets), "win"); addExp(10); return; }
             tdHintCount = 0; document.getElementById('td-current').innerText = tdIndex + 1;
             const target = tdTargets[tdIndex]; document.getElementById('td-q').innerText = target.jp;
             
@@ -2133,14 +2237,15 @@
         }
 
         // ================== DRILL: LISTENING ==================
-        let ldIndex = 0, ldTargets = [], ldSelected = [], ldSource = [];
-        function initListeningDrill(source) { ldIndex = 0; ldSource = shuffle(source); renderListeningDrill(); }
+        let ldIndex = 0, ldTargets = [], ldSelected = [], ldSource = [], ldPracticed = [];
+        function initListeningDrill(source) { ldIndex = 0; ldSource = shuffle(source); ldPracticed = []; renderListeningDrill(); }
         function renderListeningDrill() {
-            if(ldIndex >= 3) { playSound('match'); showResult("Listening Clear", "リスニングテストをクリアしました！", "", "win"); addExp(5); return; }
+            if(ldIndex >= 3) { playSound('match'); showResult("Listening Clear", "リスニングテストをクリアしました！", buildPracticedWordsHtml(ldPracticed), "win"); addExp(5); return; }
             document.getElementById('ld-current').innerText = ldIndex + 1; ldSelected = [null, null, null];
             
             let pool = shuffle(ldSource.length ? ldSource : wordData.filter(w => w.cat === currentCategory));
             ldTargets = pool.slice(0, 3); let choices = shuffle([...ldTargets, ...pool.slice(3, 6)]);
+            ldPracticed.push(...ldTargets);
             
             updateLdSlots(); const cContainer = document.getElementById('ld-choices'); cContainer.innerHTML = '';
             choices.forEach(c => {
@@ -2182,11 +2287,11 @@
             playSeq(0);
         }
 
-        let lvsData = [], lvsTargets = [], lvsP1Score = 0, lvsP2Score = 0, lvsSelectedP1 = [], lvsSelectedP2 = [], lvsLockAll = false, lvsLockP1 = false, lvsLockP2 = false;
+        let lvsData = [], lvsTargets = [], lvsP1Score = 0, lvsP2Score = 0, lvsSelectedP1 = [], lvsSelectedP2 = [], lvsLockAll = false, lvsLockP1 = false, lvsLockP2 = false, lvsPracticed = [];
         function initListeningVs(source) {
             lvsData = shuffle(source);
             if(lvsData.length < 6) lvsData = lvsData.concat(shuffle(wordData.filter(w => !lvsData.includes(w))));
-            lvsP1Score = 0; lvsP2Score = 0; updateLvsUI(); nextLvsRound();
+            lvsP1Score = 0; lvsP2Score = 0; lvsPracticed = []; updateLvsUI(); nextLvsRound();
         }
         function endLvsEarly() { clearAllTimers(); navTo('dashboard'); }
         function updateLvsUI() {
@@ -2200,6 +2305,7 @@
             updateLvsSlots(1); updateLvsSlots(2);
             const pool = shuffle(lvsData);
             lvsTargets = pool.slice(0, 3);
+            lvsPracticed.push(...lvsTargets);
             const choices = shuffle([...lvsTargets, ...pool.slice(3, 6)]);
             renderLvsChoices('lvs-choices-p1', choices, 1);
             renderLvsChoices('lvs-choices-p2', choices, 2);
@@ -2266,19 +2372,20 @@
         function endLvsMatch() {
             playSound('match'); addExp(5);
             const title = lvsP1Score >= 5 ? "Player 1 Wins!" : "Player 2 Wins!";
-            const extra = `<div class="flex justify-center gap-6 mt-2 w-full"><div class="text-center"><div class="text-xs font-bold text-slate-400">P1 SCORE</div><div class="text-3xl font-extrabold text-primary">${lvsP1Score}</div></div><div class="text-center"><div class="text-xs font-bold text-slate-400">P2 SCORE</div><div class="text-3xl font-extrabold text-red-500">${lvsP2Score}</div></div></div>`;
+            const extra = `<div class="flex justify-center gap-6 mt-2 w-full"><div class="text-center"><div class="text-xs font-bold text-slate-400">P1 SCORE</div><div class="text-3xl font-extrabold text-primary">${lvsP1Score}</div></div><div class="text-center"><div class="text-xs font-bold text-slate-400">P2 SCORE</div><div class="text-3xl font-extrabold text-red-500">${lvsP2Score}</div></div></div>${buildPracticedWordsHtml(lvsPracticed)}`;
             navTo('dashboard');
             showResult(title, "白熱のリスニングバトルでした！", extra, "vs");
         }
 
         // ================== TIME ATTACK: MATCHING ==================
-        let mFirstCard = null, mLock = false, mPairs = 0, mStartTime = 0, mTimerInterval;
+        let mFirstCard = null, mLock = false, mPairs = 0, mStartTime = 0, mTimerInterval, mPracticed = [];
         function initMatching(source) {
             clearInterval(mTimerInterval); document.getElementById('match-timer').innerText = "0.0";
             const grid = document.getElementById('matching-grid'); grid.innerHTML = '';
             
             let selected = shuffle(source).slice(0, 6);
             if (selected.length < 6) selected = selected.concat(shuffle(wordData.filter(w => !selected.includes(w))).slice(0, 6 - selected.length));
+            mPracticed = [...selected];
             let cards = []; selected.forEach(v => { cards.push({ text: v.en, pair: v.jp, en: v.en }); cards.push({ text: v.jp, pair: v.en, en: v.en }); });
             cards = shuffle(cards); mPairs = 0;
             
@@ -2290,6 +2397,17 @@
             });
             lucide.createIcons(); mStartTime = Date.now(); mTimerInterval = setInterval(() => { document.getElementById('match-timer').innerText = ((Date.now() - mStartTime) / 1000).toFixed(1); }, 100);
         }
+        function showMatchingSuccess(firstCard, secondCard) {
+            firstCard.classList.add('matched');
+            secondCard.classList.add('matched');
+            const grid = secondCard.parentElement;
+            if(!grid) return;
+            const callout = document.createElement('div');
+            callout.className = 'match-callout';
+            callout.textContent = '正解!';
+            grid.appendChild(callout);
+            setTimeout(() => callout.remove(), 900);
+        }
         function flipMCard(elCard) {
             if(mLock || elCard === mFirstCard || elCard.classList.contains('matched') || elCard.classList.contains('flipped')) return;
             elCard.classList.add('flipped');
@@ -2297,15 +2415,19 @@
             if(mFirstCard.dataset.pair === elCard.dataset.text) {
                 mLock = true;
                 setTimeout(() => {
-                    playSound('match'); mFirstCard.classList.add('matched'); elCard.classList.add('matched'); recordSuccess(elCard.dataset.en);
+                    playSound('match'); showMatchingSuccess(mFirstCard, elCard); recordSuccess(elCard.dataset.en);
                     mFirstCard = null; mLock = false; mPairs++; addExp(1);
-                    if(mPairs === 6) { clearInterval(mTimerInterval); showResult("Clear!", `Time: ${((Date.now() - mStartTime) / 1000).toFixed(1)}s`, "", "win"); }
+                    if(mPairs === 6) {
+                        clearInterval(mTimerInterval);
+                        const finalTime = ((Date.now() - mStartTime) / 1000).toFixed(1);
+                        setTimeout(() => showResult("Clear!", `Time: ${finalTime}s`, buildPracticedWordsHtml(mPracticed), "win"), 900);
+                    }
                 }, 300); 
             } else { mLock = true; setTimeout(() => { mFirstCard.classList.remove('flipped'); elCard.classList.remove('flipped'); mFirstCard = null; mLock = false; }, 800); }
         }
         function endMatchingEarly() { clearInterval(mTimerInterval); navTo('dashboard'); }
 
-        let mvsPairs = {1: 0, 2: 0}, mvsFirstCard = {1: null, 2: null}, mvsLock = {1: false, 2: false}, mvsDone = false, mvsSeriesWins = {1: 0, 2: 0};
+        let mvsPairs = {1: 0, 2: 0}, mvsFirstCard = {1: null, 2: null}, mvsLock = {1: false, 2: false}, mvsDone = false, mvsSeriesWins = {1: 0, 2: 0}, mvsPracticed = [];
         function resetMatchingVsSeries() {
             mvsSeriesWins = {1: 0, 2: 0};
         }
@@ -2317,6 +2439,7 @@
             document.getElementById('mvs-winner-burst').classList.remove('flex');
             let selected = shuffle(source).slice(0, 4);
             if(selected.length < 4) selected = selected.concat(shuffle(wordData.filter(w => !selected.includes(w))).slice(0, 4 - selected.length));
+            mvsPracticed = [...selected];
             let cardsP1 = [], cardsP2 = [];
             selected.forEach(v => {
                 cardsP1.push({ text: v.en, pair: v.jp, en: v.en }); cardsP1.push({ text: v.jp, pair: v.en, en: v.en });
@@ -2346,7 +2469,7 @@
             if(mvsFirstCard[player].dataset.pair === el.dataset.text) {
                 mvsLock[player] = true;
                 setTimeout(() => {
-                    playSound('match'); mvsFirstCard[player].classList.add('matched'); el.classList.add('matched');
+                    playSound('match'); showMatchingSuccess(mvsFirstCard[player], el);
                     recordSuccess(el.dataset.en); mvsFirstCard[player] = null; mvsLock[player] = false; mvsPairs[player]++; addExp(1);
                     if(mvsPairs[player] >= 4) {
                         mvsDone = true; playSound('correct'); addExp(5);
@@ -2377,7 +2500,7 @@
                             <div class="rounded-lg bg-white border border-slate-200 py-2 text-center"><div class="text-xs font-bold text-red-500">Player 2</div><div class="text-2xl font-black text-slate-800">${mvsSeriesWins[2]}勝</div></div>
                         </div>
                     </div>
-                </div>`;
+                </div>${buildPracticedWordsHtml(mvsPracticed)}`;
             setTimeout(() => {
                 navTo('dashboard', { keepMatchSeries: true });
                 showResult(title, "先に4組そろえたプレイヤーの勝ちです！", extra, "vs");
@@ -2394,7 +2517,7 @@
         }
 
         // ================== TIME ATTACK: TIME TRIAL ==================
-        let ttStartTime = 0, ttTimerInterval, ttSortables = [];
+        let ttStartTime = 0, ttTimerInterval, ttSortables = [], ttPracticed = [];
         function initTimeTrial(source) {
             clearInterval(ttTimerInterval); document.getElementById('tt-timer').innerText = "0.0";
             const jpList = document.getElementById('tt-jp-list'), dropZone = document.getElementById('tt-drop-zone'), enList = document.getElementById('tt-en-list');
@@ -2403,6 +2526,7 @@
             
             let selected = shuffle(source).slice(0, 10);
             if(selected.length < 10) selected = selected.concat(shuffle(wordData.filter(w => !selected.includes(w))).slice(0, 10 - selected.length));
+            ttPracticed = [...selected];
             let enCards = shuffle([...selected]);
             
             selected.forEach((item, idx) => {
@@ -2431,7 +2555,7 @@
             }
             if(correctCount === 10) {
                 clearInterval(ttTimerInterval); playSound('match'); addExp(15);
-                showResult("Perfect Match!", `記録: ${((Date.now() - ttStartTime) / 1000).toFixed(1)}s`, "", "win");
+                showResult("Perfect Match!", `記録: ${((Date.now() - ttStartTime) / 1000).toFixed(1)}s`, buildPracticedWordsHtml(ttPracticed), "win");
             } else {
                 playSound('wrong');
                 toMoveBack.forEach(node => { node.classList.add('bg-red-50', 'border-red-400'); setTimeout(() => node.classList.remove('bg-red-50', 'border-red-400'), 500); enList.appendChild(node); });
@@ -2440,9 +2564,9 @@
         function endTTEarly() { clearInterval(ttTimerInterval); navTo('dashboard'); }
 
         // ================== VS: KARUTA ==================
-        let vsTypeInterval = null, p1Score = 0, p2Score = 0, isVsCpu = false, vsCpuTimer, vsLockAll = false, p1Locked = false, p2Locked = false, vsCurrentTarget = null;
+        let vsTypeInterval = null, p1Score = 0, p2Score = 0, isVsCpu = false, vsCpuTimer, vsLockAll = false, p1Locked = false, p2Locked = false, vsCurrentTarget = null, vsPracticed = [];
         function startVsKaruta(isCpu, source) {
-            isVsCpu = isCpu; p1Score = 0; p2Score = 0;
+            isVsCpu = isCpu; p1Score = 0; p2Score = 0; vsPracticed = [];
             document.getElementById('score-p1').innerText = p1Score; document.getElementById('score-p2').innerText = p2Score;
             if(isVsCpu) { document.getElementById('cpu-label').classList.remove('hidden'); document.getElementById('cpu-label').classList.add('flex'); if(document.getElementById('vs-cpu-level-display')) document.getElementById('vs-cpu-level-display').innerText = cpuLevel; } 
             else { document.getElementById('cpu-label').classList.add('hidden'); document.getElementById('cpu-label').classList.remove('flex'); }
@@ -2455,6 +2579,7 @@
             document.getElementById('lock-p1').classList.add('hidden'); document.getElementById('lock-p2').classList.add('hidden');
             
             vsCurrentTarget = vsData[Math.floor(Math.random() * vsData.length)];
+            vsPracticed.push(vsCurrentTarget);
             let fullText = vsCurrentTarget.jp; let currentText = ""; let charIdx = 0;
             document.getElementById('target-p1').innerText = ""; document.getElementById('target-p2').innerText = "";
             
@@ -2507,7 +2632,7 @@
         }
         function endVsMatch() {
             playSound('match'); addExp(5);
-            let title = "", desc = "", extra = `<div class="flex justify-center gap-6 mt-2 w-full"><div class="text-center"><div class="text-xs font-bold text-slate-400">P1 SCORE</div><div class="text-3xl font-extrabold text-primary">${p1Score}</div></div><div class="text-center"><div class="text-xs font-bold text-slate-400">P2 SCORE</div><div class="text-3xl font-extrabold text-red-500">${p2Score}</div></div></div>`;
+            let title = "", desc = "", extra = `<div class="flex justify-center gap-6 mt-2 w-full"><div class="text-center"><div class="text-xs font-bold text-slate-400">P1 SCORE</div><div class="text-3xl font-extrabold text-primary">${p1Score}</div></div><div class="text-center"><div class="text-xs font-bold text-slate-400">P2 SCORE</div><div class="text-3xl font-extrabold text-red-500">${p2Score}</div></div></div>${buildPracticedWordsHtml(vsPracticed)}`;
             const winner = p1Score >= 5 ? 1 : 2;
             if(isVsCpu) {
                 if(p1Score >= 5) { title = "You Win!!"; if(cpuLevel < 5) { cpuLevel++; window.localStorage.setItem('wm_pro_cpu', cpuLevel); desc = `CPUレベルが ${cpuLevel} に上がりました！`; } else { desc = "最強のCPUに勝利しました！"; } } 
@@ -2518,7 +2643,7 @@
         }
 
         // ================== VS: INVADER ==================
-        let invTargets = { 1: [], 2: [] }, invActiveWords = { 1: [], 2: [] }, invPlaying = false, invScores = { 1: 0, 2: 0 }, invCombos = { 1: 0, 2: 0 }, invTime = 30.0, invData = [], invIsCpu = false, invAnimationId = null, invLastTime = 0, invSpawnTimer = { 1: 0, 2: 0 }, invCpuThinkTimer = 0, invSeriesWins = { 1: 0, 2: 0 };
+        let invTargets = { 1: [], 2: [] }, invActiveWords = { 1: [], 2: [] }, invPlaying = false, invScores = { 1: 0, 2: 0 }, invCombos = { 1: 0, 2: 0 }, invTime = 30.0, invData = [], invIsCpu = false, invAnimationId = null, invLastTime = 0, invSpawnTimer = { 1: 0, 2: 0 }, invCpuThinkTimer = 0, invSeriesWins = { 1: 0, 2: 0 }, invPracticed = [];
         function resetInvaderSeries() {
             invSeriesWins = {1: 0, 2: 0};
         }
@@ -2526,7 +2651,7 @@
         function startInvader(isCpu, source) {
             invIsCpu = isCpu; invData = shuffle(source);
             if(invData.length < 20) invData = invData.concat(shuffle(wordData.filter(w => !invData.includes(w))));
-            invPlaying = true; invTime = 30.0; invScores = {1:0, 2:0}; invCombos = {1:0, 2:0}; invTargets = {1:[], 2:[]}; invSpawnTimer = {1:0, 2:0}; invCpuThinkTimer = 0;
+            invPlaying = true; invTime = 30.0; invScores = {1:0, 2:0}; invCombos = {1:0, 2:0}; invTargets = {1:[], 2:[]}; invSpawnTimer = {1:0, 2:0}; invCpuThinkTimer = 0; invPracticed = [];
             document.getElementById('inv-timer-display').innerText = "30.0"; document.getElementById('inv-score-1').innerText = "0"; document.getElementById('inv-score-2').innerText = "0";
             document.getElementById('inv-combo-1').classList.add('hidden'); document.getElementById('inv-combo-2').classList.add('hidden');
             document.getElementById('inv-sky-1').innerHTML = ''; document.getElementById('inv-sky-2').innerHTML = '';
@@ -2557,6 +2682,7 @@
             if (availableChoices.length === 0) return; // All words on buttons are already falling
             
             let targetWord = availableChoices[Math.floor(Math.random() * availableChoices.length)];
+            invPracticed.push(targetWord);
             let targetId = 'inv-tgt-' + p + '-' + Math.random().toString(36).substr(2, 9);
             
             let el = document.createElement('div'); el.id = targetId;
@@ -2719,7 +2845,7 @@
                         </div>
                     </div>`;
             }
-            let extra = `<div class="w-full"><div class="flex justify-center gap-6 mt-2 w-full"><div class="text-center"><div class="text-xs font-bold text-slate-400">LEFT / P2</div><div class="text-3xl font-extrabold text-red-500">${invScores[2]}</div></div><div class="text-center"><div class="text-xs font-bold text-slate-400">RIGHT / P1</div><div class="text-3xl font-extrabold text-primary">${invScores[1]}</div></div></div>${seriesHtml}</div>`;
+            let extra = `<div class="w-full"><div class="flex justify-center gap-6 mt-2 w-full"><div class="text-center"><div class="text-xs font-bold text-slate-400">LEFT / P2</div><div class="text-3xl font-extrabold text-red-500">${invScores[2]}</div></div><div class="text-center"><div class="text-xs font-bold text-slate-400">RIGHT / P1</div><div class="text-3xl font-extrabold text-primary">${invScores[1]}</div></div></div>${seriesHtml}</div>${buildPracticedWordsHtml(invPracticed)}`;
             if(invIsCpu) {
                 if(invScores[1] >= invScores[2]) {
                     title = "You Win!!";
