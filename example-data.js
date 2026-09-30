@@ -2998,6 +2998,2005 @@ window.exampleQuestions = [
     "full": "You will get fat if you don't do any exercise.",
     "jp": "少しは運動しないと太るよ。",
     "answer": "fat"
+  },
+  {
+    "id": 301,
+    "cat": "単チャレ第4回",
+    "en": "technique",
+    "part": "名詞3",
+    "sentence": "Humans have developed different (    ) for flying.",
+    "full": "Humans have developed different techniques for flying.",
+    "jp": "人間はさまざまな飛行技術を開発してきた。",
+    "answer": "techniques"
+  },
+  {
+    "id": 302,
+    "cat": "単チャレ第4回",
+    "en": "phrase",
+    "part": "名詞3",
+    "sentence": "Could you tell me some famous English (    )?",
+    "full": "Could you tell me some famous English phrases?",
+    "jp": "英語の有名な成句をいくつか教えていただけますか。",
+    "answer": "phrases"
+  },
+  {
+    "id": 303,
+    "cat": "単チャレ第4回",
+    "en": "advantage",
+    "part": "名詞3",
+    "sentence": "This camera has a lot of (    ) over others.",
+    "full": "This camera has a lot of advantages over others.",
+    "jp": "このカメラにはほかのものに対する多くの利点がある。",
+    "answer": "advantages"
+  },
+  {
+    "id": 304,
+    "cat": "単チャレ第4回",
+    "en": "character",
+    "part": "名詞3",
+    "sentence": "Every teacher at this school has a good (    ).",
+    "full": "Every teacher at this school has a good character.",
+    "jp": "この学校では，どの先生も性格がよい。",
+    "answer": "character"
+  },
+  {
+    "id": 305,
+    "cat": "単チャレ第4回",
+    "en": "gas",
+    "part": "名詞3",
+    "sentence": "The trading company deals mainly in natural (    ).",
+    "full": "The trading company deals mainly in natural gas.",
+    "jp": "その貿易会社は主に天然ガスを扱っている。",
+    "answer": "gas"
+  },
+  {
+    "id": 306,
+    "cat": "単チャレ第4回",
+    "en": "citizen",
+    "part": "名詞3",
+    "sentence": "The Louvre Museum is loved by all the (    ) of Paris.",
+    "full": "The Louvre Museum is loved by all the citizens of Paris.",
+    "jp": "ルーブル美術館はすべてのパリ市民に愛されている。",
+    "answer": "citizens"
+  },
+  {
+    "id": 307,
+    "cat": "単チャレ第4回",
+    "en": "truth",
+    "part": "名詞3",
+    "sentence": "I think telling the (    ) is better than lying.",
+    "full": "I think telling the truth is better than lying.",
+    "jp": "私はうそをつくより本当のことを言ったほうがよいと思う。",
+    "answer": "truth"
+  },
+  {
+    "id": 308,
+    "cat": "単チャレ第4回",
+    "en": "percentage",
+    "part": "名詞3",
+    "sentence": "What (    ) of the students will take the exam?",
+    "full": "What percentage of the students will take the exam?",
+    "jp": "何パーセントの生徒がその試験を受けますか。",
+    "answer": "percentage"
+  },
+  {
+    "id": 309,
+    "cat": "単チャレ第4回",
+    "en": "explanation",
+    "part": "名詞3",
+    "sentence": "Mike gave us a short (    ) of his plan.",
+    "full": "Mike gave us a short explanation of his plan.",
+    "jp": "マイクは彼の計画について私たちに短く説明した。",
+    "answer": "explanation"
+  },
+  {
+    "id": 310,
+    "cat": "単チャレ第4回",
+    "en": "instance",
+    "part": "名詞3",
+    "sentence": "I'll take a simple (    ) to explain the theory.",
+    "full": "I'll take a simple instance to explain the theory.",
+    "jp": "その学説を説明するために簡単な例を挙げましょう。",
+    "answer": "instance"
+  },
+  {
+    "id": 311,
+    "cat": "単チャレ第4回",
+    "en": "mark",
+    "part": "名詞4",
+    "sentence": "Please make (    ) on the items you need.",
+    "full": "Please make marks on the items you need.",
+    "jp": "あなたが必要な項目に印を付けてください。",
+    "answer": "marks"
+  },
+  {
+    "id": 312,
+    "cat": "単チャレ第4回",
+    "en": "pollution",
+    "part": "名詞4",
+    "sentence": "The increase of cars is causing air (    ) in China.",
+    "full": "The increase of cars is causing air pollution in China.",
+    "jp": "自動車の増加が中国で大気汚染を引き起こしている。",
+    "answer": "pollution"
+  },
+  {
+    "id": 313,
+    "cat": "単チャレ第4回",
+    "en": "feature",
+    "part": "名詞4",
+    "sentence": "What are the main (    ) of the cellphone?",
+    "full": "What are the main features of the cellphone?",
+    "jp": "その携帯電話の主な特徴は何ですか。",
+    "answer": "features"
+  },
+  {
+    "id": 314,
+    "cat": "単チャレ第4回",
+    "en": "trade",
+    "part": "名詞4",
+    "sentence": "Japan's (    ) with China has increased year by year.",
+    "full": "Japan's trade with China has increased year by year.",
+    "jp": "日本の中国との貿易は年々増えてきている。",
+    "answer": "trade"
+  },
+  {
+    "id": 315,
+    "cat": "単チャレ第4回",
+    "en": "tool",
+    "part": "名詞4",
+    "sentence": "This notebook computer is a useful (    ) for my work.",
+    "full": "This notebook computer is a useful tool for my work.",
+    "jp": "このノートパソコンは役に立つ私の仕事道具だ。",
+    "answer": "tool"
+  },
+  {
+    "id": 316,
+    "cat": "単チャレ第4回",
+    "en": "sort",
+    "part": "名詞4",
+    "sentence": "They created a new (    ) of music.",
+    "full": "They created a new sort of music.",
+    "jp": "彼らは新しい種類の音楽を作り出した。",
+    "answer": "sort"
+  },
+  {
+    "id": 317,
+    "cat": "単チャレ第4回",
+    "en": "atmosphere",
+    "part": "名詞4",
+    "sentence": "The small hotel had a family (    ).",
+    "full": "The small hotel had a family atmosphere.",
+    "jp": "その小さなホテルには家庭的な雰囲気があった。",
+    "answer": "atmosphere"
+  },
+  {
+    "id": 318,
+    "cat": "単チャレ第4回",
+    "en": "impact",
+    "part": "名詞4",
+    "sentence": "The new policy had a strong (    ) on other countries.",
+    "full": "The new policy had a strong impact on other countries.",
+    "jp": "その新しい政策は他国に強い影響を与えた。",
+    "answer": "impact"
+  },
+  {
+    "id": 319,
+    "cat": "単チャレ第4回",
+    "en": "attitude",
+    "part": "名詞4",
+    "sentence": "I want you to change your (    ) toward me.",
+    "full": "I want you to change your attitude toward me.",
+    "jp": "私はあなたに私に対するあなたの態度を変えてほしいと思っている。",
+    "answer": "attitude"
+  },
+  {
+    "id": 320,
+    "cat": "単チャレ第4回",
+    "en": "crowd",
+    "part": "名詞4",
+    "sentence": "A huge (    ) came together in front of the White House.",
+    "full": "A huge crowd came together in front of the White House.",
+    "jp": "大群衆がホワイトハウスの前に集まった。",
+    "answer": "crowd"
+  },
+  {
+    "id": 321,
+    "cat": "単チャレ第4回",
+    "en": "disappear",
+    "part": "動詞3",
+    "sentence": "Those boys suddenly (    ) into the building.",
+    "full": "Those boys suddenly disappeared into the building.",
+    "jp": "その少年たちは建物の中に突然姿を消した。",
+    "answer": "disappeared"
+  },
+  {
+    "id": 322,
+    "cat": "単チャレ第4回",
+    "en": "define",
+    "part": "動詞3",
+    "sentence": "A good dictionary (    ) each word clearly.",
+    "full": "A good dictionary defines each word clearly.",
+    "jp": "よい辞書はそれぞれの単語をわかりやすく定義している。",
+    "answer": "defines"
+  },
+  {
+    "id": 323,
+    "cat": "単チャレ第4回",
+    "en": "reflect",
+    "part": "動詞3",
+    "sentence": "The surface of the lake is (    ) the light of the sun.",
+    "full": "The surface of the lake is reflecting the light of the sun.",
+    "jp": "その湖面は太陽の光を反射している。",
+    "answer": "reflecting"
+  },
+  {
+    "id": 324,
+    "cat": "単チャレ第4回",
+    "en": "contribute",
+    "part": "動詞3",
+    "sentence": "Mike wants to (    ) to his team in the next game.",
+    "full": "Mike wants to contribute to his team in the next game.",
+    "jp": "マイクは次の試合でチームに貢献したいと思っている。",
+    "answer": "contribute"
+  },
+  {
+    "id": 325,
+    "cat": "単チャレ第4回",
+    "en": "represent",
+    "part": "動詞3",
+    "sentence": "He (    ) our class at the meeting.",
+    "full": "He represented our class at the meeting.",
+    "jp": "彼は会議で私たちのクラスを代表した［クラスを代表して会議に出た］。",
+    "answer": "represented"
+  },
+  {
+    "id": 326,
+    "cat": "単チャレ第4回",
+    "en": "match",
+    "part": "動詞3",
+    "sentence": "Nancy's dress today (    ) her hairstyle.",
+    "full": "Nancy's dress today matches her hairstyle.",
+    "jp": "ナンシーの今日の服は彼女の髪型に合っている。",
+    "answer": "matches"
+  },
+  {
+    "id": 327,
+    "cat": "単チャレ第4回",
+    "en": "exchange",
+    "part": "動詞3",
+    "sentence": "We (    ) information about the new product.",
+    "full": "We exchanged information about the new product.",
+    "jp": "私たちは新製品についての情報を交換した。",
+    "answer": "exchanged"
+  },
+  {
+    "id": 328,
+    "cat": "単チャレ第4回",
+    "en": "confuse",
+    "part": "動詞3",
+    "sentence": "Jane's strange action (    ) her family.",
+    "full": "Jane's strange action confused her family.",
+    "jp": "ジェーンの奇妙な行動は彼女の家族を困惑させた。",
+    "answer": "confused"
+  },
+  {
+    "id": 329,
+    "cat": "単チャレ第4回",
+    "en": "respond",
+    "part": "動詞3",
+    "sentence": "This toy seems to (    ) to human voice.",
+    "full": "This toy seems to respond to human voice.",
+    "jp": "このおもちゃは人の声に反応するようだ。",
+    "answer": "respond"
+  },
+  {
+    "id": 330,
+    "cat": "単チャレ第4回",
+    "en": "treat",
+    "part": "動詞3",
+    "sentence": "My parents are still (    ) me like a child.",
+    "full": "My parents are still treating me like a child.",
+    "jp": "私の両親はまだ私を子どものように扱っている。",
+    "answer": "treating"
+  },
+  {
+    "id": 331,
+    "cat": "単チャレ第4回",
+    "en": "male",
+    "part": "形容詞2",
+    "sentence": "There are only nine (    ) students in this class.",
+    "full": "There are only nine male students in this class.",
+    "jp": "このクラスには男子生徒が9人しかいない。",
+    "answer": "male"
+  },
+  {
+    "id": 332,
+    "cat": "単チャレ第4回",
+    "en": "huge",
+    "part": "形容詞2",
+    "sentence": "Thousands of (    ) trees stand on that mountain.",
+    "full": "Thousands of huge trees stand on that mountain.",
+    "jp": "何千という巨大な木があの山に立っている。",
+    "answer": "huge"
+  },
+  {
+    "id": 333,
+    "cat": "単チャレ第4回",
+    "en": "professional",
+    "part": "形容詞2",
+    "sentence": "I want to be a (    ) baseball player like Ichiro.",
+    "full": "I want to be a professional baseball player like Ichiro.",
+    "jp": "私はイチローのようなプロ野球選手になりたい。",
+    "answer": "professional"
+  },
+  {
+    "id": 334,
+    "cat": "単チャレ第4回",
+    "en": "essential",
+    "part": "形容詞2",
+    "sentence": "Cellphones are (    ) for our daily lives.",
+    "full": "Cellphones are essential for our daily lives.",
+    "jp": "携帯電話は私たちの日常生活に必要不可欠である。",
+    "answer": "essential"
+  },
+  {
+    "id": 335,
+    "cat": "単チャレ第4回",
+    "en": "current",
+    "part": "形容詞2",
+    "sentence": "Could you tell me your (    ) address?",
+    "full": "Could you tell me your current address?",
+    "jp": "あなたの現在の住所を教えていただけませんか。",
+    "answer": "current"
+  },
+  {
+    "id": 336,
+    "cat": "単チャレ第4回",
+    "en": "positive",
+    "part": "形容詞2",
+    "sentence": "(    ) thinking will lead you to success.",
+    "full": "Positive thinking will lead you to success.",
+    "jp": "前向きな考え方はあなたを成功に導くでしょう。",
+    "answer": "Positive"
+  },
+  {
+    "id": 337,
+    "cat": "単チャレ第4回",
+    "en": "chemical",
+    "part": "形容詞2",
+    "sentence": "(    ) products like plastics are used all over the world.",
+    "full": "Chemical products like plastics are used all over the world.",
+    "jp": "プラスチックのような化学製品は世界中で使われている。",
+    "answer": "Chemical"
+  },
+  {
+    "id": 338,
+    "cat": "単チャレ第4回",
+    "en": "comfortable",
+    "part": "形容詞2",
+    "sentence": "We stayed at a really (    ) hotel during our trip.",
+    "full": "We stayed at a really comfortable hotel during our trip.",
+    "jp": "私たちは旅行中，実に快適なホテルに滞在した。",
+    "answer": "comfortable"
+  },
+  {
+    "id": 339,
+    "cat": "単チャレ第4回",
+    "en": "central",
+    "part": "形容詞2",
+    "sentence": "They got off the train at the (    ) station.",
+    "full": "They got off the train at the central station.",
+    "jp": "彼らは中央駅で電車を降りた。",
+    "answer": "central"
+  },
+  {
+    "id": 340,
+    "cat": "単チャレ第4回",
+    "en": "negative",
+    "part": "形容詞2",
+    "sentence": "Lack of sleep has a (    ) effect on your studies.",
+    "full": "Lack of sleep has a negative effect on your studies.",
+    "jp": "睡眠不足はあなたたちの勉強に悪い影響を及ぼす。",
+    "answer": "negative"
+  },
+  {
+    "id": 341,
+    "cat": "単チャレ第4回",
+    "en": "coal",
+    "part": "名詞5",
+    "sentence": "The (    ) industry has been disappearing in Japan.",
+    "full": "The coal industry has been disappearing in Japan.",
+    "jp": "石炭産業は日本で姿を消してきている。",
+    "answer": "coal"
+  },
+  {
+    "id": 342,
+    "cat": "単チャレ第4回",
+    "en": "gene",
+    "part": "名詞5",
+    "sentence": "Human (    ) aren't much different from chimpanzees'.",
+    "full": "Human genes aren't much different from chimpanzees'.",
+    "jp": "人間の遺伝子はチンパンジーのものとあまり違わない。",
+    "answer": "genes"
+  },
+  {
+    "id": 343,
+    "cat": "単チャレ第4回",
+    "en": "traffic",
+    "part": "名詞5",
+    "sentence": "There is heavy (    ) on this street in the evening.",
+    "full": "There is heavy traffic on this street in the evening.",
+    "jp": "この通りは夕方，すごい交通量がある。",
+    "answer": "traffic"
+  },
+  {
+    "id": 344,
+    "cat": "単チャレ第4回",
+    "en": "reality",
+    "part": "名詞5",
+    "sentence": "Her dream became a (    ) after five years.",
+    "full": "Her dream became a reality after five years.",
+    "jp": "彼女の夢は5年後に現実(のもの)となった。",
+    "answer": "reality"
+  },
+  {
+    "id": 345,
+    "cat": "単チャレ第4回",
+    "en": "happiness",
+    "part": "名詞5",
+    "sentence": "The couple found (    ) in their ordinary life.",
+    "full": "The couple found happiness in their ordinary life.",
+    "jp": "その夫婦は普通の生活に幸せを見いだした。",
+    "answer": "happiness"
+  },
+  {
+    "id": 346,
+    "cat": "単チャレ第4回",
+    "en": "balance",
+    "part": "名詞5",
+    "sentence": "My mother keeps a good (    ) between work and family.",
+    "full": "My mother keeps a good balance between work and family.",
+    "jp": "私の母は仕事と家庭の(間の)バランスをうまく保っている。",
+    "answer": "balance"
+  },
+  {
+    "id": 347,
+    "cat": "単チャレ第4回",
+    "en": "universe",
+    "part": "名詞5",
+    "sentence": "People once thought that the earth was the center of the (    ).",
+    "full": "People once thought that the earth was the center of the universe.",
+    "jp": "人々はかつて地球が宇宙の中心だと考えていた。",
+    "answer": "universe"
+  },
+  {
+    "id": 348,
+    "cat": "単チャレ第4回",
+    "en": "factory",
+    "part": "名詞5",
+    "sentence": "Tim has a part-time job in a car (    ).",
+    "full": "Tim has a part-time job in a car factory.",
+    "jp": "ティムは自動車工場でアルバイトをしている。",
+    "answer": "factory"
+  },
+  {
+    "id": 349,
+    "cat": "単チャレ第4回",
+    "en": "muscle",
+    "part": "名詞5",
+    "sentence": "I go to a gym to build up my (    ).",
+    "full": "I go to a gym to build up my muscle.",
+    "jp": "私は筋肉をつけるためにジムに通っている。",
+    "answer": "muscle"
+  },
+  {
+    "id": 350,
+    "cat": "単チャレ第4回",
+    "en": "audience",
+    "part": "名詞5",
+    "sentence": "She sang the song in front of a large (    ).",
+    "full": "She sang the song in front of a large audience.",
+    "jp": "彼女はその歌を大観客の前で歌った。",
+    "answer": "audience"
+  },
+  {
+    "id": 351,
+    "cat": "単チャレ第4回",
+    "en": "cycle",
+    "part": "名詞6",
+    "sentence": "It is said that birds understand the (    ) of the seasons.",
+    "full": "It is said that birds understand the cycle of the seasons.",
+    "jp": "鳥は季節の移り変わりを理解すると言われている。",
+    "answer": "cycle"
+  },
+  {
+    "id": 352,
+    "cat": "単チャレ第4回",
+    "en": "electricity",
+    "part": "名詞6",
+    "sentence": "My father's new car runs on (    ).",
+    "full": "My father's new car runs on electricity.",
+    "jp": "父の新しい車は電気で走る。",
+    "answer": "electricity"
+  },
+  {
+    "id": 353,
+    "cat": "単チャレ第4回",
+    "en": "link",
+    "part": "名詞6",
+    "sentence": "He is studying the (    ) between our mind and body.",
+    "full": "He is studying the link between our mind and body.",
+    "jp": "彼は私たちの心と体の間のつながりについて研究している。",
+    "answer": "link"
+  },
+  {
+    "id": 354,
+    "cat": "単チャレ第4回",
+    "en": "cancer",
+    "part": "名詞6",
+    "sentence": "Several tests showed that he had stomach (    ).",
+    "full": "Several tests showed that he had stomach cancer.",
+    "jp": "いくつかの検査によって彼は胃がんにかかっていることがわかった。",
+    "answer": "cancer"
+  },
+  {
+    "id": 355,
+    "cat": "単チャレ第4回",
+    "en": "contact",
+    "part": "名詞6",
+    "sentence": "I didn't have much (    ) with him last year.",
+    "full": "I didn't have much contact with him last year.",
+    "jp": "去年，私は彼とあまり連絡をとらなかった。",
+    "answer": "contact"
+  },
+  {
+    "id": 356,
+    "cat": "単チャレ第4回",
+    "en": "favor",
+    "part": "名詞6",
+    "sentence": "Most of us are in (    ) of the plan.",
+    "full": "Most of us are in favor of the plan.",
+    "jp": "私たちのほとんどはその計画を支持している。",
+    "answer": "favor"
+  },
+  {
+    "id": 357,
+    "cat": "単チャレ第4回",
+    "en": "career",
+    "part": "名詞6",
+    "sentence": "Choose your future (    ) carefully.",
+    "full": "Choose your future career carefully.",
+    "jp": "慎重に将来の職業を選びなさい。",
+    "answer": "career"
+  },
+  {
+    "id": 358,
+    "cat": "単チャレ第4回",
+    "en": "majority",
+    "part": "名詞6",
+    "sentence": "The (    ) of students do not like to take examinations.",
+    "full": "The majority of students do not like to take examinations.",
+    "jp": "生徒の大多数は試験を受けるのが好きではない。",
+    "answer": "majority"
+  },
+  {
+    "id": 359,
+    "cat": "単チャレ第4回",
+    "en": "officer",
+    "part": "名詞6",
+    "sentence": "She has wanted to be a police (    ) since she was a child.",
+    "full": "She has wanted to be a police officer since she was a child.",
+    "jp": "彼女は子どものころから警察官になりたいと思っている。",
+    "answer": "officer"
+  },
+  {
+    "id": 360,
+    "cat": "単チャレ第4回",
+    "en": "democracy",
+    "part": "名詞6",
+    "sentence": "They fought the war to protect (    ).",
+    "full": "They fought the war to protect democracy.",
+    "jp": "彼らは民主主義を守るためにその戦争を戦った。",
+    "answer": "democracy"
+  },
+  {
+    "id": 361,
+    "cat": "単チャレ第4回",
+    "en": "reply",
+    "part": "動詞4",
+    "sentence": "You should (    ) to the e-mail quickly.",
+    "full": "You should reply to the e-mail quickly.",
+    "jp": "あなたはそのEメールにすぐに返事をするべきだ。",
+    "answer": "reply"
+  },
+  {
+    "id": 362,
+    "cat": "単チャレ第4回",
+    "en": "involve",
+    "part": "動詞4",
+    "sentence": "Our job sometimes (    ) a lot of risk.",
+    "full": "Our job sometimes involves a lot of risk.",
+    "jp": "私たちの仕事は時に多くの危険を伴う。",
+    "answer": "involves"
+  },
+  {
+    "id": 363,
+    "cat": "単チャレ第4回",
+    "en": "press",
+    "part": "動詞4",
+    "sentence": "(    ) the button to open the door.",
+    "full": "Press the button to open the door.",
+    "jp": "ドアを開けるにはボタンを押してください。",
+    "answer": "Press"
+  },
+  {
+    "id": 364,
+    "cat": "単チャレ第4回",
+    "en": "feed",
+    "part": "動詞4",
+    "sentence": "Amy's job is to (    ) her cat every morning.",
+    "full": "Amy's job is to feed her cat every morning.",
+    "jp": "エイミーの仕事は，彼女のネコに毎朝えさをやることである。",
+    "answer": "feed"
+  },
+  {
+    "id": 365,
+    "cat": "単チャレ第4回",
+    "en": "suffer",
+    "part": "動詞4",
+    "sentence": "My father has (    ) from the flu for a week.",
+    "full": "My father has suffered from the flu for a week.",
+    "jp": "父は1週間インフルエンザを患っている。",
+    "answer": "suffered"
+  },
+  {
+    "id": 366,
+    "cat": "単チャレ第4回",
+    "en": "organize",
+    "part": "動詞4",
+    "sentence": "I was asked to (    ) the next meeting in Osaka.",
+    "full": "I was asked to organize the next meeting in Osaka.",
+    "jp": "私は大阪での次の会議を準備するように頼まれた。",
+    "answer": "organize"
+  },
+  {
+    "id": 367,
+    "cat": "単チャレ第4回",
+    "en": "succeed",
+    "part": "動詞4",
+    "sentence": "The young boxer finally (    ) in losing weight.",
+    "full": "The young boxer finally succeeded in losing weight.",
+    "jp": "その若いボクサーはやっと減量に成功した。",
+    "answer": "succeeded"
+  },
+  {
+    "id": 368,
+    "cat": "単チャレ第4回",
+    "en": "destroy",
+    "part": "動詞4",
+    "sentence": "They (    ) the forest to build a new town.",
+    "full": "They destroyed the forest to build a new town.",
+    "jp": "彼らは新しい町を造るためにその森林を破壊した。",
+    "answer": "destroyed"
+  },
+  {
+    "id": 369,
+    "cat": "単チャレ第4回",
+    "en": "appreciate",
+    "part": "動詞4",
+    "sentence": "I really (    ) their help while I was studying in Germany.",
+    "full": "I really appreciated their help while I was studying in Germany.",
+    "jp": "ドイツに留学していたとき，私は彼らの助けに本当に感謝した。",
+    "answer": "appreciated"
+  },
+  {
+    "id": 370,
+    "cat": "単チャレ第4回",
+    "en": "identify",
+    "part": "動詞4",
+    "sentence": "The police (    ) the man as Tom today.",
+    "full": "The police identified the man as Tom today.",
+    "jp": "警察は今日その男をトムだと確認した。",
+    "answer": "identified"
+  },
+  {
+    "id": 371,
+    "cat": "単チャレ第4回",
+    "en": "worried",
+    "part": "形容詞3",
+    "sentence": "All of my family are (    ) about his health.",
+    "full": "All of my family are worried about his health.",
+    "jp": "私の家族はみんな彼の健康を心配している。",
+    "answer": "worried"
+  },
+  {
+    "id": 372,
+    "cat": "単チャレ第4回",
+    "en": "complicated",
+    "part": "形容詞3",
+    "sentence": "There are some (    ) relationships between the two nations.",
+    "full": "There are some complicated relationships between the two nations.",
+    "jp": "その2国間にはいくつかの複雑な関係がある。",
+    "answer": "complicated"
+  },
+  {
+    "id": 373,
+    "cat": "単チャレ第4回",
+    "en": "unique",
+    "part": "形容詞3",
+    "sentence": "She has a (    ) ability to speak seven languages.",
+    "full": "She has a unique ability to speak seven languages.",
+    "jp": "彼女には7か国語を話す類まれな能力がある。",
+    "answer": "unique"
+  },
+  {
+    "id": 374,
+    "cat": "単チャレ第4回",
+    "en": "mental",
+    "part": "形容詞3",
+    "sentence": "The company focuses on the (    ) health of its workers.",
+    "full": "The company focuses on the mental health of its workers.",
+    "jp": "その会社は労働者の精神の健康に重点を置いている。",
+    "answer": "mental"
+  },
+  {
+    "id": 375,
+    "cat": "単チャレ第4回",
+    "en": "significant",
+    "part": "形容詞3",
+    "sentence": "We are facing a (    ) change in the environment.",
+    "full": "We are facing a significant change in the environment.",
+    "jp": "私たちは自然環境の重大な変化に直面している。",
+    "answer": "significant"
+  },
+  {
+    "id": 376,
+    "cat": "単チャレ第4回",
+    "en": "responsible",
+    "part": "形容詞3",
+    "sentence": "Who was (    ) for the airplane accident?",
+    "full": "Who was responsible for the airplane accident?",
+    "jp": "だれがその飛行機事故に責任があったのか。",
+    "answer": "responsible"
+  },
+  {
+    "id": 377,
+    "cat": "単チャレ第4回",
+    "en": "blank",
+    "part": "形容詞3",
+    "sentence": "Bob found a (    ) page in his notebook.",
+    "full": "Bob found a blank page in his notebook.",
+    "jp": "ボブはノートに空白のページを見つけた。",
+    "answer": "blank"
+  },
+  {
+    "id": 378,
+    "cat": "単チャレ第4回",
+    "en": "private",
+    "part": "形容詞3",
+    "sentence": "We know nothing about her (    ) life.",
+    "full": "We know nothing about her private life.",
+    "jp": "私たちは彼女の私生活について何も知らない。",
+    "answer": "private"
+  },
+  {
+    "id": 379,
+    "cat": "単チャレ第4回",
+    "en": "extra",
+    "part": "形容詞3",
+    "sentence": "I have no (    ) time to watch such TV programs.",
+    "full": "I have no extra time to watch such TV programs.",
+    "jp": "私にはそのようなテレビ番組を見る余分な時間はない。",
+    "answer": "extra"
+  },
+  {
+    "id": 380,
+    "cat": "単チャレ第4回",
+    "en": "entire",
+    "part": "形容詞3",
+    "sentence": "Today was the worst day of my (    ) life.",
+    "full": "Today was the worst day of my entire life.",
+    "jp": "今日は私の全人生で最悪の日だった。",
+    "answer": "entire"
+  },
+  {
+    "id": 381,
+    "cat": "単チャレ第4回",
+    "en": "novel",
+    "part": "名詞7",
+    "sentence": "Mr. Smith is writing a new SF (    ).",
+    "full": "Mr. Smith is writing a new SF novel.",
+    "jp": "スミス氏は新しいSF小説を書いている。",
+    "answer": "novel"
+  },
+  {
+    "id": 382,
+    "cat": "単チャレ第4回",
+    "en": "series",
+    "part": "名詞7",
+    "sentence": "The politician did not answer a (    ) of questions about him.",
+    "full": "The politician did not answer a series of questions about him.",
+    "jp": "その政治家は自身についての一連の質問に答えなかった。",
+    "answer": "series"
+  },
+  {
+    "id": 383,
+    "cat": "単チャレ第4回",
+    "en": "stranger",
+    "part": "名詞7",
+    "sentence": "Both of them are perfect (    ) to me.",
+    "full": "Both of them are perfect strangers to me.",
+    "jp": "彼らの2人とも私にはまったく見知らぬ人である。",
+    "answer": "strangers"
+  },
+  {
+    "id": 384,
+    "cat": "単チャレ第4回",
+    "en": "section",
+    "part": "名詞7",
+    "sentence": "There is no smoking (    ) in this restaurant.",
+    "full": "There is no smoking section in this restaurant.",
+    "jp": "このレストランには喫煙コーナーはない。",
+    "answer": "section"
+  },
+  {
+    "id": 385,
+    "cat": "単チャレ第4回",
+    "en": "principle",
+    "part": "名詞7",
+    "sentence": "It is against my (    ) to tell a lie.",
+    "full": "It is against my principles to tell a lie.",
+    "jp": "うそをつくのは私の主義に反している。",
+    "answer": "principles"
+  },
+  {
+    "id": 386,
+    "cat": "単チャレ第4回",
+    "en": "popularity",
+    "part": "名詞7",
+    "sentence": "The game has gained (    ) among children.",
+    "full": "The game has gained popularity among children.",
+    "jp": "そのゲームは子どもたちの間で人気を得ている。",
+    "answer": "popularity"
+  },
+  {
+    "id": 387,
+    "cat": "単チャレ第4回",
+    "en": "conflict",
+    "part": "名詞7",
+    "sentence": "There was a long (    ) over land in this village.",
+    "full": "There was a long conflict over land in this village.",
+    "jp": "この村には土地を巡る長い対立があった。",
+    "answer": "conflict"
+  },
+  {
+    "id": 388,
+    "cat": "単チャレ第4回",
+    "en": "anger",
+    "part": "名詞7",
+    "sentence": "(    ) against war grew in my mind.",
+    "full": "Anger against war grew in my mind.",
+    "jp": "戦争に対する怒りが私の心の中で大きくなった。",
+    "answer": "Anger"
+  },
+  {
+    "id": 389,
+    "cat": "単チャレ第4回",
+    "en": "satellite",
+    "part": "名詞7",
+    "sentence": "This picture from Egypt was sent to Japan by (    ).",
+    "full": "This picture from Egypt was sent to Japan by satellite.",
+    "jp": "エジプトからのこの映像は人工衛星を通じて日本に送られてきた。",
+    "answer": "satellite"
+  },
+  {
+    "id": 390,
+    "cat": "単チャレ第4回",
+    "en": "emotion",
+    "part": "名詞7",
+    "sentence": "He could not control his (    ) at that time.",
+    "full": "He could not control his emotions at that time.",
+    "jp": "彼はそのとき自分の感情を抑えることができなかった。",
+    "answer": "emotions"
+  },
+  {
+    "id": 391,
+    "cat": "単チャレ第4回",
+    "en": "department",
+    "part": "名詞8",
+    "sentence": "She works in the sales (    ) of this company.",
+    "full": "She works in the sales department of this company.",
+    "jp": "彼女はこの会社の営業部門で働いている。",
+    "answer": "department"
+  },
+  {
+    "id": 392,
+    "cat": "単チャレ第4回",
+    "en": "poverty",
+    "part": "名詞8",
+    "sentence": "About one million people live in (    ) in this country.",
+    "full": "About one million people live in poverty in this country.",
+    "jp": "この国では約百万人が貧困生活をしている。",
+    "answer": "poverty"
+  },
+  {
+    "id": 393,
+    "cat": "単チャレ第4回",
+    "en": "structure",
+    "part": "名詞8",
+    "sentence": "She has been studying the (    ) of the human brain for many years.",
+    "full": "She has been studying the structure of the human brain for many years.",
+    "jp": "彼女は長年，人間の脳の構造を研究している。",
+    "answer": "structure"
+  },
+  {
+    "id": 394,
+    "cat": "単チャレ第4回",
+    "en": "insect",
+    "part": "名詞8",
+    "sentence": "(    ) spray is really useful for camping in summer.",
+    "full": "Insect spray is really useful for camping in summer.",
+    "jp": "虫よけスプレーは夏のキャンプで非常に役に立つ。",
+    "answer": "Insect"
+  },
+  {
+    "id": 395,
+    "cat": "単チャレ第4回",
+    "en": "revolution",
+    "part": "名詞8",
+    "sentence": "The Industrial (    ) began in England in the 18th century.",
+    "full": "The Industrial Revolution began in England in the 18th century.",
+    "jp": "産業革命は18世紀にイギリスで始まった。",
+    "answer": "Revolution"
+  },
+  {
+    "id": 396,
+    "cat": "単チャレ第4回",
+    "en": "safety",
+    "part": "名詞8",
+    "sentence": "Ann was glad to hear about the (    ) of her family.",
+    "full": "Ann was glad to hear about the safety of her family.",
+    "jp": "アンは家族の安全を聞いてうれしかった。",
+    "answer": "safety"
+  },
+  {
+    "id": 397,
+    "cat": "単チャレ第4回",
+    "en": "creature",
+    "part": "名詞8",
+    "sentence": "I found a strange (    ) in the forest.",
+    "full": "I found a strange creature in the forest.",
+    "jp": "私は森の中で奇妙な生き物を見つけた。",
+    "answer": "creature"
+  },
+  {
+    "id": 398,
+    "cat": "単チャレ第4回",
+    "en": "content",
+    "part": "名詞8",
+    "sentence": "The police officer checked the (    ) of my bag.",
+    "full": "The police officer checked the contents of my bag.",
+    "jp": "その警官は私のバッグの中身を調べた。",
+    "answer": "contents"
+  },
+  {
+    "id": 399,
+    "cat": "単チャレ第4回",
+    "en": "limit",
+    "part": "名詞8",
+    "sentence": "My mother often says there is no age (    ) on love.",
+    "full": "My mother often says there is no age limit on love.",
+    "jp": "私の母は恋に年齢制限はないとよく言う。",
+    "answer": "limit"
+  },
+  {
+    "id": 400,
+    "cat": "単チャレ第4回",
+    "en": "target",
+    "part": "名詞8",
+    "sentence": "He hit the (    ) with his second shot.",
+    "full": "He hit the target with his second shot.",
+    "jp": "彼は2発目で標的に当てた。",
+    "answer": "target"
+  },
+  {
+    "id": 401,
+    "cat": "単チャレ第5回",
+    "en": "divide",
+    "part": "動詞5",
+    "sentence": "The teacher (    ) the students into five groups.",
+    "full": "The teacher divided the students into five groups.",
+    "jp": "先生は生徒たちを5つのグループに分けた。",
+    "answer": "divided"
+  },
+  {
+    "id": 402,
+    "cat": "単チャレ第5回",
+    "en": "complain",
+    "part": "動詞5",
+    "sentence": "My brother (    ) about the meals I make.",
+    "full": "My brother complains about the meals I make.",
+    "jp": "私の弟は私の作る食事のことで不平を言う。",
+    "answer": "complains"
+  },
+  {
+    "id": 403,
+    "cat": "単チャレ第5回",
+    "en": "remove",
+    "part": "動詞5",
+    "sentence": "It was very difficult to (    ) the broken car from the road.",
+    "full": "It was very difficult to remove the broken car from the road.",
+    "jp": "道路から壊れた車を撤去するのはとても難しかった。",
+    "answer": "remove"
+  },
+  {
+    "id": 404,
+    "cat": "単チャレ第5回",
+    "en": "bite",
+    "part": "動詞5",
+    "sentence": "My son has a habit of (    ) his nails.",
+    "full": "My son has a habit of biting his nails.",
+    "jp": "私の息子は爪をかむ癖がある。",
+    "answer": "biting"
+  },
+  {
+    "id": 405,
+    "cat": "単チャレ第5回",
+    "en": "examine",
+    "part": "動詞5",
+    "sentence": "The engineer (    ) what was wrong with the machine.",
+    "full": "The engineer examined what was wrong with the machine.",
+    "jp": "技術者はその機械の何が悪かったのかを調べた。",
+    "answer": "examined"
+  },
+  {
+    "id": 406,
+    "cat": "単チャレ第5回",
+    "en": "score",
+    "part": "動詞5",
+    "sentence": "He (    ) three goals in today's soccer game.",
+    "full": "He scored three goals in today's soccer game.",
+    "jp": "彼は今日のサッカーの試合で3点を取った。",
+    "answer": "scored"
+  },
+  {
+    "id": 407,
+    "cat": "単チャレ第5回",
+    "en": "seek",
+    "part": "動詞5",
+    "sentence": "She was (    ) information about the accident.",
+    "full": "She was seeking information about the accident.",
+    "jp": "彼女はその事故についての情報を探していた。",
+    "answer": "seeking"
+  },
+  {
+    "id": 408,
+    "cat": "単チャレ第5回",
+    "en": "ignore",
+    "part": "動詞5",
+    "sentence": "Lisa was so angry that she (    ) his phone call.",
+    "full": "Lisa was so angry that she ignored his phone call.",
+    "jp": "リサはとても怒っていたので，彼からの電話を無視した。",
+    "answer": "ignored"
+  },
+  {
+    "id": 409,
+    "cat": "単チャレ第5回",
+    "en": "attempt",
+    "part": "動詞5",
+    "sentence": "Some people (    ) to swim between England and France.",
+    "full": "Some people attempted to swim between England and France.",
+    "jp": "英仏間を泳ごうとした人もいる。",
+    "answer": "attempted"
+  },
+  {
+    "id": 410,
+    "cat": "単チャレ第5回",
+    "en": "invent",
+    "part": "動詞5",
+    "sentence": "Alexander Graham Bell (    ) the telephone in 1876.",
+    "full": "Alexander Graham Bell invented the telephone in 1876.",
+    "jp": "アレクサンダー・グラハム・ベルは1876年に電話を発明した。",
+    "answer": "invented"
+  },
+  {
+    "id": 411,
+    "cat": "単チャレ第5回",
+    "en": "double",
+    "part": "形容詞4",
+    "sentence": "This box is (    ) the size of that one.",
+    "full": "This box is double the size of that one.",
+    "jp": "この箱はあの箱の2倍の大きさである。",
+    "answer": "double"
+  },
+  {
+    "id": 412,
+    "cat": "単チャレ第5回",
+    "en": "complex",
+    "part": "形容詞4",
+    "sentence": "The country has a (    ) political system.",
+    "full": "The country has a complex political system.",
+    "jp": "その国は複雑な政治制度を持っている。",
+    "answer": "complex"
+  },
+  {
+    "id": 413,
+    "cat": "単チャレ第5回",
+    "en": "mobile",
+    "part": "形容詞4",
+    "sentence": "(    ) clinics are essential for the people in the village.",
+    "full": "Mobile clinics are essential for the people in the village.",
+    "jp": "移動診療所はその村の人たちにとって必要不可欠である。",
+    "answer": "Mobile"
+  },
+  {
+    "id": 414,
+    "cat": "単チャレ第5回",
+    "en": "specific",
+    "part": "形容詞4",
+    "sentence": "These plants are found in (    ) areas of Africa.",
+    "full": "These plants are found in specific areas of Africa.",
+    "jp": "これらの植物はアフリカの特定の地域に見られる。",
+    "answer": "specific"
+  },
+  {
+    "id": 415,
+    "cat": "単チャレ第5回",
+    "en": "normal",
+    "part": "形容詞4",
+    "sentence": "This bread will keep for three days at (    ) temperature.",
+    "full": "This bread will keep for three days at normal temperature.",
+    "jp": "このパンは常温で3日もつ。",
+    "answer": "normal"
+  },
+  {
+    "id": 416,
+    "cat": "単チャレ第5回",
+    "en": "aware",
+    "part": "形容詞4",
+    "sentence": "He was not (    ) of the danger at that time.",
+    "full": "He was not aware of the danger at that time.",
+    "jp": "彼はそのとき危険に気づいていなかった。",
+    "answer": "aware"
+  },
+  {
+    "id": 417,
+    "cat": "単チャレ第5回",
+    "en": "regular",
+    "part": "形容詞4",
+    "sentence": "(    ) exercise is good for the body and the brain.",
+    "full": "Regular exercise is good for the body and the brain.",
+    "jp": "規則的な運動は体と脳によい。",
+    "answer": "Regular"
+  },
+  {
+    "id": 418,
+    "cat": "単チャレ第5回",
+    "en": "obvious",
+    "part": "形容詞4",
+    "sentence": "It was (    ) to me that Julia made a mistake.",
+    "full": "It was obvious to me that Julia made a mistake.",
+    "jp": "私にはジュリアが間違ったのは明らかであった。",
+    "answer": "obvious"
+  },
+  {
+    "id": 419,
+    "cat": "単チャレ第5回",
+    "en": "active",
+    "part": "形容詞4",
+    "sentence": "My brother leads an (    ) life at school.",
+    "full": "My brother leads an active life at school.",
+    "jp": "私の兄は学校で活動的な生活を送っている。",
+    "answer": "active"
+  },
+  {
+    "id": 420,
+    "cat": "単チャレ第5回",
+    "en": "characteristic",
+    "part": "形容詞4",
+    "sentence": "Thinking about the future is (    ) of human beings.",
+    "full": "Thinking about the future is characteristic of human beings.",
+    "jp": "将来について考えることは人間に特有のことである。",
+    "answer": "characteristic"
+  },
+  {
+    "id": 421,
+    "cat": "単チャレ第5回",
+    "en": "profit",
+    "part": "名詞9",
+    "sentence": "They made a huge (    ) on the business.",
+    "full": "They made a huge profit on the business.",
+    "jp": "彼らはその事業で巨額の利益を上げた。",
+    "answer": "profit"
+  },
+  {
+    "id": 422,
+    "cat": "単チャレ第5回",
+    "en": "association",
+    "part": "名詞9",
+    "sentence": "PTA means Parent-Teacher (    ).",
+    "full": "PTA means Parent-Teacher Association.",
+    "jp": "PTAとは親と教師の協会を意味する。",
+    "answer": "Association"
+  },
+  {
+    "id": 423,
+    "cat": "単チャレ第5回",
+    "en": "detail",
+    "part": "名詞9",
+    "sentence": "We discussed the (    ) of the plan today.",
+    "full": "We discussed the details of the plan today.",
+    "jp": "私たちは今日その計画の細部を議論した。",
+    "answer": "details"
+  },
+  {
+    "id": 424,
+    "cat": "単チャレ第5回",
+    "en": "drug",
+    "part": "名詞9",
+    "sentence": "There are a lot of (    ) problems in that area.",
+    "full": "There are a lot of drug problems in that area.",
+    "jp": "その地域には多くの麻薬問題がある。",
+    "answer": "drug"
+  },
+  {
+    "id": 425,
+    "cat": "単チャレ第5回",
+    "en": "device",
+    "part": "名詞9",
+    "sentence": "These new cars have various safety (    ).",
+    "full": "These new cars have various safety devices.",
+    "jp": "これらの新型車はさまざまな安全装置を備えている。",
+    "answer": "devices"
+  },
+  {
+    "id": 426,
+    "cat": "単チャレ第5回",
+    "en": "trust",
+    "part": "名詞9",
+    "sentence": "I tend to put my (    ) in others too much.",
+    "full": "I tend to put my trust in others too much.",
+    "jp": "私は他人を信頼しすぎる傾向がある。",
+    "answer": "trust"
+  },
+  {
+    "id": 427,
+    "cat": "単チャレ第5回",
+    "en": "dot",
+    "part": "名詞9",
+    "sentence": "The artist painted several pictures with (    ).",
+    "full": "The artist painted several pictures with dots.",
+    "jp": "その芸術家は点でいくつかの絵を描いた。",
+    "answer": "dots"
+  },
+  {
+    "id": 428,
+    "cat": "単チャレ第5回",
+    "en": "owner",
+    "part": "名詞9",
+    "sentence": "Who is the original (    ) of the car?",
+    "full": "Who is the original owner of the car?",
+    "jp": "その車の元の所有者はだれですか。",
+    "answer": "owner"
+  },
+  {
+    "id": 429,
+    "cat": "単チャレ第5回",
+    "en": "immigrant",
+    "part": "名詞9",
+    "sentence": "A lot of (    ) from Mexico live in this area.",
+    "full": "A lot of immigrants from Mexico live in this area.",
+    "jp": "この地域には多くのメキシコからの移民が住んでいる。",
+    "answer": "immigrants"
+  },
+  {
+    "id": 430,
+    "cat": "単チャレ第5回",
+    "en": "excuse",
+    "part": "名詞9",
+    "sentence": "The boy made some (    ) for being late.",
+    "full": "The boy made some excuses for being late.",
+    "jp": "その少年は遅刻したことに対していくつか言い訳をした。",
+    "answer": "excuses"
+  },
+  {
+    "id": 431,
+    "cat": "単チャレ第5回",
+    "en": "prize",
+    "part": "名詞10",
+    "sentence": "Kenta won second (    ) in the English speech contest.",
+    "full": "Kenta won second prize in the English speech contest.",
+    "jp": "ケンタは英語スピーチコンテストで2等賞を取った。",
+    "answer": "prize"
+  },
+  {
+    "id": 432,
+    "cat": "単チャレ第5回",
+    "en": "shock",
+    "part": "名詞10",
+    "sentence": "She got a big (    ) when she heard the news.",
+    "full": "She got a big shock when she heard the news.",
+    "jp": "その知らせを聞いたとき，彼女は大きなショックを受けた。",
+    "answer": "shock"
+  },
+  {
+    "id": 433,
+    "cat": "単チャレ第5回",
+    "en": "trend",
+    "part": "名詞10",
+    "sentence": "The (    ) toward eco-friendly products should be welcomed.",
+    "full": "The trend toward eco-friendly products should be welcomed.",
+    "jp": "環境にやさしい製品を求める傾向は歓迎されるべきである。",
+    "answer": "trend"
+  },
+  {
+    "id": 434,
+    "cat": "単チャレ第5回",
+    "en": "track",
+    "part": "名詞10",
+    "sentence": "We walked along the (    ) to the lake.",
+    "full": "We walked along the track to the lake.",
+    "jp": "私たちは湖までの小道を歩いた。",
+    "answer": "track"
+  },
+  {
+    "id": 435,
+    "cat": "単チャレ第5回",
+    "en": "term",
+    "part": "名詞10",
+    "sentence": "The doctor used some medical (    ) to explain my disease.",
+    "full": "The doctor used some medical terms to explain my disease.",
+    "jp": "その医者は私の病気を説明するのにいくつか医学用語を使った。",
+    "answer": "terms"
+  },
+  {
+    "id": 436,
+    "cat": "単チャレ第5回",
+    "en": "authority",
+    "part": "名詞10",
+    "sentence": "Some fathers have no (    ) over their children.",
+    "full": "Some fathers have no authority over their children.",
+    "jp": "自分の子どもたちに対する権威のない父親もいる。",
+    "answer": "authority"
+  },
+  {
+    "id": 437,
+    "cat": "単チャレ第5回",
+    "en": "household",
+    "part": "名詞10",
+    "sentence": "My aunt is running a large (    ).",
+    "full": "My aunt is running a large household.",
+    "jp": "私の叔母は大家族を切り盛りしている。",
+    "answer": "household"
+  },
+  {
+    "id": 438,
+    "cat": "単チャレ第5回",
+    "en": "luck",
+    "part": "名詞10",
+    "sentence": "I believe four-leaf clovers bring me good (    ).",
+    "full": "I believe four-leaf clovers bring me good luck.",
+    "jp": "私は四つ葉のクローバーが幸運をもたらすと信じている。",
+    "answer": "luck"
+  },
+  {
+    "id": 439,
+    "cat": "単チャレ第5回",
+    "en": "code",
+    "part": "名詞10",
+    "sentence": "We have to follow a dress (    ) at school.",
+    "full": "We have to follow a dress code at school.",
+    "jp": "私たちは学校の服装規定に従わなければならない。",
+    "answer": "code"
+  },
+  {
+    "id": 440,
+    "cat": "単チャレ第5回",
+    "en": "fuel",
+    "part": "名詞10",
+    "sentence": "Generally, large-size cars use a lot of (    ).",
+    "full": "Generally, large-size cars use a lot of fuel.",
+    "jp": "一般に，大型車は大量の燃料を消費する。",
+    "answer": "fuel"
+  },
+  {
+    "id": 441,
+    "cat": "単チャレ第5回",
+    "en": "release",
+    "part": "動詞6",
+    "sentence": "Andy decided to (    ) his bird from the cage.",
+    "full": "Andy decided to release his bird from the cage.",
+    "jp": "アンディーはかごから彼の鳥を逃がすことに決めた。",
+    "answer": "release"
+  },
+  {
+    "id": 442,
+    "cat": "単チャレ第5回",
+    "en": "tie",
+    "part": "動詞6",
+    "sentence": "(    ) your name tag to your bag before the flight.",
+    "full": "Tie your name tag to your bag before the flight.",
+    "jp": "飛行機に乗る前にあなたのバッグに名札を結びつけなさい。",
+    "answer": "Tie"
+  },
+  {
+    "id": 443,
+    "cat": "単チャレ第5回",
+    "en": "reveal",
+    "part": "動詞6",
+    "sentence": "They finally decided to (    ) the truth.",
+    "full": "They finally decided to reveal the truth.",
+    "jp": "彼らはついに真実を明らかにすることを決意した。",
+    "answer": "reveal"
+  },
+  {
+    "id": 444,
+    "cat": "単チャレ第5回",
+    "en": "conclude",
+    "part": "動詞6",
+    "sentence": "He (    ) (that) they needed further research.",
+    "full": "He concluded (that) they needed further research.",
+    "jp": "彼はさらなる調査が必要であると結論づけた。",
+    "answer": "concluded"
+  },
+  {
+    "id": 445,
+    "cat": "単チャレ第5回",
+    "en": "assume",
+    "part": "動詞6",
+    "sentence": "I (    ) (that) your blood type was A.",
+    "full": "I assumed (that) your blood type was A.",
+    "jp": "私はあなたの血液型はAだと思い込んでいた。",
+    "answer": "assumed"
+  },
+  {
+    "id": 446,
+    "cat": "単チャレ第5回",
+    "en": "escape",
+    "part": "動詞6",
+    "sentence": "All of them (    ) from the burning building.",
+    "full": "All of them escaped from the burning building.",
+    "jp": "彼らはみんな燃えさかる建物から逃げた。",
+    "answer": "escaped"
+  },
+  {
+    "id": 447,
+    "cat": "単チャレ第5回",
+    "en": "demonstrate",
+    "part": "動詞6",
+    "sentence": "The research (    ) (that) smoking increases the risk of cancer.",
+    "full": "The research demonstrated (that) smoking increases the risk of cancer.",
+    "jp": "その調査は喫煙ががんの危険を増加させるということを論証した。",
+    "answer": "demonstrated"
+  },
+  {
+    "id": 448,
+    "cat": "単チャレ第5回",
+    "en": "participate",
+    "part": "動詞6",
+    "sentence": "Every student can (    ) in the speech contest.",
+    "full": "Every student can participate in the speech contest.",
+    "jp": "生徒はだれでもスピーチコンテストに参加することができる。",
+    "answer": "participate"
+  },
+  {
+    "id": 449,
+    "cat": "単チャレ第5回",
+    "en": "publish",
+    "part": "動詞6",
+    "sentence": "The writer (    ) his seventh book last year.",
+    "full": "The writer published his seventh book last year.",
+    "jp": "昨年，その作家は7作目の本を出版した。",
+    "answer": "published"
+  },
+  {
+    "id": 450,
+    "cat": "単チャレ第5回",
+    "en": "hang",
+    "part": "動詞6",
+    "sentence": "Can you (    ) this picture on the wall?",
+    "full": "Can you hang this picture on the wall?",
+    "jp": "この絵を壁に掛けてくれませんか。",
+    "answer": "hang"
+  },
+  {
+    "id": 451,
+    "cat": "単チャレ第5回",
+    "en": "previous",
+    "part": "形容詞5",
+    "sentence": "(    ) experience is not necessary for your new job.",
+    "full": "Previous experience is not necessary for your new job.",
+    "jp": "あなたの新しい仕事に前の経験は必要ない。",
+    "answer": "Previous"
+  },
+  {
+    "id": 452,
+    "cat": "単チャレ第5回",
+    "en": "equal",
+    "part": "形容詞5",
+    "sentence": "The weight of this washing machine is (    ) to your weight.",
+    "full": "The weight of this washing machine is equal to your weight.",
+    "jp": "この洗濯機の重さはあなたの体重に等しい。",
+    "answer": "equal"
+  },
+  {
+    "id": 453,
+    "cat": "単チャレ第5回",
+    "en": "direct",
+    "part": "形容詞5",
+    "sentence": "I have no (    ) contact with Tom's father.",
+    "full": "I have no direct contact with Tom's father.",
+    "jp": "私はトムのお父さんと直接の接触はない。",
+    "answer": "direct"
+  },
+  {
+    "id": 454,
+    "cat": "単チャレ第5回",
+    "en": "nervous",
+    "part": "形容詞5",
+    "sentence": "She was so (    ) about the English exam.",
+    "full": "She was so nervous about the English exam.",
+    "jp": "彼女は英語の試験のことでとても緊張していた。",
+    "answer": "nervous"
+  },
+  {
+    "id": 455,
+    "cat": "単チャレ第5回",
+    "en": "suitable",
+    "part": "形容詞5",
+    "sentence": "These shoes are very (    ) for jogging.",
+    "full": "These shoes are very suitable for jogging.",
+    "jp": "この靴はジョギングにとても適している。",
+    "answer": "suitable"
+  },
+  {
+    "id": 456,
+    "cat": "単チャレ第5回",
+    "en": "ill",
+    "part": "形容詞5",
+    "sentence": "Fred worked so hard that he became (    ).",
+    "full": "Fred worked so hard that he became ill.",
+    "jp": "フレッドは熱心に働きすぎて病気になった。",
+    "answer": "ill"
+  },
+  {
+    "id": 457,
+    "cat": "単チャレ第5回",
+    "en": "fair",
+    "part": "形容詞5",
+    "sentence": "Those products are sold at (    ) prices.",
+    "full": "Those products are sold at fair prices.",
+    "jp": "それらの製品は適正な価格で売られている。",
+    "answer": "fair"
+  },
+  {
+    "id": 458,
+    "cat": "単チャレ第5回",
+    "en": "potential",
+    "part": "形容詞5",
+    "sentence": "Their new project has some (    ) risks.",
+    "full": "Their new project has some potential risks.",
+    "jp": "彼らの新しい計画にはいくつか潜在的な危険性がある。",
+    "answer": "potential"
+  },
+  {
+    "id": 459,
+    "cat": "単チャレ第5回",
+    "en": "unable",
+    "part": "形容詞5",
+    "sentence": "Please call me if you are (    ) to come.",
+    "full": "Please call me if you are unable to come.",
+    "jp": "来ることができない場合は私に電話してください。",
+    "answer": "unable"
+  },
+  {
+    "id": 460,
+    "cat": "単チャレ第5回",
+    "en": "tiny",
+    "part": "形容詞5",
+    "sentence": "She opened the large box to find a (    ) cake in it.",
+    "full": "She opened the large box to find a tiny cake in it.",
+    "jp": "彼女は大きな箱を開けると，その中にとても小さいケーキを見つけた。",
+    "answer": "tiny"
+  },
+  {
+    "id": 461,
+    "cat": "単チャレ第5回",
+    "en": "tradition",
+    "part": "名詞11",
+    "sentence": "We have a long (    ) of using chopsticks.",
+    "full": "We have a long tradition of using chopsticks.",
+    "jp": "私たちには箸を使う長い伝統がある。",
+    "answer": "tradition"
+  },
+  {
+    "id": 462,
+    "cat": "単チャレ第5回",
+    "en": "crop",
+    "part": "名詞11",
+    "sentence": "Most people live by growing (    ) in this village.",
+    "full": "Most people live by growing crops in this village.",
+    "jp": "この村ではほとんどの人が農作物を栽培することで生活している。",
+    "answer": "crops"
+  },
+  {
+    "id": 463,
+    "cat": "単チャレ第5回",
+    "en": "debate",
+    "part": "名詞11",
+    "sentence": "We had a (    ) about economic issues.",
+    "full": "We had a debate about economic issues.",
+    "jp": "私たちは経済問題について討論を行った。",
+    "answer": "debate"
+  },
+  {
+    "id": 464,
+    "cat": "単チャレ第5回",
+    "en": "fashion",
+    "part": "名詞11",
+    "sentence": "Black clothes are in (    ) among my friends.",
+    "full": "Black clothes are in fashion among my friends.",
+    "jp": "私の友だちの間で黒い服が流行している。",
+    "answer": "fashion"
+  },
+  {
+    "id": 465,
+    "cat": "単チャレ第5回",
+    "en": "bone",
+    "part": "名詞11",
+    "sentence": "Ken broke a (    ) in his arm during the game.",
+    "full": "Ken broke a bone in his arm during the game.",
+    "jp": "ケンは試合中に腕の骨を折った。",
+    "answer": "bone"
+  },
+  {
+    "id": 466,
+    "cat": "単チャレ第5回",
+    "en": "relative",
+    "part": "名詞11",
+    "sentence": "They invited only close (    ) to their wedding.",
+    "full": "They invited only close relatives to their wedding.",
+    "jp": "彼らは結婚式に近い親せきだけを招待した。",
+    "answer": "relatives"
+  },
+  {
+    "id": 467,
+    "cat": "単チャレ第5回",
+    "en": "consequence",
+    "part": "名詞11",
+    "sentence": "As a (    ), we had to take a taxi to get to the station.",
+    "full": "As a consequence, we had to take a taxi to get to the station.",
+    "jp": "結果として，私たちは駅に行くのにタクシーに乗らなければならなかった。",
+    "answer": "consequence"
+  },
+  {
+    "id": 468,
+    "cat": "単チャレ第5回",
+    "en": "childhood",
+    "part": "名詞11",
+    "sentence": "Mike spent his (    ) in London and New York.",
+    "full": "Mike spent his childhood in London and New York.",
+    "jp": "マイクはロンドンとニューヨークで子ども時代を過ごした。",
+    "answer": "childhood"
+  },
+  {
+    "id": 469,
+    "cat": "単チャレ第5回",
+    "en": "storm",
+    "part": "名詞11",
+    "sentence": "A big (    ) hit our town during the night.",
+    "full": "A big storm hit our town during the night.",
+    "jp": "大きな嵐が夜の間に私たちの町を襲った。",
+    "answer": "storm"
+  },
+  {
+    "id": 470,
+    "cat": "単チャレ第5回",
+    "en": "block",
+    "part": "名詞11",
+    "sentence": "My mother lives three (    ) away from here.",
+    "full": "My mother lives three blocks away from here.",
+    "jp": "私の母はここから3ブロック離れて住んでいる。",
+    "answer": "blocks"
+  },
+  {
+    "id": 471,
+    "cat": "単チャレ第5回",
+    "en": "refuse",
+    "part": "動詞7",
+    "sentence": "The singer (    ) to answer questions about her private life.",
+    "full": "The singer refused to answer questions about her private life.",
+    "jp": "その歌手は私生活についての質問に答えるのを断った。",
+    "answer": "refused"
+  },
+  {
+    "id": 472,
+    "cat": "単チャレ第5回",
+    "en": "lay",
+    "part": "動詞7",
+    "sentence": "The guest (    ) his coat on the sofa.",
+    "full": "The guest laid his coat on the sofa.",
+    "jp": "その客はソファーの上にコートを置いた。",
+    "answer": "laid"
+  },
+  {
+    "id": 473,
+    "cat": "単チャレ第5回",
+    "en": "suppose",
+    "part": "動詞7",
+    "sentence": "I (    ) (that) you can swim better than me.",
+    "full": "I suppose (that) you can swim better than me.",
+    "jp": "私はあなたのほうが私より上手に泳げると思う。",
+    "answer": "suppose"
+  },
+  {
+    "id": 474,
+    "cat": "単チャレ第5回",
+    "en": "insist",
+    "part": "動詞7",
+    "sentence": "Mary (    ) (that) she was taller than her sister.",
+    "full": "Mary insisted (that) she was taller than her sister.",
+    "jp": "メアリーは自分は妹より背が高いと主張した。",
+    "answer": "insisted"
+  },
+  {
+    "id": 475,
+    "cat": "単チャレ第5回",
+    "en": "relax",
+    "part": "動詞7",
+    "sentence": "Listening to music is a good way to (    ).",
+    "full": "Listening to music is a good way to relax.",
+    "jp": "音楽鑑賞はくつろぐのによい方法である。",
+    "answer": "relax"
+  },
+  {
+    "id": 476,
+    "cat": "単チャレ第5回",
+    "en": "direct",
+    "part": "動詞7",
+    "sentence": "He (    ) his attention to the new market.",
+    "full": "He directed his attention to the new market.",
+    "jp": "彼は新たな市場に注意を向けた。",
+    "answer": "directed"
+  },
+  {
+    "id": 477,
+    "cat": "単チャレ第5回",
+    "en": "judge",
+    "part": "動詞7",
+    "sentence": "You can't (    ) people by their looks.",
+    "full": "You can't judge people by their looks.",
+    "jp": "見た目で人を判断してはいけない。",
+    "answer": "judge"
+  },
+  {
+    "id": 478,
+    "cat": "単チャレ第5回",
+    "en": "recall",
+    "part": "動詞7",
+    "sentence": "I (    ) that I played in the park when I was a child.",
+    "full": "I recalled that I played in the park when I was a child.",
+    "jp": "私は子どものころその公園で遊んだことを思い出した。",
+    "answer": "recalled"
+  },
+  {
+    "id": 479,
+    "cat": "単チャレ第5回",
+    "en": "repair",
+    "part": "動詞7",
+    "sentence": "I asked him to (    ) my house.",
+    "full": "I asked him to repair my house.",
+    "jp": "私は彼に私の家を修理するよう頼んだ。",
+    "answer": "repair"
+  },
+  {
+    "id": 480,
+    "cat": "単チャレ第5回",
+    "en": "predict",
+    "part": "動詞7",
+    "sentence": "It is difficult to (    ) the future.",
+    "full": "It is difficult to predict the future.",
+    "jp": "未来を予測することは困難だ。",
+    "answer": "predict"
+  },
+  {
+    "id": 481,
+    "cat": "単チャレ第5回",
+    "en": "gradually",
+    "part": "副詞",
+    "sentence": "The number of visitors has (    ) increased in Yakushima.",
+    "full": "The number of visitors has gradually increased in Yakushima.",
+    "jp": "屋久島では観光客の数が徐々に増えてきている。",
+    "answer": "gradually"
+  },
+  {
+    "id": 482,
+    "cat": "単チャレ第5回",
+    "en": "somewhere",
+    "part": "副詞",
+    "sentence": "I met the lady (    ) in London.",
+    "full": "I met the lady somewhere in London.",
+    "jp": "私はその婦人にロンドンのどこかで会った。",
+    "answer": "somewhere"
+  },
+  {
+    "id": 483,
+    "cat": "単チャレ第5回",
+    "en": "increasingly",
+    "part": "副詞",
+    "sentence": "Online shopping is becoming (    ) popular.",
+    "full": "Online shopping is becoming increasingly popular.",
+    "jp": "ネットショッピングはますます人気が出ている。",
+    "answer": "increasingly"
+  },
+  {
+    "id": 484,
+    "cat": "単チャレ第5回",
+    "en": "relatively",
+    "part": "副詞",
+    "sentence": "The English exam was (    ) easy for me.",
+    "full": "The English exam was relatively easy for me.",
+    "jp": "その英語の試験は私には比較的簡単だった。",
+    "answer": "relatively"
+  },
+  {
+    "id": 485,
+    "cat": "単チャレ第5回",
+    "en": "frequently",
+    "part": "副詞",
+    "sentence": "Mary (    ) goes out with her mother.",
+    "full": "Mary frequently goes out with her mother.",
+    "jp": "メアリーは頻繁にお母さんと出かける。",
+    "answer": "frequently"
+  },
+  {
+    "id": 486,
+    "cat": "単チャレ第5回",
+    "en": "otherwise",
+    "part": "副詞",
+    "sentence": "Leave now. (    )(,) you will be late for school.",
+    "full": "Leave now. Otherwise(,) you will be late for school.",
+    "jp": "今すぐ出発しなさい。そうしないと，学校に遅れますよ。",
+    "answer": "Otherwise"
+  },
+  {
+    "id": 487,
+    "cat": "単チャレ第5回",
+    "en": "closely",
+    "part": "副詞",
+    "sentence": "My friend is (    ) linked to the event.",
+    "full": "My friend is closely linked to the event.",
+    "jp": "私の友人はその事件と密接に関係している。",
+    "answer": "closely"
+  },
+  {
+    "id": 488,
+    "cat": "単チャレ第5回",
+    "en": "slightly",
+    "part": "副詞",
+    "sentence": "Jack is (    ) taller than his father.",
+    "full": "Jack is slightly taller than his father.",
+    "jp": "ジャックは父親よりわずかに背が高い。",
+    "answer": "slightly"
+  },
+  {
+    "id": 489,
+    "cat": "単チャレ第5回",
+    "en": "twice",
+    "part": "副詞",
+    "sentence": "She takes dance lessons (    ) a week.",
+    "full": "She takes dance lessons twice a week.",
+    "jp": "彼女は1週間に2度ダンスのレッスンを受けている。",
+    "answer": "twice"
+  },
+  {
+    "id": 490,
+    "cat": "単チャレ第5回",
+    "en": "rapidly",
+    "part": "副詞",
+    "sentence": "The IT industry has grown (    ) around the world.",
+    "full": "The IT industry has grown rapidly around the world.",
+    "jp": "IT産業は世界中で急速に成長している。",
+    "answer": "rapidly"
+  },
+  {
+    "id": 491,
+    "cat": "単チャレ第5回",
+    "en": "opposite",
+    "part": "前",
+    "sentence": "The post office is (    ) the city hall.",
+    "full": "The post office is opposite the city hall.",
+    "jp": "郵便局は市役所の向かい側にある。",
+    "answer": "opposite"
+  },
+  {
+    "id": 492,
+    "cat": "単チャレ第5回",
+    "en": "worth",
+    "part": "前",
+    "sentence": "Each of his drawings is (    ) one million dollars.",
+    "full": "Each of his drawings is worth one million dollars.",
+    "jp": "彼の絵はそれぞれ100万ドルの価値がある。",
+    "answer": "worth"
+  },
+  {
+    "id": 493,
+    "cat": "単チャレ第5回",
+    "en": "unlike",
+    "part": "前",
+    "sentence": "(    ) his brother, Mark likes staying at home.",
+    "full": "Unlike his brother, Mark likes staying at home.",
+    "jp": "兄と違って，マークは家にいるのが好きだ。",
+    "answer": "Unlike"
+  },
+  {
+    "id": 494,
+    "cat": "単チャレ第5回",
+    "en": "besides",
+    "part": "前",
+    "sentence": "What do I need (    ) writing tools?",
+    "full": "What do I need besides writing tools?",
+    "jp": "筆記用具のほかに何か必要ですか。",
+    "answer": "besides"
+  },
+  {
+    "id": 495,
+    "cat": "単チャレ第5回",
+    "en": "beside",
+    "part": "前",
+    "sentence": "There is a small forest (    ) the lake.",
+    "full": "There is a small forest beside the lake.",
+    "jp": "湖のそばに小さな森がある。",
+    "answer": "beside"
+  },
+  {
+    "id": 496,
+    "cat": "単チャレ第5回",
+    "en": "considering",
+    "part": "前",
+    "sentence": "The actress looks young (    ) her age.",
+    "full": "The actress looks young considering her age.",
+    "jp": "その女優は年の割には若く見える。",
+    "answer": "considering"
+  },
+  {
+    "id": 497,
+    "cat": "単チャレ第5回",
+    "en": "concerning",
+    "part": "前",
+    "sentence": "We asked many questions (    ) the accident.",
+    "full": "We asked many questions concerning the accident.",
+    "jp": "私たちはその事故に関して多くの質問をした。",
+    "answer": "concerning"
+  },
+  {
+    "id": 498,
+    "cat": "単チャレ第5回",
+    "en": "beneath",
+    "part": "前",
+    "sentence": "They sat (    ) the tree to take a rest.",
+    "full": "They sat beneath the tree to take a rest.",
+    "jp": "彼らは休憩をとるために木の下に座った。",
+    "answer": "beneath"
+  },
+  {
+    "id": 499,
+    "cat": "単チャレ第5回",
+    "en": "whenever",
+    "part": "接",
+    "sentence": "(    ) I drive, I wear these sunglasses.",
+    "full": "Whenever I drive, I wear these sunglasses.",
+    "jp": "私が車を運転するときはいつもこのサングラスをかける。",
+    "answer": "Whenever"
+  },
+  {
+    "id": 500,
+    "cat": "単チャレ第5回",
+    "en": "whereas",
+    "part": "接",
+    "sentence": "He was rich, (    ) his brother was very poor.",
+    "full": "He was rich, whereas his brother was very poor.",
+    "jp": "彼は金持ちだったが，(その)一方で弟はとても貧しかった。",
+    "answer": "whereas"
   }
 ];
-
