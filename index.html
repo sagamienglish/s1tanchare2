@@ -1585,6 +1585,7 @@
             renderCategoryFilter();
             updateDashboard();
             updateStaminaLogic();
+            document.addEventListener('keydown', handleHardwareTyping);
             
             setInterval(() => {
                 if (activeScreen === 'dashboard' || activeScreen === 'vocabulary') {
@@ -2319,12 +2320,20 @@
                                 void qText.offsetWidth;
                                 qText.classList.add('answer-flash');
                             }
-                            btn.classList.add('bg-primary', 'text-white', 'border-primary', 'animate-pop');
-                            Array.from(container.children).forEach(b => { b.onclick = null; b.classList.add('pointer-events-none'); });
+                            btn.className = 'w-full border-2 border-primary bg-primary text-white font-black py-5 rounded-xl text-lg shadow-md animate-pop pointer-events-none';
+                            Array.from(container.children).forEach(b => {
+                                b.onclick = null;
+                                b.disabled = true;
+                                b.classList.add('pointer-events-none');
+                                if(b !== btn) b.classList.add('opacity-50');
+                            });
                             setTimeout(() => { learnIndex++; renderLearnProgress(); renderLearnPhase(); }, learnPhase === 2 ? 1100 : 800);
                         } else {
                             playSound('wrong'); markLearnMistake(target); recordError(target.en); recordLearnReviewWord(target);
-                            btn.classList.add('bg-slate-50', 'text-slate-300', 'border-slate-200', 'pointer-events-none');
+                            btn.disabled = true;
+                            btn.onclick = null;
+                            btn.className = 'w-full border-2 border-red-400 bg-red-50 text-red-600 font-bold py-5 rounded-xl text-lg shadow-sm animate-pulse pointer-events-none';
+                            setTimeout(() => btn.classList.remove('animate-pulse'), 350);
                             renderLearnProgress();
                         }
                     };
@@ -2338,7 +2347,7 @@
             }
         }
         
-        let learnTypTarget = null;
+        let learnTypTarget = null, learnTypingLocked = false;
         function setupLearnTyping(word) {
             let clean = word.replace(/\[.*?\]/g, '').trim();
             let valid = []; for(let i=0; i<clean.length; i++) { if(clean[i] !== ' ' && clean[i] !== '-') valid.push(i); }
@@ -2348,6 +2357,7 @@
             for(let i=0; i<displayArr.length; i++) { if (displayArr[i] === ' ') displayArr[i] = '&nbsp;&nbsp;'; }
             
             learnTypTarget = { full: clean, displayArr: displayArr, ans: ans.toLowerCase() };
+            learnTypingLocked = false;
             document.getElementById('learn-typ-input').value = '';
             document.getElementById('learn-typ-feedback').innerHTML = '';
             updateLearnTypDisplay();
@@ -2372,13 +2382,13 @@
                 if (rIndex === 2) {
                     const bsBtn = document.createElement('button'); bsBtn.className = 'bg-surface border border-slate-200 text-slate-600 rounded-lg font-bold px-3 py-3 active:bg-slate-50 transition-colors shadow-sm cursor-pointer';
                     bsBtn.innerHTML = '<i data-lucide="delete" class="w-5 h-5"></i>';
-                    bsBtn.onclick = () => { initAudio(); const input = document.getElementById('learn-typ-input'); input.value = input.value.slice(0, -1); updateLearnTypDisplay(); };
+                    bsBtn.onclick = () => { if(learnTypingLocked) return; initAudio(); const input = document.getElementById('learn-typ-input'); input.value = input.value.slice(0, -1); updateLearnTypDisplay(); };
                     rowDiv.appendChild(bsBtn);
                 }
                 row.forEach(char => {
                     const btn = document.createElement('button'); btn.className = 'bg-surface border border-slate-200 text-slate-700 rounded-lg font-bold flex-1 py-3 active:bg-slate-50 transition-colors max-w-[45px] text-base md:text-lg shadow-sm cursor-pointer';
                     btn.innerText = char;
-                    btn.onclick = () => { initAudio(); const input = document.getElementById('learn-typ-input'); if(input.value.length < learnTypTarget.ans.length) { input.value += char; updateLearnTypDisplay(); } };
+                    btn.onclick = () => { if(learnTypingLocked) return; initAudio(); const input = document.getElementById('learn-typ-input'); if(input.value.length < learnTypTarget.ans.length) { input.value += char; updateLearnTypDisplay(); } };
                     rowDiv.appendChild(btn);
                 });
                 if (rIndex === 2) {
@@ -2392,8 +2402,10 @@
         }
 
         function checkLearnTyping() {
+            if(learnTypingLocked || !learnTypTarget) return;
             const input = document.getElementById('learn-typ-input');
             if(input.value.toLowerCase() === learnTypTarget.ans) {
+                learnTypingLocked = true;
                 playSound('correct'); playAudio(learnTypTarget.full);
                 document.getElementById('learn-typ-feedback').innerHTML = '<span class="text-secondary animate-pop flex items-center gap-1"><i data-lucide="check-circle" class="w-5 h-5"></i> Excellent</span>';
                 setTimeout(() => { learnIndex++; renderLearnProgress(); renderLearnPhase(); }, 1200);
@@ -2402,6 +2414,57 @@
                 input.value = ''; updateLearnTypDisplay(); renderLearnProgress();
                 let ec = document.getElementById('learn-typ-hint-container').children[0];
                 ec.classList.add('bg-red-50', 'border-red-400'); setTimeout(() => ec.classList.remove('bg-red-50', 'border-red-400'), 300);
+            }
+        }
+
+        function updateHiddenTypingInput(input, key, maxLength, onUpdate) {
+            if(key === 'Backspace') {
+                input.value = input.value.slice(0, -1);
+                onUpdate();
+                return true;
+            }
+            if(/^[a-zA-Z]$/.test(key) && input.value.length < maxLength) {
+                input.value += key.toLowerCase();
+                onUpdate();
+                return true;
+            }
+            return false;
+        }
+
+        function handleHardwareTyping(event) {
+            if(event.isComposing || event.metaKey || event.ctrlKey || event.altKey) return;
+
+            if(activeScreen === 'learn' && learnPhase === 3 && learnTypTarget && !learnTypingLocked) {
+                const input = document.getElementById('learn-typ-input');
+                if(event.key === 'Enter') {
+                    event.preventDefault();
+                    initAudio();
+                    checkLearnTyping();
+                } else if(updateHiddenTypingInput(input, event.key, learnTypTarget.ans.length, updateLearnTypDisplay)) {
+                    event.preventDefault();
+                }
+                return;
+            }
+
+            if(activeScreen !== 'typing_drill') return;
+            const input = document.getElementById('td-input');
+            if(input.disabled) return;
+            if(event.key === 'Enter') {
+                event.preventDefault();
+                initAudio();
+                handleTdEnter();
+            } else if(tdDifficulty === 'easy' && tdEasyTarget && updateHiddenTypingInput(input, event.key, tdEasyTarget.ans.length, updateTdEasyDisplay)) {
+                event.preventDefault();
+            } else if(tdDifficulty !== 'easy' && document.activeElement !== input) {
+                if(event.key === 'Backspace') {
+                    event.preventDefault();
+                    input.value = input.value.slice(0, -1);
+                    input.focus({ preventScroll: true });
+                } else if(/^[a-zA-Z '\-]$/.test(event.key)) {
+                    event.preventDefault();
+                    input.value += event.key.toLowerCase();
+                    input.focus({ preventScroll: true });
+                }
             }
         }
 
@@ -2766,6 +2829,7 @@
             document.getElementById('td-feedback').innerHTML = '';
             document.getElementById('td-hint-btn').innerHTML = '<i data-lucide="lightbulb" class="w-4 h-4 text-slate-400"></i> ヒント'; document.getElementById('td-hint-btn').classList.remove('hidden');
             renderTdKeyboard(); lucide.createIcons();
+            if(tdDifficulty !== 'easy') requestAnimationFrame(() => input.focus({ preventScroll: true }));
         }
         function renderTdKeyboard() {
             const kb = document.getElementById('td-keyboard'); kb.innerHTML = '';
