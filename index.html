@@ -496,40 +496,79 @@
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 10px; }
     </style>
-    <link rel="stylesheet" href="studio.css">
-    <link rel="stylesheet" href="collection.css">
-    <link rel="stylesheet" href="exploration.css">
 </head>
-<body class="flex flex-col">
+<body class="flex flex-col md:flex-row">
 
-    <header class="studio-header">
-        <a class="studio-brand" href="#" onclick="navTo('dashboard'); return false" aria-label="Word Master ホーム"><span class="studio-brand-mark">W<span>M</span></span>Word Master<span class="studio-brand-dot">.</span></a>
-        <nav class="studio-navigation" aria-label="メインナビゲーション"><button id="nav-dashboard" onclick="navTo('dashboard')" aria-current="page">ホーム</button><button id="nav-vocabulary" onclick="navTo('vocabulary')">語彙リスト</button><button id="nav-collection" onclick="navTo('collection')">コレクション</button></nav>
-        <button class="studio-theme" onclick="openThemeModal()" aria-label="テーマ変更"><i data-lucide="palette" aria-hidden="true"></i><span>テーマ</span></button>
+    <!-- Mobile Header -->
+    <header class="md:hidden flex items-center justify-between p-4 bg-surface border-b border-slate-200 shrink-0 z-30 shadow-sm">
+        <div class="text-xl font-extrabold text-primary flex items-center gap-2">
+            <div class="wm-mark rounded-lg w-8 h-8">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
+                    <text x="13" y="58" font-size="31" font-weight="950" fill="currentColor" letter-spacing="-3">WM</text>
+                    <path d="M23 73 Q50 62 77 73" class="mode-icon-line" style="stroke-width:6"></path>
+                    <path d="M26 30 Q50 21 74 30" class="mode-icon-line" style="stroke-width:5" opacity="0.78"></path>
+                </svg>
+            </div>
+            Word Master
+        </div>
+        <div class="flex items-center gap-1.5 font-bold text-slate-700 bg-slate-50 px-3 py-1 rounded-full border border-slate-200 text-sm">
+            <i data-lucide="zap" class="w-4 h-4 text-yellow-500"></i><span class="stamina-display">10</span>
+        </div>
     </header>
+
+    <!-- Desktop Sidebar -->
+    <aside class="hidden md:flex w-64 flex-col bg-surface border-r border-slate-200 h-full p-6 z-20 shrink-0">
+        <div class="text-2xl font-extrabold text-primary mb-10 flex items-center gap-3">
+            <div class="wm-mark rounded-xl w-10 h-10">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
+                    <text x="13" y="58" font-size="31" font-weight="950" fill="currentColor" letter-spacing="-3">WM</text>
+                    <path d="M23 73 Q50 62 77 73" class="mode-icon-line" style="stroke-width:6"></path>
+                    <path d="M26 30 Q50 21 74 30" class="mode-icon-line" style="stroke-width:5" opacity="0.78"></path>
+                </svg>
+            </div>
+            Word Master
+        </div>
+        <nav class="space-y-2 flex-1">
+            <button onclick="navTo('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-4 p-4 rounded-xl bg-primary text-white font-bold transition-colors shadow-sm"><i data-lucide="layout-dashboard" class="w-5 h-5"></i> ダッシュボード</button>
+            <button onclick="navTo('vocabulary')" id="nav-vocabulary" class="w-full flex items-center gap-4 p-4 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 font-bold transition-colors"><i data-lucide="library" class="w-5 h-5"></i> 語彙リスト</button>
+        </nav>
+        <div class="mt-auto pt-4 border-t border-slate-100">
+            <button onclick="openThemeModal()" class="flex items-center justify-center gap-2 w-full p-3 rounded-xl border border-slate-200 text-slate-500 hover:text-primary transition-colors font-bold text-sm"><i data-lucide="palette" class="w-4 h-4"></i> テーマ変更</button>
+        </div>
+    </aside>
 
     <main class="flex-1 relative overflow-y-auto overflow-x-hidden pb-[calc(env(safe-area-inset-bottom)+5rem)] md:pb-0">
         
         <!-- ================= Dashboard ================= -->
-        <div id="screen-dashboard" class="screen flex flex-col">
-            <div class="studio-course-row"><div id="dash-category-filter" class="hide-scrollbar"></div></div>
-            <section class="studio-hero" aria-label="今日の学習と相棒">
-                <div class="studio-lesson">
-                    <span class="studio-kicker">今日の学習</span>
-                    <h1>総合学習</h1>
-                    <div class="studio-lesson-meta"><span>最大10語</span><span>意味 → 音声 → 綴り</span></div>
-                    <button class="studio-start" onclick="initAudio(); openSetupModal('learn')">学習を始める <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+        <div id="screen-dashboard" class="screen flex flex-col p-4 md:p-8 max-w-6xl mx-auto h-full">
+            
+            <div class="mb-4 overflow-x-auto whitespace-nowrap pb-2 hide-scrollbar flex items-center" id="dash-category-filter">
+                <!-- JS generates category buttons here -->
+            </div>
+
+            <!-- Stats & Mascot Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <!-- Mascot Area -->
+                <div class="md:col-span-1 bg-surface rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center gap-4 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-primaryLight/30 pointer-events-none"></div>
+                    <div id="mascot-container" onclick="handleMascotTap()" class="w-20 h-20 flex-shrink-0 relative z-10 mascot-float cursor-pointer"></div>
+                    <div id="mascot-bubble" class="hidden absolute left-4 top-[5.8rem] z-20 bg-surface border border-slate-200 shadow-lg rounded-xl px-3 py-2 text-[11px] font-extrabold text-slate-700 max-w-[190px]"></div>
+                    <div class="relative z-10 flex-1">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="text-sm font-extrabold text-slate-800">キミの相棒</h3>
+                            <div class="text-[10px] font-bold text-primary bg-primaryLight px-2 py-0.5 rounded">Lv.<span id="mascot-level">1</span></div>
+                        </div>
+                        <div id="mascot-name" class="text-xs text-slate-500 font-bold mb-2">タマゴ</div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div id="mascot-exp-bar" class="bg-primary h-full transition-all" style="width: 0%"></div>
+                        </div>
+                        <div class="text-[10px] text-right text-slate-400 font-bold mt-1">EXP: <span id="exp-count">0</span></div>
+                    </div>
                 </div>
-                <section class="today-review" id="today-review" aria-label="今日の復習"></section>
-                <div class="studio-companion">
-                    <div class="studio-orbit" aria-hidden="true"></div>
-                    <button type="button" id="mascot-container" onclick="handleMascotTap(event)" class="mascot-float" aria-label="相棒にタッチ"></button>
-                    <div id="mascot-bubble" class="hidden studio-bubble" role="status"></div>
-                    <div class="studio-buddy-details"><div class="studio-buddy-title"><span id="mascot-name">ブルードラゴン</span><span class="studio-level">Lv.<b id="mascot-level">1</b></span></div><div class="studio-exp-track"><div id="mascot-exp-bar" style="width:0%"></div></div><div class="studio-exp-label">EXP <span id="exp-count">0</span></div><button class="studio-collection-link" onclick="navTo('collection')">カードを見る <span aria-hidden="true">↗</span></button></div>
-                </div>
-            </section>
-            <section class="studio-progress" aria-label="学習の進捗">
-                <div class="studio-mastery"><h2>進捗状況</h2><div class="studio-mastery-body"><div class="relative w-20 h-20 flex-shrink-0">
+
+                <!-- Progress Donut -->
+                <div class="md:col-span-1 bg-surface rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-center gap-4">
+                    <div class="relative w-20 h-20 flex-shrink-0">
                         <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                             <circle cx="50" cy="50" r="40" fill="none" stroke="#f1f5f9" stroke-width="12" />
                             <circle id="donut-x" cx="50" cy="50" r="40" fill="none" stroke="#ef4444" stroke-width="12" stroke-dasharray="0 251" />
@@ -539,64 +578,164 @@
                         <div class="absolute inset-0 flex items-center justify-center flex-col">
                             <span class="text-lg font-black text-slate-700 leading-none" id="donut-pct">0%</span>
                         </div>
-                    </div><div class="studio-legend"><div><span><i class="studio-dot dot-o"></i>覚えた</span><b id="dash-count-o">0</b></div><div><span><i class="studio-dot dot-t"></i>あやふや</span><b id="dash-count-t">0</b></div><div><span><i class="studio-dot dot-x"></i>ミス</span><b id="dash-count-x">0</b></div><div><span><i class="studio-dot dot-new"></i>未学習</span><b id="studio-unseen">0</b></div></div></div><p id="studio-category-caption" class="studio-caption"></p></div>
-                <div id="studio-growth" class="studio-growth" aria-label="習得語数の推移"></div>
-                <div class="studio-time"><h2>学習時間</h2><div id="time-count">0分</div><span class="studio-caption">累計</span><div class="studio-stamina"><span><i data-lucide="zap" aria-hidden="true"></i>スタミナ</span><b><span class="stamina-display">10</span><small>/10</small></b></div><div id="stamina-timer">MAX</div></div>
-            </section>
-            
-            <section class="studio-practice"><div class="studio-section-head"><h2>好きな練習を選ぶ</h2><span>目的に合わせて</span></div><div class="studio-drills"><button type="button" class="studio-drill" onclick="initAudio(); openSetupModal('4choice')">
-                    <div class="mode-mark mode-mark-custom" style="--mode-ink:#176ee8;--mode-bg:#eaf2ff"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="5" width="12" height="8" rx="2"/><rect x="19" y="5" width="12" height="8" rx="2"/><rect x="3" y="19" width="12" height="8" rx="2"/><rect x="19" y="19" width="12" height="8" rx="2"/><path d="m22 23 2 2 4-4"/></svg></div>
+                    </div>
+                    <div class="flex flex-col gap-2 flex-1">
+                        <div class="flex justify-between items-center text-xs"><div class="flex items-center gap-1 font-bold text-slate-600"><div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>覚えた</div><span class="font-black text-slate-800" id="dash-count-o">0</span></div>
+                        <div class="flex justify-between items-center text-xs"><div class="flex items-center gap-1 font-bold text-slate-600"><div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>あやふや</div><span class="font-black text-slate-800" id="dash-count-t">0</span></div>
+                        <div class="flex justify-between items-center text-xs"><div class="flex items-center gap-1 font-bold text-slate-600"><div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>ミス</div><span class="font-black text-slate-800" id="dash-count-x">0</span></div>
+                    </div>
+                </div>
+
+                <!-- Learning Time & Stamina -->
+                <div class="md:col-span-1 grid grid-rows-2 gap-2">
+                    <div class="bg-surface rounded-xl p-3 shadow-sm border border-slate-200 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-slate-500 font-bold text-sm"><i data-lucide="clock" class="w-4 h-4"></i>学習時間</div>
+                        <div class="text-lg font-extrabold text-slate-700" id="time-count">0分</div>
+                    </div>
+                    <div class="bg-surface rounded-xl p-3 shadow-sm border border-slate-200 flex items-center justify-between relative">
+                        <div class="flex items-center gap-2 text-yellow-500 font-bold text-sm"><i data-lucide="zap" class="w-4 h-4"></i>スタミナ</div>
+                        <div class="text-lg font-extrabold text-slate-700"><span class="stamina-display">10</span><span class="text-xs text-slate-400">/10</span></div>
+                        <div id="stamina-timer" class="absolute top-1 right-2 text-[8px] text-slate-400 font-bold">MAX</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Course -->
+            <h2 class="text-lg font-bold text-slate-800 mb-3 pl-1 border-l-4 border-primary leading-none">学習コース</h2>
+            <div class="mb-6">
+                <button onclick="initAudio(); openSetupModal('learn')" class="mode-hero w-full bg-gradient-to-r from-primary to-indigo-600 text-white rounded-2xl p-6 shadow-lg transition-all flex items-center justify-between group cursor-pointer">
+                    <div class="flex items-center gap-4 text-left">
+                        <div class="mode-mark">
+                            <svg viewBox="0 0 100 100" aria-hidden="true">
+                                <path d="M16 39 L50 25 L84 39 L50 53 Z" class="mode-icon-line"></path>
+                                <path d="M30 47 V62 C30 71 39 77 50 77 C61 77 70 71 70 62 V47" class="mode-icon-line"></path>
+                                <path d="M84 39 V58" class="mode-icon-line"></path>
+                                <path d="M84 58 Q78 63 84 68 Q90 63 84 58 Z" class="mode-icon-fill"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black mb-1">総合学習モード</h3>
+                            <p class="text-primaryLight text-xs md:text-sm font-bold">4択 → リスニング → タイピング で完璧にマスター！</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/20 p-3 rounded-full group-hover:scale-110 transition-transform"><i data-lucide="play" class="w-6 h-6 text-white fill-white"></i></div>
+                </button>
+            </div>
+
+            <!-- Drills -->
+            <h2 class="text-lg font-bold text-slate-800 mb-3 pl-1 border-l-4 border-slate-400 leading-none">単語ドリル</h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
+                <div onclick="initAudio(); openSetupModal('4choice')" class="mode-card bg-surface rounded-xl p-4 shadow-sm border border-slate-200 cursor-pointer flex flex-col group">
+                    <div class="mode-mark" style="background:#10B981">
+                        <svg viewBox="0 0 100 100" aria-hidden="true">
+                            <rect x="22" y="23" width="23" height="21" rx="5" class="mode-icon-line"></rect>
+                            <rect x="55" y="23" width="23" height="21" rx="5" class="mode-icon-line"></rect>
+                            <rect x="22" y="56" width="23" height="21" rx="5" class="mode-icon-line"></rect>
+                            <path d="M56 67 L64 75 L80 55" class="mode-icon-line"></path>
+                        </svg>
+                    </div>
                     <h3 class="text-sm md:text-base font-bold text-slate-800 mb-1">４択クイズ</h3>
                     <p class="text-slate-500 text-[10px] md:text-xs">意味を選ぶクイズ</p>
-                </button>
-<button type="button" class="studio-drill" onclick="initAudio(); openSetupModal('typing_drill')">
-                    <div class="mode-mark mode-mark-custom" style="--mode-ink:#b9650b;--mode-bg:#fff1df"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="5" y="3" width="24" height="27" rx="5"/><path d="m11 22 6-13 6 13m-9-5h6M10 26h14"/></svg></div>
+                </div>
+                <div onclick="initAudio(); openSetupModal('typing_drill')" class="mode-card bg-surface rounded-xl p-4 shadow-sm border border-slate-200 cursor-pointer flex flex-col group">
+                    <div class="mode-mark" style="background:#F59E0B">
+                        <svg viewBox="0 0 100 100" aria-hidden="true">
+                            <rect x="18" y="36" width="64" height="38" rx="9" class="mode-icon-line"></rect>
+                            <path d="M30 48 H34 M46 48 H50 M62 48 H66 M31 62 H69" class="mode-icon-line"></path>
+                            <path d="M55 18 L43 40 H57 L45 60" class="mode-icon-line"></path>
+                        </svg>
+                    </div>
                     <h3 class="text-sm md:text-base font-bold text-slate-800 mb-1">タイピング</h3>
                     <p class="text-slate-500 text-[10px] md:text-xs">スペルを正しく入力</p>
-                </button>
-<button type="button" class="studio-drill" onclick="initAudio(); openSetupModal('listening_drill')">
-                    <div class="mode-mark mode-mark-custom" style="--mode-ink:#087d9d;--mode-bg:#e4f7fc"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M5 19v-4a12 12 0 0 1 24 0v4"/><rect x="3" y="16" width="6" height="12" rx="3"/><rect x="25" y="16" width="6" height="12" rx="3"/><path d="M13 19v4m4-7v10m4-7v4"/></svg></div>
+                </div>
+                <div onclick="initAudio(); openSetupModal('listening_drill')" class="mode-card bg-surface rounded-xl p-4 shadow-sm border border-slate-200 cursor-pointer flex flex-col group">
+                    <div class="mode-mark" style="background:#06B6D4">
+                        <svg viewBox="0 0 100 100" aria-hidden="true">
+                            <path d="M24 58 V50 C24 34 35 24 50 24 C65 24 76 34 76 50 V58" class="mode-icon-line"></path>
+                            <rect x="18" y="55" width="17" height="23" rx="7" class="mode-icon-line"></rect>
+                            <rect x="65" y="55" width="17" height="23" rx="7" class="mode-icon-line"></rect>
+                            <path d="M45 43 L58 50 L45 57 Z" class="mode-icon-fill"></path>
+                        </svg>
+                    </div>
                     <h3 class="text-sm md:text-base font-bold text-slate-800 mb-1">リスニング</h3>
                     <p class="text-slate-500 text-[10px] md:text-xs">音声を聞いて選ぶ</p>
-                </button>
-<button type="button" class="studio-drill" onclick="initAudio(); openSetupModal('sentence_choice')">
-                    <div class="mode-mark mode-mark-custom" style="--mode-ink:#bd3678;--mode-bg:#fdebf4"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M4 7h26M4 16h7m14 0h5M4 25h20"/><rect x="14" y="12" width="8" height="8" rx="1.5"/></svg></div>
+                </div>
+                <div onclick="initAudio(); openSetupModal('sentence_choice')" class="mode-card bg-surface rounded-xl p-4 shadow-sm border border-slate-200 cursor-pointer flex flex-col group">
+                    <div class="mode-mark" style="background:#EC4899">
+                        <i data-lucide="text-cursor-input" class="w-6 h-6 text-white"></i>
+                    </div>
                     <h3 class="text-sm md:text-base font-bold text-slate-800 mb-1">例文4択</h3>
                     <p class="text-slate-500 text-[10px] md:text-xs">空欄に入る語を選ぶ</p>
-                </button></div></section>
-            <section class="studio-games"><div class="studio-section-head"><h2>ゲームで挑戦</h2><span>ひとりでも、ふたりでも</span></div><div class="studio-drills"><button type="button" class="studio-drill" onclick="initAudio(); openSetupModal('matching')">
-                            <div class="mode-mark mode-mark-custom" style="--mode-ink:#218355;--mode-bg:#e7f6ed"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="2" y="6" width="13" height="23" rx="3"/><rect x="19" y="3" width="13" height="23" rx="3"/><path d="m8.5 13 3 4-3 4-3-4Zm17-3 3 4-3 4-3-4Z"/></svg></div>
+                </div>
+            </div>
+
+            <!-- Time Attack & Games -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-800 mb-3 pl-1 border-l-4 border-slate-400 leading-none">タイムアタック</h2>
+                    <div class="grid grid-cols-2 gap-3 md:gap-4">
+                        <div onclick="initAudio(); openSetupModal('matching')" class="mode-card bg-surface rounded-xl p-4 shadow-sm border border-slate-200 cursor-pointer flex flex-col group">
+                            <div class="mode-mark" style="background:#8B5CF6">
+                                <svg viewBox="0 0 100 100" aria-hidden="true">
+                                    <rect x="21" y="26" width="25" height="32" rx="7" class="mode-icon-line"></rect>
+                                    <rect x="54" y="42" width="25" height="32" rx="7" class="mode-icon-line"></rect>
+                                    <path d="M37 68 C46 82 64 82 72 70" class="mode-icon-line"></path>
+                                </svg>
+                            </div>
                             <h3 class="text-sm md:text-base font-bold text-slate-800 mb-1">マッチング</h3>
                             <p class="text-slate-500 text-[10px] md:text-xs">ペアを素早く見つける</p>
-                        </button>
-<button type="button" class="studio-drill" onclick="initAudio(); openSetupModal('timetrial')">
-                            <div class="mode-mark mode-mark-custom" style="--mode-ink:#ce4249;--mode-bg:#ffebed"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="20" r="11"/><path d="M13 3h8m-4 0v6m10 1 3 3M17 13v7l5 3"/></svg></div>
+                        </div>
+                        <div onclick="initAudio(); openSetupModal('timetrial')" class="mode-card bg-surface rounded-xl p-4 shadow-sm border border-slate-200 cursor-pointer flex flex-col group">
+                            <div class="mode-mark" style="background:#EF4444">
+                                <svg viewBox="0 0 100 100" aria-hidden="true">
+                                    <circle cx="50" cy="52" r="28" class="mode-icon-line"></circle>
+                                    <path d="M50 52 V34 M50 52 L64 62 M37 18 H63" class="mode-icon-line"></path>
+                                </svg>
+                            </div>
                             <h3 class="text-sm md:text-base font-bold text-slate-800 mb-1">タイムトライアル</h3>
                             <p class="text-slate-500 text-[10px] md:text-xs">10単語を一致させる</p>
-                        </button>
-<button type="button" class="studio-drill" onclick="initAudio(); openSetupModal('vs')">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-slate-800 mb-3 pl-1 border-l-4 border-slate-400 leading-none">対戦ゲーム</h2>
+                    <div class="grid grid-cols-2 gap-3 md:gap-4">
+                        <div onclick="initAudio(); openSetupModal('vs')" class="mode-card bg-surface rounded-xl p-4 shadow-sm border border-slate-200 cursor-pointer flex flex-col relative group">
+                            <div class="absolute -right-4 -top-4 w-16 h-16 bg-red-50 rounded-full opacity-50 pointer-events-none group-hover:scale-150 transition-transform"></div>
                             <div class="absolute top-2 right-2 text-red-500 text-[10px] font-bold flex items-center gap-2 z-10"><div class="flex items-center gap-1"><i data-lucide="bot" class="w-3 h-3"></i> Lv.<span id="display-cpu-level">1</span></div></div>
-                            <div class="mode-mark mode-mark-custom" style="--mode-ink:#7955d6;--mode-bg:#f0ebff"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="2" y="5" width="10" height="23" rx="2"/><rect x="22" y="5" width="10" height="23" rx="2"/><path d="M5 10h4m-4 4h4m16-4h4m-4 4h4"/><text x="17" y="23" text-anchor="middle" stroke="none" fill="currentColor" font-family="Arial,sans-serif" font-size="9" font-weight="900">VS</text></svg></div>
+                            <div class="mode-mark relative z-10" style="background:#F97316">
+                                <svg viewBox="0 0 100 100" aria-hidden="true">
+                                    <path d="M29 36 L47 54 M39 26 L21 44 M71 36 L53 54 M61 26 L79 44" class="mode-icon-line"></path>
+                                    <text x="50" y="78" text-anchor="middle" font-size="24" font-weight="950" fill="currentColor">VS</text>
+                                </svg>
+                            </div>
                             <h3 class="text-sm md:text-base font-bold text-slate-800 mb-1 relative z-10">カルタ対戦</h3>
                             <p class="text-slate-500 text-[10px] md:text-xs relative z-10">1文字ずつ出るお題を早押し！</p>
-                        </button>
-<button type="button" class="studio-drill" onclick="initAudio(); openSetupModal('invader')">
+                        </div>
+                        <div onclick="initAudio(); openSetupModal('invader')" class="mode-card bg-surface rounded-xl p-4 shadow-sm border border-slate-200 cursor-pointer flex flex-col relative group">
+                            <div class="absolute -right-4 -top-4 w-16 h-16 bg-blue-50 rounded-full opacity-50 pointer-events-none group-hover:scale-150 transition-transform"></div>
                             <div class="absolute top-2 right-2 text-blue-500 text-[10px] font-bold flex items-center gap-2 z-10"><div class="flex items-center gap-1"><i data-lucide="bot" class="w-3 h-3"></i> Lv.<span id="display-inv-cpu-level">1</span></div></div>
-                            <div class="mode-mark mode-mark-custom" style="--mode-ink:#4558b8;--mode-bg:#eceffd"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M9 4v3m16-3v3M9 7h16v3h4v10h-6v-4H11v4H5V10h4Z"/><path d="M11 11h1m10 0h1M17 23v9m-4-5h8M7 24l-2 3m22-3 2 3"/></svg></div>
+                            <div class="mode-mark relative z-10" style="background:#0F172A">
+                                <svg viewBox="0 0 100 100" aria-hidden="true">
+                                    <rect x="34" y="25" width="32" height="14" class="mode-icon-fill"></rect>
+                                    <rect x="26" y="39" width="48" height="22" class="mode-icon-fill"></rect>
+                                    <rect x="18" y="51" width="16" height="12" class="mode-icon-fill"></rect>
+                                    <rect x="66" y="51" width="16" height="12" class="mode-icon-fill"></rect>
+                                    <rect x="34" y="67" width="10" height="9" class="mode-icon-fill"></rect>
+                                    <rect x="56" y="67" width="10" height="9" class="mode-icon-fill"></rect>
+                                    <rect x="38" y="45" width="8" height="8" fill="#0F172A"></rect>
+                                    <rect x="54" y="45" width="8" height="8" fill="#0F172A"></rect>
+                                    <path d="M50 14 V24" class="mode-icon-line" style="stroke-width:5"></path>
+                                </svg>
+                            </div>
                             <h3 class="text-sm md:text-base font-bold text-slate-800 mb-1 relative z-10">英単語インベーダー</h3>
                             <p class="text-slate-500 text-[10px] md:text-xs relative z-10">迫り来る単語を撃ち落とせ！</p>
-                        </button></div></section>
-            <div class="backup-access"><button type="button" onclick="openLearningBackup()">記録のバックアップ・引き継ぎ ↗</button></div>
-        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div id="screen-collection" class="screen hidden flex-col">
-            <div class="collection-top"><div><span class="collection-kicker">COMPANION CARDS</span><h1>相棒コレクション<span>.</span></h1></div><div class="collection-count"><b id="collection-count">1</b><span>/ 20</span></div></div>
-            <div class="collection-reward"><div><span class="collection-ticket-label">学習チケット</span><div class="collection-ticket-number"><b id="collection-tickets">0</b><span>枚</span></div></div><div class="collection-reward-progress"><p id="collection-ticket-caption"></p><div class="collection-ticket-track"><i id="collection-ticket-bar"></i></div><small>50〜200 EXPで1枚 · １日１枚まで · 重複なし</small></div><button id="collection-draw" onclick="drawCompanion()">新しい相棒を迎える <span aria-hidden="true">＋</span></button></div>
-            <div id="companion-goal" class="companion-goal"></div>
-            <div class="collection-toolbar"><div role="group" aria-label="カードの表示"><button id="collection-filter-all" aria-pressed="true" onclick="setCollectionFilter('all')">すべて</button><button id="collection-filter-owned" aria-pressed="false" onclick="setCollectionFilter('owned')">集めた相棒</button></div><p id="collection-status" role="status"></p></div>
-            <div id="collection-grid" class="collection-grid"></div>
         </div>
-        <div id="modal-companion" class="hidden fixed inset-0 z-50 collection-modal" role="dialog" aria-modal="true" aria-labelledby="companion-detail-name"><div class="companion-detail"><button class="collection-close" onclick="closeCompanionDetail()" aria-label="カードを閉じる">×</button><div id="companion-detail-content"></div></div></div>
 
         <!-- ================= Vocabulary ================= -->
         <div id="screen-vocabulary" class="screen hidden flex-col p-6 md:p-8 max-w-6xl mx-auto min-h-full">
@@ -647,7 +786,7 @@
         <div id="screen-4choice" class="screen hidden flex-col p-4 md:p-8 max-w-3xl mx-auto min-h-full">
             <div class="flex justify-between items-center mb-6">
                 <button onclick="navTo('dashboard')" class="text-slate-400 hover:text-slate-600 p-2"><i data-lucide="x" class="w-6 h-6"></i></button>
-                <div class="bg-slate-100 text-slate-600 font-bold px-4 py-1.5 rounded-full text-sm flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4"></i> Q <span id="qc-current">1</span> / <span id="qc-total">5</span></div>
+                <div class="bg-slate-100 text-slate-600 font-bold px-4 py-1.5 rounded-full text-sm flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4"></i> Q <span id="qc-current">1</span> / 5</div>
             </div>
             <div class="flex-grow flex flex-col items-center justify-center w-full">
                 <button id="qc-audio-btn" onclick="replayAudio()" class="mb-6 text-primary bg-primaryLight p-4 rounded-full transition-colors hidden cursor-pointer"><i data-lucide="volume-2" class="w-8 h-8"></i></button>
@@ -874,7 +1013,6 @@
             <div id="res-icon" class="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 relative z-10"></div>
             <h2 id="res-title" class="text-2xl font-extrabold text-slate-800 mb-2 relative z-10"></h2>
             <p id="res-desc" class="text-slate-500 mb-6 text-sm relative z-10 font-bold"></p>
-            <div id="learning-insight" class="hidden learning-insight" role="status"></div>
             <div id="res-extra" class="mb-6 text-left text-sm w-full flex flex-col items-center relative z-10"></div>
             <div class="grid grid-cols-2 gap-2 relative z-10">
                 <button id="res-replay-btn" onclick="replayLastMode()" class="hidden w-full bg-primary hover:bg-primaryHover text-white font-bold py-3 rounded-xl transition-colors text-sm cursor-pointer flex items-center justify-center gap-1"><i data-lucide="rotate-ccw" class="w-4 h-4 text-white"></i>もう一度</button>
@@ -906,7 +1044,6 @@
         </div>
     </div>
 
-    <div id="modal-learning-backup" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="backup-title"><div class="learning-backup-panel"><button type="button" class="backup-close" onclick="closeModal('modal-learning-backup')" aria-label="バックアップを閉じる">×</button><h2 id="backup-title">記録の引き継ぎ</h2><p>ファイルを保存して、iPad・スマホ間で記録を引き継げます。アカウント・パスワードは不要です。</p><button type="button" id="backup-export" onclick="downloadLearningBackup()">現在の記録を書き出す ↓</button><label for="backup-file">バックアップファイルを読み込む<input id="backup-file" type="file" accept=".json,application/json" onchange="previewLearningBackup(this)"></label><p id="backup-status" role="status"></p><button type="button" id="backup-restore" onclick="restoreLearningBackup()" disabled>この記録で引き継ぐ</button><button type="button" class="backup-previous" onclick="usePreviousLearningBackup()">前回の読み込み前の記録に戻す</button><small>記録は自動同期されません。引き継ぐたびに最新のファイルを使ってください。</small></div></div>
     <script src="./example-data.js"></script>
     <script>
         const rawWords = [
@@ -1479,14 +1616,13 @@
             }
         }
 
-        function categoryDisplayName(cat) {const index=categories.indexOf(cat);return index<0?cat:['1-100','101-200','201-300','301-400','401-500'][index];}
         function renderCategoryFilter() {
             const container = document.getElementById('dash-category-filter'); container.innerHTML = '';
             categories.forEach(cat => {
                 const btn = document.createElement('button');
                 const isSelected = cat === currentCategory;
                 btn.className = `category-pill cursor-pointer px-6 py-2 rounded-full text-sm font-extrabold mr-3 border shadow-sm ${isSelected ? 'bg-primary text-white border-primary' : 'bg-surface text-slate-500 border-slate-200 hover:bg-slate-50'}`;
-                btn.innerText = categoryDisplayName(cat);
+                btn.innerText = cat;
                 btn.onclick = () => { 
                     currentCategory = cat; 
                     window.localStorage.setItem('wm_pro_last_category', currentCategory);
@@ -1522,7 +1658,6 @@
             if(document.getElementById('display-inv-cpu-level')) document.getElementById('display-inv-cpu-level').innerText = cpuLevel;
             
             updateTimeUI(); updateMascot();
-            if(typeof updateStudioGrowth === 'function') updateStudioGrowth(currentCategory, oCount, total, tCount, xCount);
             if(activeScreen === 'vocabulary') renderVocabulary();
         }
 
@@ -1594,17 +1729,14 @@
         function getCategoryExp(cat = currentCategory) { return categoryExp[cat] || 0; }
         function getTotalExpAll() { return Object.values(categoryExp).reduce((sum, value) => sum + (parseInt(value) || 0), 0); }
         function addExp(amount, cat = currentCategory) {
-            if(typeof getCompanionState === 'function') getCompanionState();
             categoryExp[cat] = getCategoryExp(cat) + amount;
             totalExp = getCategoryExp(currentCategory);
             window.localStorage.setItem('wm_pro_category_exp', JSON.stringify(categoryExp));
             window.localStorage.setItem('wm_pro_exp', getTotalExpAll());
-            if(typeof awardCompanionExp === 'function') awardCompanionExp(amount);
-            if(typeof noteBuddyLearning === 'function') noteBuddyLearning(amount);
             updateDashboard();
         }
-        function recordSuccess(enWord) { if(typeof noteLearningAnswer==='function')noteLearningAnswer(enWord,true); wordStatus[enWord] = 'o'; window.localStorage.setItem('wm_pro_word_status', JSON.stringify(wordStatus)); }
-        function recordError(enWord) { if(typeof noteLearningAnswer==='function')noteLearningAnswer(enWord,false); wordStatus[enWord] = 'x'; window.localStorage.setItem('wm_pro_word_status', JSON.stringify(wordStatus)); }
+        function recordSuccess(enWord) { wordStatus[enWord] = 'o'; window.localStorage.setItem('wm_pro_word_status', JSON.stringify(wordStatus)); }
+        function recordError(enWord) { wordStatus[enWord] = 'x'; window.localStorage.setItem('wm_pro_word_status', JSON.stringify(wordStatus)); }
         function setWordStatus(enWord, status) {
             if(wordStatus[enWord] === status) delete wordStatus[enWord];
             else wordStatus[enWord] = status;
@@ -1618,8 +1750,65 @@
             learnReviewLog = learnReviewLog.slice(0, 80);
             window.localStorage.setItem('wm_pro_learn_review', JSON.stringify(learnReviewLog));
         }
+        function handleMascotTap() {
+            initAudio(); playSound('correct');
+            const mascot = document.getElementById('mascot-container');
+            mascot.classList.remove('mascot-react');
+            void mascot.offsetWidth;
+            mascot.classList.add('mascot-react');
+            spawnBuddySparks();
+            const msg = getMascotMessage();
+            showMascotBubble(msg);
+        }
+        function getMascotMessage() {
+            const today = getDayKey();
+            const countKey = `wm_pro_buddy_tap_count_${currentCategory}_${today}`;
+            const rewardKey = `wm_pro_buddy_reward_${currentCategory}_${today}`;
+            const tapCount = (parseInt(window.localStorage.getItem(countKey)) || 0) + 1;
+            window.localStorage.setItem(countKey, tapCount);
+            
+            const catWords = wordData.filter(w => w.cat === currentCategory);
+            const xCount = catWords.filter(w => wordStatus[w.en] === 'x').length;
+            const nextLevels = [0, 50, 100, 200, 350, 550, 800, 1200, 2000, 3500];
+            const next = nextLevels.find(v => v > totalExp);
+            const baseLines = [
+                '今日も少しずつ強くなろう!',
+                '毎日会えると嬉しいな！',
+                next ? `あと${next - totalExp}EXPで次の相棒!` : '最高レベル到達！すごい！',
+                '色んなモードで学習しよう!'
+            ];
+
+            if(tapCount === 4 && window.localStorage.getItem(rewardKey) !== 'done') {
+                addExp(1);
+                window.localStorage.setItem(rewardKey, 'done');
+                return '応援ボーナス +1 EXP!';
+            }
+            if(stamina >= 10) return 'スタミナ満タン。いつやるの？今でしょ！';
+            if(xCount >= 5) return '×だけ復習すると一気に強くなるよ。';
+            return baseLines[(tapCount - 1) % baseLines.length];
+        }
+        function showMascotBubble(text) {
+            const bubble = document.getElementById('mascot-bubble');
+            bubble.innerText = text;
+            bubble.classList.remove('hidden');
+            clearTimeout(showMascotBubble.timer);
+            showMascotBubble.timer = setTimeout(() => bubble.classList.add('hidden'), 1800);
+        }
+        function spawnBuddySparks() {
+            const box = document.getElementById('mascot-container');
+            for(let i=0; i<6; i++) {
+                const spark = document.createElement('span');
+                spark.className = 'buddy-spark';
+                spark.style.left = `${35 + Math.random()*35}%`;
+                spark.style.top = `${25 + Math.random()*35}%`;
+                spark.style.setProperty('--dx', `${(Math.random()*70)-35}px`);
+                spark.style.setProperty('--dy', `${-20 - Math.random()*45}px`);
+                box.appendChild(spark);
+                setTimeout(() => spark.remove(), 900);
+            }
+        }
+
         function updateMascot() {
-            if(typeof renderActiveCompanion === 'function') { renderActiveCompanion(); return; }
             const expLevels = [0, 50, 100, 200, 350, 550, 800, 1200, 2000, 3500];
             const names = ["ブックキャット", "ペンシルフォックス", "リスニングラビット", "ABCペンギン", "まるメガネオウル", "ルーンウルフ", "サンダータイガー", "スカイイーグル", "エメラルドドラゴン", "フレアフェニックス"];
             let lv = 1; for(let i=0; i<expLevels.length; i++) { if(totalExp >= expLevels[i]) lv = i+1; }
@@ -1631,11 +1820,6 @@
             document.getElementById('mascot-exp-bar').style.width = pct + '%';
 
             const container = document.getElementById('mascot-container'); let svg = '';
-            if(lv === 1) {
-                document.getElementById('mascot-name').innerText = 'ブルードラゴン';
-                container.innerHTML = '<img src="assets/buddy-blue-dragon.png" alt="相棒のブルードラゴン" class="studio-buddy" draggable="false">';
-                return;
-            }
             const stroke = `stroke="#172033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"`;
             if(lv===1) svg = `<path d="M32 40 L22 18 L45 32 Z" fill="#f3c7a9" ${stroke}/><path d="M68 40 L78 18 L55 32 Z" fill="#f3c7a9" ${stroke}/><circle cx="50" cy="55" r="30" fill="#f8d8bd" ${stroke}/><circle cx="39" cy="52" r="3.5" fill="#172033"/><circle cx="61" cy="52" r="3.5" fill="#172033"/><path d="M46 62 L54 62 L50 68 Z" fill="#f472b6"/><path d="M35 82 Q50 73 65 82 L65 95 Q50 86 35 95 Z" fill="#3b5ee8" ${stroke}/>`;
             else if(lv===2) svg = `<path d="M25 56 Q18 25 42 35" fill="#f59e0b" ${stroke}/><path d="M75 56 Q82 25 58 35" fill="#f59e0b" ${stroke}/><path d="M24 58 Q33 30 50 30 Q67 30 76 58 Q70 82 50 88 Q30 82 24 58 Z" fill="#f6a446" ${stroke}/><path d="M36 66 Q50 78 64 66 Q58 84 50 88 Q42 84 36 66 Z" fill="#fff7ed"/><circle cx="41" cy="52" r="3.5" fill="#172033"/><circle cx="59" cy="52" r="3.5" fill="#172033"/><path d="M68 78 Q92 72 83 45 Q102 70 76 96" fill="#f59e0b" ${stroke}/>`;
@@ -1702,26 +1886,20 @@
         }
 
         function navTo(tab, options = {}) {
-            if(typeof beginLearningInsight==='function' && !['dashboard','vocabulary','collection'].includes(tab))beginLearningInsight();
             activeScreen = tab; clearAllTimers();
             if(tab === 'dashboard' && !options.keepMatchSeries) resetMatchingVsSeries();
             if(tab === 'dashboard' && !options.keepInvaderSeries) resetInvaderSeries();
             document.querySelectorAll('.screen').forEach(s => { s.classList.add('hidden'); s.classList.remove('flex'); });
             const targetScreen = document.getElementById('screen-' + tab);
             if (targetScreen) { targetScreen.classList.remove('hidden'); targetScreen.classList.add('flex'); }
-            ['dashboard', 'vocabulary', 'collection'].forEach(t => {
+            ['dashboard', 'vocabulary'].forEach(t => {
                 const el = document.getElementById('nav-' + t);
                 if(el) el.className = (t === tab) ? "w-full flex items-center gap-4 p-4 rounded-xl bg-primary text-white font-bold transition-colors shadow-sm" : "w-full flex items-center gap-4 p-4 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-800 font-bold transition-colors";
                 const mel = document.getElementById('mob-' + t);
                 if(mel) mel.className = (t === tab) ? "flex flex-col items-center p-2 text-primary" : "flex flex-col items-center p-2 text-slate-400";
             });
-            document.getElementById('nav-dashboard')?.setAttribute('aria-current', tab === 'dashboard' ? 'page' : 'false');
-            document.getElementById('nav-vocabulary')?.setAttribute('aria-current', tab === 'vocabulary' ? 'page' : 'false');
             if(tab === 'dashboard') updateDashboard();
-            document.getElementById('nav-collection')?.setAttribute('aria-current', tab === 'collection' ? 'page' : 'false');
-            if(tab === 'collection') renderCollection();
             if(tab === 'vocabulary') renderVocabulary();
-            document.querySelector('main').scrollTop = 0;
             window.scrollTo(0,0);
         }
 
@@ -1949,7 +2127,6 @@
             else { iconBox.className = "mx-auto w-16 h-16 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center mb-4"; iconBox.innerHTML = '<i data-lucide="info" class="w-8 h-8"></i>'; }
             const replayBtn = document.getElementById('res-replay-btn');
             if(lastRunConfig && type !== 'info') replayBtn.classList.remove('hidden'); else replayBtn.classList.add('hidden');
-            if(typeof showLearningInsight==='function')showLearningInsight(type);
             showModal('modal-result'); lucide.createIcons(); updateDashboard();
         }
         function getReplaySource(config) {
@@ -2355,11 +2532,10 @@
 
         // ================== DRILL: 4-CHOICE ==================
         let qcIndex = 0, qcTargets = [];
-        function init4Choice(source) { if(typeof beginLearningInsight==='function')beginLearningInsight(); qcTargets = shuffle(source).slice(0, 5); qcIndex = 0; render4Choice(); }
+        function init4Choice(source) { qcTargets = shuffle(source).slice(0, 5); qcIndex = 0; render4Choice(); }
         function render4Choice() {
-            if(qcIndex >= qcTargets.length) { playSound('match'); showResult("Completed", `${qcTargets.length}問やり遂げました！`, buildPracticedWordsHtml(qcTargets), "win"); addExp(qcTargets.length); return; }
+            if(qcIndex >= 5) { playSound('match'); showResult("Completed", "5問やり遂げました！", buildPracticedWordsHtml(qcTargets), "win"); addExp(5); return; }
             document.getElementById('qc-current').innerText = qcIndex + 1;
-            document.getElementById('qc-total').textContent=qcTargets.length;
             const target = qcTargets[qcIndex];
             
             let isEnToJp = Math.random() > 0.5;
@@ -2381,7 +2557,6 @@
                 btn.onclick = () => {
                     initAudio();
                     if(c === target) {
-                        if(typeof noteLearningAnswer==='function')noteLearningAnswer(target.en,true);
                         playSound('correct'); playAudio(target.en);
                         btn.className = 'w-full bg-primary border-primary text-white font-bold py-5 rounded-xl text-lg shadow-md animate-pop';
                         Array.from(container.children).forEach(b => b.onclick = null);
@@ -2582,7 +2757,6 @@
             scBatchScore = 0;
             scTargets.forEach((target, index) => {
                 const correct = scBatchSelections[index] === target.answer;
-                noteLearningAnswer(target.en,correct);
                 if(correct) scBatchScore++;
                 if(!finalStatus.has(target.en) || !correct) finalStatus.set(target.en, correct ? 'o' : 'x');
                 const timer = setTimeout(() => revealBatchSentenceAnswer(index, correct), index * scBatchRevealInterval);
@@ -2743,7 +2917,6 @@
             const ans = input.value.replace(/\s+/g, ' ').trim().toLowerCase();
             const correct = tdDifficulty === 'easy' && tdEasyTarget ? tdEasyTarget.ans : target.en.replace(/\[.*?\]/g, '').trim().toLowerCase();
             if(ans.replace(/\s+/g, '') === correct.replace(/\s+/g, '')) {
-                noteLearningAnswer(target.en,true);
                 playSound('correct'); playAudio(target.en);
                 if(tdDifficulty === 'easy') document.getElementById('td-easy-hint-container').children[0]?.classList.add('bg-emerald-50', 'border-secondary');
                 else input.className = "w-full max-w-md text-center text-2xl font-bold p-4 border-2 border-secondary bg-emerald-50 text-secondary rounded-xl mb-3 outline-none shadow-sm";
@@ -2818,12 +2991,11 @@
             for(let i=0; i<3; i++) {
                 if(!ldSelected[i] || !ldTargets[i] || ldSelected[i].choice.en !== ldTargets[i].en) {
                     allCorrect = false;
-                    if(ldTargets[i])noteLearningAnswer(ldTargets[i].en,false);
                     if(ldSelected[i]) ldSelected[i].btn.classList.remove('opacity-0', 'pointer-events-none');
                     ldSelected[i] = null;
                 }
             }
-            if(allCorrect) { ldTargets.forEach(w=>noteLearningAnswer(w.en,true));playSound('correct'); setTimeout(() => { ldIndex++; renderListeningDrill(); }, 1000); } 
+            if(allCorrect) { playSound('correct'); setTimeout(() => { ldIndex++; renderListeningDrill(); }, 1000); } 
             else { playSound('wrong'); updateLdSlots(); }
         }
         function playLdAudio() {
@@ -3102,7 +3274,7 @@
                 }
             }
             if(correctCount === 10) {
-                clearInterval(ttTimerInterval); ttPracticed.forEach(w=>noteLearningAnswer(w.en,true));playSound('match'); addExp(15);
+                clearInterval(ttTimerInterval); playSound('match'); addExp(15);
                 showResult("Perfect Match!", `記録: ${((Date.now() - ttStartTime) / 1000).toFixed(1)}s`, buildPracticedWordsHtml(ttPracticed), "win");
             } else {
                 playSound('wrong');
@@ -3166,7 +3338,6 @@
         function handleVsClick(choice, player, btn) {
             if(vsLockAll || (player === 1 && p1Locked) || (player === 2 && p2Locked)) return; 
             if(choice.en === vsCurrentTarget.en) {
-                if(!isVsCpu || player===1)noteLearningAnswer(vsCurrentTarget.en,true);
                 playSound('correct'); vsLockAll = true; clearTimeout(vsCpuTimer); clearInterval(vsTypeInterval);
                 document.getElementById('target-p1').innerText = vsCurrentTarget.jp; document.getElementById('target-p2').innerText = vsCurrentTarget.jp;
                 if(player === 1) p1Score++; else p2Score++;
@@ -3411,13 +3582,5 @@
             setTimeout(() => showResult(title, desc, extra, winner === 2 ? "vs" : "win"), 1450);
         }
     </script>
-    <script src="studio.js"></script>
-    <script src="collection.js"></script>
-    <script src="exploration.js"></script>
-    <script src="choice-shortcuts.js"></script>
-<script src="buddy-interactions.js"></script>
-<script src="learning-next.js"></script>
 </body>
 </html>
-
-
